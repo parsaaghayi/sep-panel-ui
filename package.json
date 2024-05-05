@@ -1,9 +1,9 @@
 {
   "name": "@parsaaghayi/sep-panel-ui",
-  "version": "0.0.1",
+  "version": "0.0.3",
   "description": "hooshmand sepehr react component library",
   "scripts": {
-    "build": "rollup -c --bundleConfigAsCjs",
+    "build": "rmdir /s dist && rollup -c --bundleConfigAsCjs",
     "test": "jest",
     "storybook": "storybook dev -p 6006",
     "build-storybook": "storybook build",
