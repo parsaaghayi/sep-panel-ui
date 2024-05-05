@@ -12,7 +12,7 @@ interface ButtonPropsInt {
     | "danger"
     | "link"
     | "subtle"
-    | "subtelLink";
+    | "subtleLink";
   fistIconSrc?: string;
   lastIconSrc?: string;
   clasName?: string;
