@@ -1,9 +1,13 @@
 import React from "react";
 import { render } from "@testing-library/react";
-import Button from "./Modal";
+import Modal from "./Modal";
 
-describe("Button", () => {
-  test("render the Button component", () => {
-    render(<Button label="This is a test button" type="base" />);
+describe("Modal", () => {
+  test("render the Modal component", () => {
+    render(
+      <Modal showModal={true} title="test modal">
+        <p>test description of modal</p>
+      </Modal>
+    );
   });
 });

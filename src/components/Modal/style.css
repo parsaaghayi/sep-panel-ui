@@ -48,7 +48,6 @@
   gap: 8px;
 }
 
-/* تعریف انیمیشن fadeIn */
 @keyframes fadeIn {
   from {
     opacity: 0;
@@ -58,7 +57,7 @@
   }
 }
 
-/* تعریف انیمیشن fadeOut */
+
 @keyframes fadeOut {
   from {
     opacity: 1;

@@ -1,4 +1,4 @@
-import React, { EventHandler, useEffect, useState } from "react";
+import React, { useEffect, useState } from "react";
 import "./style.css";
 
 import warning from "./../../images/warning.svg";

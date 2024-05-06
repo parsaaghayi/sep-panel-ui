@@ -2,14 +2,9 @@ import type { Meta, StoryObj } from "@storybook/react";
 import Button from "./Modal";
 import React from "react";
 
-// More on how to set up stories at: https://storybook.js.org/docs/writing-stories#default-export
 const meta = {
   title: "sep-panel-ui/Modal",
   component: Button,
-  //   parameters: {
-  //     // Optional parameter to center the component in the Canvas. More info: https://storybook.js.org/docs/configure/story-layout
-  //     layout: 'centered',
-  //   },
 } satisfies Meta<typeof Button>;
 
 export default meta;
@@ -35,6 +30,7 @@ export const warning: Story = {
     type: "warning",
     children: <p>warning modal description</p>,
     submitButtonLabel: "submit",
+    onClickOutClose: false,
     showModal: true,
     onSubmit: onSubmitFunction,
   },
