@@ -2,6 +2,7 @@ import React from "react";
 import "./style.css";
 
 import loading from "./../../images/loading.svg";
+import more from "./../../images/more.svg";
 
 interface ButtonPropsInt {
   label: string;
@@ -18,6 +19,7 @@ interface ButtonPropsInt {
   clasName?: string;
   disabled?: boolean;
   loading?: boolean;
+  hasMore?: boolean;
   onClick?: () => void;
 }
 
@@ -34,24 +36,30 @@ const Button = (props: ButtonPropsInt) => {
         <img src={loading} width={24} height={24} alt="loading icon" />
       ) : (
         <>
-          {props.fistIconSrc ? (
-            <img
-              src={props.fistIconSrc}
-              className="first-icon"
-              alt="first icon"
-            />
+          {props.hasMore ? (
+            <img src={more} width={24} height={24} alt="more icon" />
           ) : (
-            <></>
-          )}
-          {props.label}
-          {props.lastIconSrc ? (
-            <img
-              src={props.lastIconSrc}
-              className="last-icon"
-              alt="last icon"
-            />
-          ) : (
-            <></>
+            <>
+              {props.fistIconSrc ? (
+                <img
+                  src={props.fistIconSrc}
+                  className="first-icon"
+                  alt="first icon"
+                />
+              ) : (
+                <></>
+              )}
+              {props.label}
+              {props.lastIconSrc ? (
+                <img
+                  src={props.lastIconSrc}
+                  className="last-icon"
+                  alt="last icon"
+                />
+              ) : (
+                <></>
+              )}
+            </>
           )}
         </>
       )}

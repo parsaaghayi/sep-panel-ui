@@ -1,0 +1,27 @@
+.modal-body {
+  display: flex;
+  width: 600px;
+  padding: 24px;
+  flex-direction: column;
+  justify-content: flex-end;
+  align-items: flex-start;
+  gap: 16px;
+  background: var(--neutral-light-no, #fff);
+  box-shadow:
+    0px 3px 5px 0px rgba(9, 30, 66, 0.2),
+    0px 0px 1px 0px rgba(9, 30, 66, 0.31);
+}
+.modal-title {
+  display: flex;
+  justify-content: flex-start;
+  align-items: center;
+  gap: 8px;
+  align-self: stretch;
+}
+.modal-footer {
+  display: flex;
+  width: 100%;
+  align-items: center;
+  justify-content: flex-end;
+  gap: 8px;
+}

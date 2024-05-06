@@ -71,12 +71,12 @@ button {
   filter: brightness(0) saturate(100%) invert(30%) sepia(10%) saturate(1555%)
     hue-rotate(179deg) brightness(97%) contrast(92%);
 }
-.subtelLink {
+.subtleLink {
   border-radius: 3px;
   background: var(--neutral-light-no-1, rgba(255, 255, 255, 0));
   color: var(--neutral-light-n-500, #42526e);
 }
-.subtelLink img {
+.subtleLink img {
   filter: brightness(0) saturate(100%) invert(30%) sepia(10%) saturate(1555%)
     hue-rotate(179deg) brightness(97%) contrast(92%);
 }
@@ -135,12 +135,12 @@ button {
   filter: brightness(0) saturate(100%) invert(31%) sepia(12%) saturate(1256%)
     hue-rotate(179deg) brightness(95%) contrast(93%);
 }
-.subtelLink:hover {
+.subtleLink:hover {
   border-radius: 3px;
   background: var(--neutral-light-no-1, rgba(255, 255, 255, 0));
   color: var(--neutral-light-n-90, #8993a4);
 }
-.subtelLink:hover img {
+.subtleLink:hover img {
   filter: brightness(0) saturate(100%) invert(63%) sepia(7%) saturate(677%)
     hue-rotate(179deg) brightness(90%) contrast(89%);
 }
@@ -199,12 +199,12 @@ button {
   filter: brightness(0) saturate(100%) invert(18%) sepia(96%) saturate(2779%)
     hue-rotate(210deg) brightness(93%) contrast(101%);
 }
-.subtelLink:active {
+.subtleLink:active {
   border-radius: 3px;
   background: var(--neutral-light-no-1, rgba(255, 255, 255, 0));
   color: var(--neutral-light-n-400, #505f79);
 }
-.subtelLink:active img {
+.subtleLink:active img {
   filter: brightness(0) saturate(100%) invert(37%) sepia(4%) saturate(2842%)
     hue-rotate(180deg) brightness(94%) contrast(91%);
 }

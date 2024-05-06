@@ -3,7 +3,7 @@ import Button from "./Button";
 
 // More on how to set up stories at: https://storybook.js.org/docs/writing-stories#default-export
 const meta = {
-  title: "test-library/Button",
+  title: "sep-panel-ui/Button",
   component: Button,
   //   parameters: {
   //     // Optional parameter to center the component in the Canvas. More info: https://storybook.js.org/docs/configure/story-layout
@@ -70,17 +70,24 @@ export const subtle: Story = {
 };
 export const subtelLink: Story = {
   args: {
-    label: "subtelLink button",
+    label: "subtleLink button",
     loading: false,
-    type: "subtelLink",
+    type: "subtleLink",
     fistIconSrc: "https://www.svgrepo.com/show/532036/cloud-rain-alt.svg",
   },
 };
 export const disabled: Story = {
   args: {
-    label: "subtelLink button",
-    type: "subtelLink",
+    label: "disabled button",
     fistIconSrc: "https://www.svgrepo.com/show/532036/cloud-rain-alt.svg",
     disabled: true,
+  },
+};
+export const more: Story = {
+  args: {
+    label: "more button",
+    type: "base",
+    fistIconSrc: "https://www.svgrepo.com/show/532036/cloud-rain-alt.svg",
+    hasMore: true,
   },
 };
