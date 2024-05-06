@@ -1,10 +1,10 @@
 import type { Meta, StoryObj } from "@storybook/react";
-import Button from "./Pagination";
+import Paginatin from "./Pagination";
 
 const meta = {
   title: "sep-panel-ui/Pagination",
-  component: Button,
-} satisfies Meta<typeof Button>;
+  component: Paginatin,
+} satisfies Meta<typeof Paginatin>;
 
 export default meta;
 type Story = StoryObj<typeof meta>;
