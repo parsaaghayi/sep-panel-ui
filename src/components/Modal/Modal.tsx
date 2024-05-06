@@ -5,53 +5,65 @@ import warning from "./../../images/warning.svg";
 import error from "./../../images/error.svg";
 import Button from "../Button";
 
-interface ButtonPropsInt {
+type ModalPropsType = {
   title: string;
   type?: "base" | "warning" | "danger";
   showModal: boolean;
   children: React.ReactElement;
-  submitButtonLabel: string;
+  submitButtonLabel?: string;
   cancelButtonLabel?: string;
-  onSubmit: () => void;
-}
+} & (
+  | { submitButtonLabel: string; onSubmit: () => void }
+  | { submitButtonLabel?: never; onSubmit?: () => void }
+);
 
-const Modal = (props: ButtonPropsInt) => {
-  const [showModal, setshowModal] = useState(props.showModal);
+const Modal: React.FC<ModalPropsType> = ({
+  title,
+  type,
+  showModal,
+  children,
+  submitButtonLabel,
+  cancelButtonLabel,
+  onSubmit,
+}) => {
+  const [showModalState, setshowModalState] = useState(showModal);
   return (
     <>
-      {showModal ? (
+      {showModalState ? (
         <div className="modal-body">
           <h2 className="modal-title">
-            {props.type === "warning" || props.type === "danger" ? (
+            {type === "warning" || type === "danger" ? (
               <img
-                src={props.type === "warning" ? warning : error}
-                alt={props.type === "warning" ? "warning icon" : "danger icon"}
+                src={type === "warning" ? warning : error}
+                alt={type === "warning" ? "warning icon" : "danger icon"}
               />
             ) : (
               <></>
             )}
-            {props.title}
+            {title}
           </h2>
-          <div className="modal-description">{props.children}</div>
+          <div className="modal-description">{children}</div>
           <div className="modal-footer">
             <Button
-              label={
-                props.cancelButtonLabel ? props.cancelButtonLabel : "انصراف"
-              }
+              label={cancelButtonLabel ? cancelButtonLabel : "انصراف"}
               type="subtle"
-              onClick={() => setshowModal(false)}
+              onClick={() => setshowModalState(false)}
             />
-            <Button
-              label={props.submitButtonLabel}
-              type={
-                props.type === "danger"
-                  ? "danger"
-                  : props.type === "warning"
-                    ? "warning"
-                    : "primary"
-              }
-              onClick={() => props.onSubmit()}
-            />
+            {submitButtonLabel ? (
+              <Button
+                label={submitButtonLabel}
+                type={
+                  type === "danger"
+                    ? "danger"
+                    : type === "warning"
+                      ? "warning"
+                      : "primary"
+                }
+                onClick={() => onSubmit()}
+              />
+            ) : (
+              <></>
+            )}
           </div>
         </div>
       ) : (

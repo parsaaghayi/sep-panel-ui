@@ -44,9 +44,9 @@ export const danger: Story = {
     title: "danger modal",
     type: "danger",
     children: <p>danger modal description</p>,
-    submitButtonLabel: "submit",
-    cancelButtonLabel: "cancel",
+    // submitButtonLabel: "submit",
+    cancelButtonLabel: "بستن",
     showModal: true,
-    onSubmit: onSubmitFunction,
+    // onSubmit: onSubmitFunction,
   },
 };
