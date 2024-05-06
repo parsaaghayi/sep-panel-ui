@@ -49,7 +49,6 @@ const Modal: React.FC<ModalPropsType> = ({
 
   return (
     <>
-      {console.log(cancelButtonLabel)}
       {isOpen ? (
         <div
           className={`modal-container ${showModalState ? "show" : ""}`}
@@ -74,11 +73,16 @@ const Modal: React.FC<ModalPropsType> = ({
             <div className="modal-description">{children}</div>
             {submitButtonLabel || cancelButtonLabel ? (
               <div className="modal-footer">
-                <Button
-                  label={cancelButtonLabel ? cancelButtonLabel : "انصراف"}
-                  type="subtle"
-                  onClick={() => setshowModalState(false)}
-                />
+                {cancelButtonLabel ? (
+                  <Button
+                    label={cancelButtonLabel}
+                    type="subtle"
+                    onClick={() => setshowModalState(false)}
+                  />
+                ) : (
+                  <></>
+                )}
+
                 {submitButtonLabel ? (
                   <Button
                     label={submitButtonLabel}
