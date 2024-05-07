@@ -1,0 +1,98 @@
+.DropDownMenu-container {
+  display: inline-flex;
+  flex-direction: column;
+  gap: 8px;
+  direction: rtl;
+  width: 100%;
+  max-width: 360px;
+  position: relative;
+}
+.DropDownMenu-button.disabled,
+.DropDownMenu-button.disabled:hover,
+.DropDownMenu-button.disabled:active {
+  background: var(--neutral-light-alpha-n-20-a, rgba(9, 30, 66, 0.04));
+  color: var(--neutral-light-n-70, #a5adba);
+  cursor: default;
+}
+.DropDownMenu-button.disabled img {
+  filter: brightness(0) saturate(100%) invert(66%) sepia(33%) saturate(93%)
+    hue-rotate(172deg) brightness(97%) contrast(97%);
+}
+.DropDownMenu-button.opened {
+  background: var(--neutral-light-n-700, #253858);
+  color: #ffffff;
+  cursor: pointer;
+}
+.DropDownMenu-button.opened img {
+  filter: brightness(0) saturate(100%) invert(100%) sepia(0%) saturate(0%)
+    hue-rotate(66deg) brightness(103%) contrast(102%);
+}
+.DropDownMenu-button {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  gap: 4px;
+  width: 125px;
+  height: 32px;
+  padding: 4px 12px;
+  color: var(--neutral-light-n-500, #42526e);
+  font-size: 14px;
+  font-style: normal;
+  font-weight: 400;
+  line-height: 20px;
+  border-radius: 3px;
+  background: var(--neutral-light-alpha-n-20-a, rgba(9, 30, 66, 0.04));
+  -webkit-user-select: none;
+  -moz-user-select: none;
+  -ms-user-select: none;
+  user-select: none;
+  transition: all ease 0.2s;
+}
+.DropDownMenu-button:hover {
+  background: var(--neutral-light-n-30, #ebecf0);
+  color: var(--neutral-light-n-500, #42526e);
+  cursor: pointer;
+}
+.DropDownMenu-button:hover img {
+  filter: brightness(0) saturate(100%) invert(29%) sepia(17%) saturate(844%)
+    hue-rotate(179deg) brightness(101%) contrast(94%);
+}
+.DropDownMenu-button:active {
+  background: var(--Blue-B50, #deebff);
+  color: var(--Blue-B400, #0052cc);
+  cursor: pointer;
+}
+.DropDownMenu-button:active img {
+  filter: brightness(0) saturate(100%) invert(18%) sepia(73%) saturate(3214%)
+    hue-rotate(210deg) brightness(101%) contrast(101%);
+}
+
+.DropDownMenu-body {
+  display: flex;
+  position: absolute;
+  top: 50px;
+  left: 0;
+  z-index: 10000;
+  width: 100%;
+  max-width: 360px;
+  padding: 4px 0px;
+  flex-direction: column;
+  height: 264px;
+  background-color: gray;
+  border-radius: 4px;
+  background: var(--general-option-forground, #fff);
+  box-shadow:
+    0px 3px 5px 0px rgba(9, 30, 66, 0.2),
+    0px 0px 1px 0px rgba(9, 30, 66, 0.31);
+  transition: all ease 0.2s;
+  opacity: 0;
+  overflow-y: auto;
+}
+.DropDownMenu-body.opened {
+  opacity: 1;
+  height: 264px;
+}
+.DropDownMenu-body.closed {
+  opacity: 0;
+  height: 0;
+}
