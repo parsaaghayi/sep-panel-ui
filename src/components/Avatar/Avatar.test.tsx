@@ -3,7 +3,7 @@ import { render } from "@testing-library/react";
 import Avatar from "./Avatar";
 
 describe("Avatar", () => {
-  test("Avatar the Avatar component", () => {
+  test("render the Avatar component", () => {
     render(<Avatar />);
   });
 });
