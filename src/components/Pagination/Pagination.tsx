@@ -7,12 +7,14 @@ type PaginationPropsType = {
   currentPage: number;
   totalPage: number;
   setPageNumber?: (pageNumber: number) => void;
+  direction: "rtl" | "ltr";
 };
 
 const Pagination: React.FC<PaginationPropsType> = ({
   currentPage,
   totalPage,
   setPageNumber,
+  direction,
 }) => {
   const setPageNumberFunc = (value: number) => {
     if (
@@ -28,7 +30,10 @@ const Pagination: React.FC<PaginationPropsType> = ({
   return (
     <>
       {currentPage > 0 ? (
-        <div className="paginationParent select-none">
+        <div
+          className="paginationParent select-none"
+          style={{ direction: `${direction}` }}
+        >
           <div
             key={"prev"}
             onClick={() => {
@@ -38,7 +43,11 @@ const Pagination: React.FC<PaginationPropsType> = ({
             }}
             className={`prev ${currentPage === 1 ? "disable" : ""}`}
           >
-            <img src={arrowRight} alt="arrow right" />
+            {direction === "rtl" ? (
+              <img src={arrowRight} alt="arrow right" />
+            ) : (
+              <img src={arrowLeft} alt="arrow left" />
+            )}
           </div>
           {totalPage > 0 ? (
             <>
@@ -624,7 +633,11 @@ const Pagination: React.FC<PaginationPropsType> = ({
             }}
             className={`next ${currentPage === totalPage ? "disable" : ""}`}
           >
-            <img src={arrowLeft} alt="arrow left" />
+            {direction === "rtl" ? (
+              <img src={arrowLeft} alt="arrow left" />
+            ) : (
+              <img src={arrowRight} alt="arrow right" />
+            )}
           </div>
         </div>
       ) : (

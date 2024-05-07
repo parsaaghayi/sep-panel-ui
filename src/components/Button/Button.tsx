@@ -1,10 +1,10 @@
 import React from "react";
 import "./style.css";
 
-import loading from "./../../images/loading.svg";
+import loadingIcon from "./../../images/loading.svg";
 import more from "./../../images/more.svg";
 
-interface ButtonPropsInt {
+type ButtonPropsType = {
   label: string;
   type?:
     | "base"
@@ -21,41 +21,47 @@ interface ButtonPropsInt {
   loading?: boolean;
   hasMore?: boolean;
   onClick?: () => void;
-}
+};
 
-const Button = (props: ButtonPropsInt) => {
+const Button: React.FC<ButtonPropsType> = ({
+  label,
+  type,
+  fistIconSrc,
+  lastIconSrc,
+  clasName,
+  disabled,
+  loading,
+  hasMore,
+  onClick,
+}) => {
   return (
     <button
-      className={`${props.type ? props.type : "base"} ${props.clasName ? props.clasName : ""} ${props.disabled ? "disabled" : ""}`}
-      disabled={props.disabled}
+      className={`${type ? type : "base"} ${clasName ? clasName : ""} ${disabled ? "disabled" : ""}`}
+      disabled={disabled}
       onClick={() => {
-        props.onClick ? props.onClick() : null;
+        onClick ? onClick() : null;
       }}
     >
-      {props.loading ? (
-        <img src={loading} width={24} height={24} alt="loading icon" />
+      {loading ? (
+        <img src={loadingIcon} width={24} height={24} alt="loading icon" />
       ) : (
         <>
-          {props.hasMore ? (
+          {hasMore ? (
             <img src={more} width={24} height={24} alt="more icon" />
           ) : (
             <>
-              {props.fistIconSrc ? (
+              {fistIconSrc ? (
                 <img
-                  src={props.fistIconSrc}
+                  src={fistIconSrc}
                   className="first-icon"
                   alt="first icon"
                 />
               ) : (
                 <></>
               )}
-              {props.label}
-              {props.lastIconSrc ? (
-                <img
-                  src={props.lastIconSrc}
-                  className="last-icon"
-                  alt="last icon"
-                />
+              {label}
+              {lastIconSrc ? (
+                <img src={lastIconSrc} className="last-icon" alt="last icon" />
               ) : (
                 <></>
               )}
