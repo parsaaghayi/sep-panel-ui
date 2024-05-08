@@ -2,9 +2,9 @@
   display: inline-flex;
   flex-direction: column;
   gap: 8px;
-  direction: rtl;
-  width: 100%;
-  max-width: 360px;
+  /* direction: ltr; */
+  /* width: 100%;
+  max-width: 360px; */
   position: relative;
 }
 .DropDownMenu-button.disabled,
@@ -71,10 +71,10 @@
   display: flex;
   position: absolute;
   top: 50px;
-  left: 0;
   z-index: 10000;
   width: 100%;
   max-width: 360px;
+  width: 360px;
   padding: 4px 0px;
   flex-direction: column;
   height: 264px;
@@ -87,6 +87,12 @@
   transition: all ease 0.2s;
   opacity: 0;
   overflow-y: auto;
+}
+.DropDownMenu-body.right {
+  left: 0;
+}
+.DropDownMenu-body.left {
+  right: 0;
 }
 .DropDownMenu-body.opened {
   opacity: 1;

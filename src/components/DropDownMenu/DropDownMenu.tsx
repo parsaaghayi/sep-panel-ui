@@ -1,4 +1,4 @@
-import React, { ReactElement, useState } from "react";
+import React, { ReactElement, useEffect, useState } from "react";
 import "./style.css";
 import arrowBottom from "./../../images/arrow-bottom.svg";
 
@@ -7,6 +7,7 @@ type DropDownMenuPropsType = {
   isOpen: boolean;
   setIsOpen: React.Dispatch<React.SetStateAction<boolean>>;
   disabled?: boolean;
+  openningDirection: "right" | "left";
   children: ReactElement;
 };
 
@@ -16,6 +17,7 @@ const DropDownMenu: React.FC<DropDownMenuPropsType> = ({
   children,
   isOpen,
   setIsOpen,
+  openningDirection,
 }) => {
   const [animate, setAnimate] = useState(false);
 
@@ -45,7 +47,9 @@ const DropDownMenu: React.FC<DropDownMenuPropsType> = ({
         />
       </div>
       {isOpen ? (
-        <div className={`DropDownMenu-body ${animate ? "opened" : "closed"}`}>
+        <div
+          className={`DropDownMenu-body ${animate ? "opened" : "closed"} ${openningDirection === "right" ? "right" : "left"}`}
+        >
           {children}
         </div>
       ) : (

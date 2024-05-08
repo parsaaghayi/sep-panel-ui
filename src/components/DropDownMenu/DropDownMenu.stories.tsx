@@ -14,6 +14,7 @@ export const test: Story = {
   args: {
     label: "عنوان دکمه",
     isOpen: false,
+    openningDirection: "right",
     setIsOpen: () => console.log("hello"),
     children: (
       <ul>
