@@ -9,6 +9,7 @@ describe("DropDownMenu", () => {
       <DropDownMenu
         label="عنوان دکمه"
         isOpen={isOpenState}
+        openningDirection="right"
         setIsOpen={setisOpenState}
       >
         <ul>
