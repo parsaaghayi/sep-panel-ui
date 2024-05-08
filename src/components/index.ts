@@ -1,4 +1,5 @@
 export { default as Avatar } from "./Avatar";
+export { default as Breadcrumb } from "./Breadcrumb";
 export { default as Button } from "./Button";
 export { default as Checkbox } from "./Checkbox";
 export { default as DropDownMenu } from "./DropDownMenu";
