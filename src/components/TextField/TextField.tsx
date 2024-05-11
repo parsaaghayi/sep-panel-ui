@@ -17,6 +17,7 @@ type TextFieldPropsType = {
   guidMessage?: string;
   successMessage?: string;
   errorMessage?: string;
+  disabled?: boolean;
 };
 
 const TextField: React.FC<TextFieldPropsType> = ({
@@ -31,6 +32,7 @@ const TextField: React.FC<TextFieldPropsType> = ({
   guidMessage,
   successMessage,
   errorMessage,
+  disabled,
 }) => {
   return (
     <div className="textField-container">
@@ -41,7 +43,9 @@ const TextField: React.FC<TextFieldPropsType> = ({
       ) : (
         <></>
       )}
-      <div className={`textField-input ${errorMessage ? "errorMessage" : ""}`}>
+      <div
+        className={`textField-input ${errorMessage ? "errorMessage" : ""} ${disabled ? "disabled" : ""}`}
+      >
         {firstIconSrc ? (
           <img src={firstIconSrc} alt="first icon for input" />
         ) : (
@@ -54,6 +58,7 @@ const TextField: React.FC<TextFieldPropsType> = ({
           name={name}
           placeholder={placeholder ? placeholder : ""}
           style={{ direction: direction }}
+          disabled={disabled}
         />
         {lastIconSrc ? (
           <img src={lastIconSrc} alt="last icon for input" />

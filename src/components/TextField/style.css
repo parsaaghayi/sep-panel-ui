@@ -98,3 +98,15 @@
   background: var(--neutral-light-no, #fff);
   border: 2px solid var(--Blue-B100, #4c9aff);
 }
+
+.textField-input .disabled { 
+  background: var(--neutral-light-n-10, #fafbfc);
+  border: #fafbfc;
+}
+.textField-input .disabled input {
+  color: var(--neutral-light-n-70, #a5adba);
+}
+.textField-input .disabled img {
+  filter: brightness(0) saturate(100%) invert(73%) sepia(12%) saturate(263%)
+    hue-rotate(176deg) brightness(92%) contrast(92%);
+}
