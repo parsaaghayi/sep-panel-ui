@@ -1,0 +1,13 @@
+.progressbar-container {
+  display: flex;
+  align-items: center;
+  width: 100%;
+  /* direction: rtl; */
+  height: 6px;
+  border-radius: 3px;
+  background-color: #ebecf0;
+}
+.porgressbar-track {
+  height: 6px;
+  border-radius: 3px;
+}
