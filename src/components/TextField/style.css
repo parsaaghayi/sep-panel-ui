@@ -1,0 +1,100 @@
+.textField-container {
+  display: flex;
+  flex-direction: column;
+  width: 100%;
+  gap: 4px;
+  box-sizing: border-box;
+  /* direction: rtl; */
+}
+.textField-label {
+  color: var(--neutral-light-n-200, #6b778c);
+  font-size: 12px;
+  font-style: normal;
+  font-weight: 600;
+  line-height: 16px;
+}
+.textField-input {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  padding: 8px;
+  height: 40px;
+  border-radius: 4px;
+  background: var(--neutral-light-n-10, #fafbfc);
+  border: 2px solid var(--neutral-light-n-40, #dfe1e6);
+  gap: 6px;
+}
+
+.textField-input input {
+  outline: none;
+  border: none;
+  width: 100%;
+  color: var(--neutral-light-n-100, #7a869a);
+  font-size: 14px;
+  font-style: normal;
+  font-weight: 400;
+  line-height: 20px;
+  background-color: rgba(0, 0, 0, 0);
+}
+
+.textField-input img {
+  width: 24px;
+  height: 24px;
+}
+
+.textField-message {
+  display: flex;
+  width: 100%;
+  align-items: center;
+  gap: 2px;
+}
+
+.textField-input.errorMessage {
+  border: 2px solid var(--Red-R400, #de350b);
+}
+
+.textField-guidMessage,
+.textField-successMessage,
+.textField-errorMessage {
+  font-size: 12px;
+  font-style: normal;
+  font-weight: 400;
+  line-height: 20px;
+  width: 100%;
+}
+.textField-guidMessage {
+  color: var(--neutral-light-n-100, #7a869a);
+}
+.textField-successMessage {
+  color: var(--Green-G400, #00875a);
+}
+.textField-errorMessage {
+  color: var(--Red-R400, #de350b);
+}
+.textField-guidIcon {
+  width: 16px;
+  height: 16px;
+  filter: brightness(0) saturate(100%) invert(52%) sepia(8%) saturate(773%)
+    hue-rotate(177deg) brightness(99%) contrast(94%);
+}
+.textField-successIcon {
+  width: 16px;
+  height: 16px;
+  filter: brightness(0) saturate(100%) invert(37%) sepia(52%) saturate(887%)
+    hue-rotate(113deg) brightness(94%) contrast(100%);
+}
+.textField-errorIcon {
+  width: 16px;
+  height: 16px;
+  filter: brightness(0) saturate(100%) invert(21%) sepia(90%) saturate(3998%)
+    hue-rotate(9deg) brightness(96%) contrast(91%);
+}
+
+.textField-input:hover {
+  border: 2px solid var(--neutral-light-n-40, #dfe1e6);
+  background: var(--neutral-light-n-30, #ebecf0);
+}
+.textField-input:focus-within {
+  background: var(--neutral-light-no, #fff);
+  border: 2px solid var(--Blue-B100, #4c9aff);
+}
