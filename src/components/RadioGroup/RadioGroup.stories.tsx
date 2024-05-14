@@ -1,15 +1,15 @@
 import type { Meta, StoryObj } from "@storybook/react";
-import Radio from "./RadioGroup";
+import RadioGroup from "./RadioGroup";
 
 const meta = {
-  title: "sep-panel-ui/Radio",
-  component: Radio,
-} satisfies Meta<typeof Radio>;
+  title: "sep-panel-ui/RadioGroup",
+  component: RadioGroup,
+} satisfies Meta<typeof RadioGroup>;
 
 export default meta;
 type Story = StoryObj<typeof meta>;
 
-export const base: Story = {
+export const test: Story = {
   args: {
     title: "test radio group",
     options: [

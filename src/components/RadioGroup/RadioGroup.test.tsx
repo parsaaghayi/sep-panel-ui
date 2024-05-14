@@ -1,11 +1,11 @@
 import React from "react";
 import { render } from "@testing-library/react";
-import Radio from "./RadioGroup";
+import RadioGroup from "./RadioGroup";
 
-describe("Radio", () => {
-  test("render the Radio component", () => {
+describe("RadioGroup", () => {
+  test("render the RadioGroup component", () => {
     render(
-      <Radio
+      <RadioGroup
         title="test radio group"
         options={[
           {
