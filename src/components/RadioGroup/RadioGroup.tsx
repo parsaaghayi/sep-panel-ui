@@ -9,7 +9,7 @@ type optionType = {
 };
 
 type RadioGroupPropsType = {
-  title: string;
+  title?: string;
   options: optionType[];
   selectedOptionValue: string | number;
   name: string;
@@ -28,10 +28,23 @@ const RadioGroup: React.FC<RadioGroupPropsType> = ({
   const [selectedOption, setSelectedOption] = useState(selectedOptionValue);
   return (
     <div className="radioGroup-container">
-      <div className="radioGroup-header">
-        <h2 className="radioGroup-title">{title}</h2>
-        {required ? <span className="radioGroup-required">*</span> : <></>}
-      </div>
+      {title && required ? (
+        <div className="radioGroup-header">
+          <h2 className="radioGroup-title">{title}</h2>
+          <span className="radioGroup-required">*</span>
+        </div>
+      ) : title ? (
+        <div className="radioGroup-header">
+          <h2 className="radioGroup-title">{title}</h2>
+        </div>
+      ) : required ? (
+        <div className="radioGroup-header">
+          <span className="radioGroup-required">*</span>
+        </div>
+      ) : (
+        <></>
+      )}
+
       {options.map((option: optionType) => (
         <div className="radioGroup-body" key={option.value}>
           <input
