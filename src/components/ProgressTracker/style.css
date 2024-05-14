@@ -1,0 +1,52 @@
+* {
+  margin: 0;
+  padding: 0;
+}
+.progressTracker-container {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+.progressTracker-step {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  padding: 40px 0 16px;
+  gap: 20px;
+  position: relative;
+}
+.progressTracker-track {
+  position: absolute;
+  top: 40px;
+  height: 8px;
+  width: 100%;
+}
+.progressTracker-step.active .progressTracker-track {
+  position: absolute;
+  top: 40px;
+  height: 8px;
+  width: 50%;
+  background-color: #0065ff;
+}
+
+.progressTracker-step.active .progressTracker-stepTilte {
+  color: var(--Blue-B300, #0065ff);
+}
+.progressTracker-step.active .progressTracker-stepCircle {
+  background-color: var(--Blue-B300, #0065ff);
+}
+
+.progressTracker-stepCircle {
+  width: 8px;
+  height: 8px;
+  background-color: #a5adba;
+  border-radius: 50%;
+}
+.progressTracker-stepTilte {
+  color: var(--neutral-light-n-300, #5e6c84);
+  font-size: 14px;
+  font-style: normal;
+  font-weight: 600;
+  line-height: 16px;
+  /* padding: 20px; */
+}
