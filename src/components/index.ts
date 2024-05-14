@@ -7,6 +7,7 @@ export { default as Modal } from "./Modal";
 export { default as PageHeader } from "./PageHeader";
 export { default as Pagination } from "./Pagination";
 export { default as Progressbar } from "./Progressbar";
+export { default as RadioGroup } from "./RadioGroup";
 export { default as Tabs } from "./Tabs";
 export { default as Toggle } from "./Toggle";
 export { default as TextField } from "./TextField";
