@@ -74,27 +74,31 @@ const Modal: React.FC<ModalPropsType> = ({
             {submitButtonLabel || cancelButtonLabel ? (
               <div className="modal-footer">
                 {cancelButtonLabel ? (
-                  <Button
-                    label={cancelButtonLabel}
-                    type="subtle"
-                    onClick={() => setshowModalState(false)}
-                  />
+                  <div className="modal-button">
+                    <Button
+                      label={cancelButtonLabel}
+                      colorType="subtle"
+                      onClick={() => setshowModalState(false)}
+                    />
+                  </div>
                 ) : (
                   <></>
                 )}
 
                 {submitButtonLabel ? (
-                  <Button
-                    label={submitButtonLabel}
-                    type={
-                      type === "danger"
-                        ? "danger"
-                        : type === "warning"
-                          ? "warning"
-                          : "primary"
-                    }
-                    onClick={() => onSubmit()}
-                  />
+                  <div className="modal-button">
+                    <Button
+                      label={submitButtonLabel}
+                      colorType={
+                        type === "danger"
+                          ? "danger"
+                          : type === "warning"
+                            ? "warning"
+                            : "primary"
+                      }
+                      onClick={() => onSubmit()}
+                    />
+                  </div>
                 ) : (
                   <></>
                 )}
