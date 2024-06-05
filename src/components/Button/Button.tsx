@@ -38,7 +38,7 @@ const Button: React.FC<ButtonPropsType> = ({
 }) => {
   return (
     <button
-      className={`${colorType ? colorType : "base"} ${clasName ? clasName : ""} ${disabled ? "disabled" : ""}`}
+      className={`button ${colorType ? colorType : "base"} ${clasName ? clasName : ""} ${disabled ? "disabled" : ""}`}
       disabled={disabled}
       type={type ? type : "button"}
       onClick={() => {
