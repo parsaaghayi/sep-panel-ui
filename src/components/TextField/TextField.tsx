@@ -1,4 +1,4 @@
-import React from "react";
+import React, { ChangeEvent } from "react";
 import "./style.css";
 
 import Info from "./../../images/info.svg";
@@ -19,7 +19,7 @@ type TextFieldPropsType = {
   errorMessage?: string;
   disabled?: boolean;
   value?: string | number;
-  onChange: (inputValue: string | number) => void;
+  onChange: React.Dispatch<React.SetStateAction<string>>;
 };
 
 const TextField: React.FC<TextFieldPropsType> = ({
@@ -38,9 +38,10 @@ const TextField: React.FC<TextFieldPropsType> = ({
   value,
   onChange,
 }) => {
-  function setValue(inputValue: string | number) {
-    onChange(inputValue);
+  function handleInputValue(event: ChangeEvent<HTMLInputElement>) {
+    onChange(event.target.value);
   }
+
   return (
     <div className="textField-container">
       {label ? (
@@ -67,7 +68,7 @@ const TextField: React.FC<TextFieldPropsType> = ({
           style={{ direction: direction }}
           disabled={disabled}
           value={value}
-          onChange={(e) => setValue(e.target.value)}
+          onChange={(e) => handleInputValue(e)}
         />
         {lastIconSrc ? (
           <img src={lastIconSrc} alt="last icon for input" />
