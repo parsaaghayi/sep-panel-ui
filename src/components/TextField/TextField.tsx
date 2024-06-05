@@ -18,6 +18,8 @@ type TextFieldPropsType = {
   successMessage?: string;
   errorMessage?: string;
   disabled?: boolean;
+  value?: string | number;
+  onChange: () => void;
 };
 
 const TextField: React.FC<TextFieldPropsType> = ({
@@ -33,6 +35,8 @@ const TextField: React.FC<TextFieldPropsType> = ({
   successMessage,
   errorMessage,
   disabled,
+  value,
+  onChange,
 }) => {
   return (
     <div className="textField-container">
@@ -59,6 +63,8 @@ const TextField: React.FC<TextFieldPropsType> = ({
           placeholder={placeholder ? placeholder : ""}
           style={{ direction: direction }}
           disabled={disabled}
+          value={value}
+          onChange={onChange}
         />
         {lastIconSrc ? (
           <img src={lastIconSrc} alt="last icon for input" />
