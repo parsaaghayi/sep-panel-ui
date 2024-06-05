@@ -1,4 +1,4 @@
-* {
+.radioGroup-container * {
   margin: 0;
   padding: 0;
 }
@@ -99,7 +99,7 @@
   background-color: #deebff;
 }
 .radioGroup-input:checked:active ~ .radioGroup-circle::after {
-  background-color: #FFFFFF;
+  background-color: #ffffff;
 }
 .radioGroup-input:checked:focus ~ .radioGroup-circle {
   border: 3px solid#4c9aff;

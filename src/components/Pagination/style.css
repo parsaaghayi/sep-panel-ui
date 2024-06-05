@@ -55,8 +55,8 @@
   background: var(--neutral-light-alpha-n-30-a, rgba(9, 30, 66, 0.08));
   color: var(--neutral-light-n-500, #42526e);
 }
-.prev,
-.next {
+.paginationParent .prev,
+.paginationParent .next {
   display: flex;
   width: 32px;
   height: 32px;
@@ -65,17 +65,17 @@
   background: var(--neutral-light-no-1, rgba(255, 255, 255, 0));
   cursor: pointer;
 }
-.prev img,
-.next img {
+.paginationParent .prev img,
+.paginationParent .next img {
   filter: brightness(0) saturate(100%) invert(30%) sepia(22%) saturate(662%)
     hue-rotate(180deg) brightness(97%) contrast(96%);
 }
-.prev.disable img,
-.next.disable img {
+.paginationParent .prev.disable img,
+.paginationParent .next.disable img {
   filter: brightness(0) saturate(100%) invert(69%) sepia(10%) saturate(292%)
     hue-rotate(171deg) brightness(98%) contrast(93%);
 }
-.prev.disable,
-.next.disable {
+.paginationParent .prev.disable,
+.paginationParent .next.disable {
   cursor: default;
 }

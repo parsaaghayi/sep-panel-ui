@@ -6,13 +6,13 @@
   justify-content: start;
   /* direction: rtl; */
 }
-.tabs-body {
+.tabs-container .tabs-body {
   width: 100%;
   display: flex;
   align-items: center;
   gap: 16px;
 }
-.tab {
+.tabs-container .tab {
   padding-bottom: 8px;
   border-bottom: 2px solid #ebecf0;
   color: var(--neutral-light-n-500, #42526e);
@@ -24,20 +24,20 @@
   z-index: 1;
   cursor: pointer;
 }
-.tab:hover {
+.tabs-container .tab:hover {
   color: var(--Blue-B400, #0052cc);
   border-bottom: 2px solid #ebecf0;
 }
-.tab:active {
+.tabs-container .tab:active {
   color: var(--Blue-B500, #0747a6);
   border-bottom: 2px solid #ebecf0;
 }
-.tab.active {
+.tabs-container .tab.active {
   color: var(--Blue-B400, #0052cc);
   border-bottom: 2px solid #0052cc;
 }
 
-.tabs-border {
+.tabs-container .tabs-border {
   width: 100%;
   position: absolute;
   right: 0;
