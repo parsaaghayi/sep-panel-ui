@@ -57,7 +57,7 @@ const TextField: React.FC<TextFieldPropsType> = ({
         {firstIconSrc ? (
           <img src={firstIconSrc} alt="first icon for input" />
         ) : (
-          <img src={Info} alt="first icon for input" />
+          <></>
         )}
 
         <input
@@ -73,7 +73,7 @@ const TextField: React.FC<TextFieldPropsType> = ({
         {lastIconSrc ? (
           <img src={lastIconSrc} alt="last icon for input" />
         ) : (
-          <img src={Info} alt="first icon for input" />
+          <></>
         )}
       </div>
       <div className="textField-message">
