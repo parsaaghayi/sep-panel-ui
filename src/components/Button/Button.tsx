@@ -6,7 +6,8 @@ import more from "./../../images/more.svg";
 
 type ButtonPropsType = {
   label: string;
-  type?:
+  type?: "submit" | "reset" | "button" | undefined;
+  colorType?:
     | "base"
     | "primary"
     | "warning"
@@ -26,6 +27,7 @@ type ButtonPropsType = {
 const Button: React.FC<ButtonPropsType> = ({
   label,
   type,
+  colorType,
   fistIconSrc,
   lastIconSrc,
   clasName,
@@ -36,8 +38,9 @@ const Button: React.FC<ButtonPropsType> = ({
 }) => {
   return (
     <button
-      className={`${type ? type : "base"} ${clasName ? clasName : ""} ${disabled ? "disabled" : ""}`}
+      className={`${colorType ? colorType : "base"} ${clasName ? clasName : ""} ${disabled ? "disabled" : ""}`}
       disabled={disabled}
+      type={type ? type : "button"}
       onClick={() => {
         onClick ? onClick() : null;
       }}
