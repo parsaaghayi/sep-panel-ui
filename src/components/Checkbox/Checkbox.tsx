@@ -8,7 +8,7 @@ type CheckboxPropsType = {
   name?: string;
   id: string;
   required?: boolean;
-  onChange: () => void;
+  onChange: React.Dispatch<React.SetStateAction<boolean>>;
 };
 
 const Checkbox: React.FC<CheckboxPropsType> = ({
@@ -20,6 +20,9 @@ const Checkbox: React.FC<CheckboxPropsType> = ({
   required,
   onChange,
 }) => {
+  function toggle() {
+    onChange(!checked);
+  }
   return (
     <div className="checkbox-container">
       <input
@@ -29,7 +32,7 @@ const Checkbox: React.FC<CheckboxPropsType> = ({
         id={id}
         disabled={disabled}
         checked={checked}
-        onChange={onChange}
+        onChange={toggle}
       />
       <span className={`checkbox-square ${disabled ? "disabled" : ""}`}></span>
       <label

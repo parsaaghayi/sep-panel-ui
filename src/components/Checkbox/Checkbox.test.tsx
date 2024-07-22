@@ -1,15 +1,12 @@
-import React from "react";
+import React, { useState } from "react";
 import { render } from "@testing-library/react";
 import Checkbox from "./Checkbox";
+const [checkboxState, setcheckboxState] = useState(false);
 
 describe("Checkbox", () => {
   test("render the Checkbox component", () => {
     render(
-      <Checkbox
-        checked={true}
-        id="test"
-        onChange={() => console.log("changed")}
-      />
+      <Checkbox checked={checkboxState} id="test" onChange={setcheckboxState} />
     );
   });
 });

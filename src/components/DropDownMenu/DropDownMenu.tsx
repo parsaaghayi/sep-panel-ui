@@ -1,4 +1,4 @@
-import React, { ReactElement, useEffect, useState } from "react";
+import React, { ReactElement, useState } from "react";
 import "./style.css";
 import arrowBottom from "./../../images/arrow-bottom.svg";
 
