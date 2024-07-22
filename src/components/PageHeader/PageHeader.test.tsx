@@ -18,7 +18,7 @@ describe("PageHeader", () => {
         ]}
         title="عنوان صفحه"
         buttons={[
-          <Button type="primary" label={"عنوان دکمه اول"} />,
+          <Button colorType="primary" label={"عنوان دکمه اول"} />,
           <Button label={"عنوان دکمه دوم"} />,
           <Button label="" hasMore={true} />,
         ]}

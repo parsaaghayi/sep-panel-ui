@@ -15,6 +15,10 @@ export const test: Story = {
     label: "label",
     id: "id",
     name: "name",
+    value: "test",
+    onChange: () => {
+      console.log("test");
+    },
     placeholder: "چیزی بنویسید...",
     // direction: "ltr",
     // firstIconSrc: "string",

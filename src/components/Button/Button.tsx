@@ -6,7 +6,7 @@ import more from "./../../images/more.svg";
 
 type ButtonPropsType = {
   label: string;
-  type?: "submit" | "reset" | "button" | undefined;
+  type?: "submit" | "reset" | "button";
   colorType?:
     | "base"
     | "primary"
