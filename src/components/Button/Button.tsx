@@ -18,7 +18,7 @@ type ButtonPropsType = {
     | "subtleLink";
   fistIconSrc?: string;
   lastIconSrc?: string;
-  clasName?: string;
+  className?: string;
   disabled?: boolean;
   loading?: boolean;
   hasMore?: boolean;
@@ -31,7 +31,7 @@ const Button: React.FC<ButtonPropsType> = ({
   colorType,
   fistIconSrc,
   lastIconSrc,
-  clasName,
+  className,
   disabled,
   loading,
   hasMore,
@@ -39,7 +39,7 @@ const Button: React.FC<ButtonPropsType> = ({
 }) => {
   return (
     <button
-      className={`button ${colorType ? colorType : "base"} ${clasName ? clasName : ""} ${disabled ? "disabled" : ""}`}
+      className={`button ${colorType ? colorType : "base"} ${className ? className : ""} ${disabled ? "disabled" : ""}`}
       disabled={disabled}
       type={type ? type : "button"}
       onClick={() => {

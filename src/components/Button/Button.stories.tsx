@@ -8,7 +8,6 @@ const meta = {
 
 export default meta;
 type Story = StoryObj<typeof meta>;
-
 function onClickFunction() {
   console.log("this is button onClick function");
 }
@@ -27,6 +26,16 @@ export const primary: Story = {
     label: "primary button",
     type: "button",
     colorType: "primary",
+    loading: false,
+    lastIconSrc:
+      "https://www.safirstores.com/assets/images/footer/product-authenticity.svg",
+  },
+};
+export const secondary: Story = {
+  args: {
+    label: "secondary button",
+    type: "button",
+    colorType: "secondary",
     loading: false,
     lastIconSrc:
       "https://www.safirstores.com/assets/images/footer/product-authenticity.svg",
