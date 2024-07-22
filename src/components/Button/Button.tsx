@@ -10,6 +10,7 @@ type ButtonPropsType = {
   colorType?:
     | "base"
     | "primary"
+    | "secondary"
     | "warning"
     | "danger"
     | "link"

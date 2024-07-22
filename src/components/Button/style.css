@@ -16,9 +16,8 @@
   cursor: pointer;
   border-radius: 3px;
   width: 100%;
-  white-space: nowrap
+  white-space: nowrap;
 }
-
 .button.base {
   background: var(--neutral-light-alpha-n-20-a, rgba(9, 30, 66, 0.04));
   color: var(--neutral-light-n-500, #42526e);
@@ -27,7 +26,6 @@
   filter: brightness(0) saturate(100%) invert(32%) sepia(11%) saturate(1263%)
     hue-rotate(179deg) brightness(95%) contrast(95%);
 }
-
 .button.primary {
   background: var(--Blue-B400, #0052cc);
   color: var(--neutral-light-no, #fff);
@@ -35,6 +33,14 @@
 .button.primary img {
   filter: brightness(0) saturate(100%) invert(100%) sepia(100%) saturate(5%)
     hue-rotate(86deg) brightness(102%) contrast(101%);
+}
+.button.secondary {
+  color: var(--Blue-B400, #0052cc);
+  border: 1px solid #0052cc;
+}
+.button.secondary img {
+  filter: brightness(0) saturate(100%) invert(23%) sepia(86%) saturate(1869%)
+    hue-rotate(203deg) brightness(94%) contrast(114%);
 }
 .button.warning {
   background: var(--Yellow-Y300, #ffab00);
@@ -76,7 +82,6 @@
   filter: brightness(0) saturate(100%) invert(30%) sepia(10%) saturate(1555%)
     hue-rotate(179deg) brightness(97%) contrast(92%);
 }
-
 .button.base:hover {
   background: var(--neutral-light-alpha-n-30-a, rgba(9, 30, 66, 0.08));
   color: var(--neutral-light-n-500, #42526e);
@@ -92,6 +97,14 @@
 .button.primary:hover img {
   filter: brightness(0) saturate(100%) invert(100%) sepia(100%) saturate(5%)
     hue-rotate(86deg) brightness(102%) contrast(101%);
+}
+.button.secondary:hover {
+  border: 1px solid #0065ff;
+  color: var(--Blue-B300, #0065ff);
+}
+.button.secondary:hover img {
+  background: var(--neutral-light-no-1, rgba(255, 255, 255, 0));
+  color: var(--Blue-B300, #0065ff);
 }
 .button.warning:hover {
   background: var(--Yellow-Y200, #ffc400);
@@ -133,7 +146,6 @@
   filter: brightness(0) saturate(100%) invert(63%) sepia(7%) saturate(677%)
     hue-rotate(179deg) brightness(90%) contrast(89%);
 }
-
 .button.base:active {
   background: var(--blue-b-7560, rgba(179, 212, 255, 0.6));
   color: var(--Blue-B400, #0052cc);
@@ -149,6 +161,14 @@
 .button.primary:active img {
   filter: brightness(0) saturate(100%) invert(100%) sepia(0%) saturate(6027%)
     hue-rotate(47deg) brightness(105%) contrast(97%);
+}
+.button.secondary:active {
+  color: var(--Blue-B500, #0747a6);
+  border: 1px solid #0747a6;
+}
+.button.secondary:active img {
+  filter: brightness(0) saturate(100%) invert(16%) sepia(34%) saturate(6695%)
+    hue-rotate(211deg) brightness(100%) contrast(95%);
 }
 .button.warning:active {
   background: var(--Yellow-Y400, #ff991f);
@@ -190,7 +210,6 @@
   filter: brightness(0) saturate(100%) invert(37%) sepia(4%) saturate(2842%)
     hue-rotate(180deg) brightness(94%) contrast(91%);
 }
-
 .button.disabled,
 .button.disabled:hover,
 .button.disabled:active {
@@ -198,14 +217,12 @@
   color: var(--neutral-light-n-70, #a5adba);
   cursor: default;
 }
-
 .button.disabled img,
 .button.disabled:hover img,
 .button.disabled:active img {
   filter: brightness(0) saturate(100%) invert(70%) sepia(11%) saturate(280%)
     hue-rotate(178deg) brightness(96%) contrast(94%);
 }
-
 .button .first-icon,
 .button .last-icon {
   width: 24px;
