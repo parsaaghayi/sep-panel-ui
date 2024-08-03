@@ -12,7 +12,7 @@ type Story = StoryObj<typeof meta>;
 export const test: Story = {
   args: {
     direction: "ltr",
-    stepTitles: ["step 1", "step 2", "step 3", "step 4", "step 5"],
+    stepTitles: ["step step 1", "step 2", "step 3", "step 4", "step 5"],
     activeStep: 1,
   },
 };

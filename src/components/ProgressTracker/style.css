@@ -4,6 +4,7 @@
 }
 .progressTracker-container {
   display: flex;
+  width: 100%;
   align-items: center;
   justify-content: center;
 }
@@ -31,7 +32,6 @@
 
 .progressTracker-step.active .progressTracker-stepTilte {
   color: var(--Blue-B300, #0065ff);
-  white-space: nowrap
 }
 .progressTracker-step.active .progressTracker-stepCircle {
   background-color: var(--Blue-B300, #0065ff);
@@ -49,6 +49,6 @@
   font-style: normal;
   font-weight: 600;
   line-height: 16px;
-  /* padding: 20px; */
-  white-space: nowrap
+  white-space: nowrap;
+  padding: 0 5px;
 }
