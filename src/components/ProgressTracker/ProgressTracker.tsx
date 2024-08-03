@@ -5,14 +5,12 @@ type ProgressTrackerPropsType = {
   direction: "ltr" | "rtl";
   stepTitles: string[];
   activeStep: number;
-  onChange: () => void;
 };
 
 const ProgressTracker: React.FC<ProgressTrackerPropsType> = ({
   direction,
   stepTitles,
   activeStep = 1,
-  onChange,
 }) => {
   return (
     <div className="progressTracker-container">
