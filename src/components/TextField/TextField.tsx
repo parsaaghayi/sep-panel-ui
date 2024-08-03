@@ -19,7 +19,7 @@ type TextFieldPropsType = {
   errorMessage?: string;
   disabled?: boolean;
   value?: string | number;
-  onChange: React.Dispatch<React.SetStateAction<string | number>>;
+  onChange: React.Dispatch<React.SetStateAction<string>>;
 };
 
 const TextField: React.FC<TextFieldPropsType> = ({
