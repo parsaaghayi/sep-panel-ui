@@ -12,7 +12,7 @@ type RadioGroupPropsType = {
   title?: string;
   options: optionType[];
   selectedOptionValue: string | number;
-  setSelectedOptionValue: React.Dispatch<React.SetStateAction<string | number>>;
+  selectedOptionValue: string | number;
   flexDirection: "column" | "row";
   name: string;
   required?: boolean;
@@ -23,12 +23,12 @@ const RadioGroup: React.FC<RadioGroupPropsType> = ({
   title,
   options,
   selectedOptionValue,
-  setSelectedOptionValue,
   flexDirection,
   name,
   required,
   onChange,
 }) => {
+  const [selectedOption, setSelectedOption] = useState(selectedOptionValue);
   return (
     <div className={`radioGroup-container ${flexDirection}`}>
       {title && required ? (
@@ -40,12 +40,12 @@ const RadioGroup: React.FC<RadioGroupPropsType> = ({
         <div className="radioGroup-header">
           <h2 className="radioGroup-title">{title}</h2>
         </div>
+      ) : required ? (
+        <div className="radioGroup-header">
+          <span className="radioGroup-required">*</span>
+        </div>
       ) : (
-        required && (
-          <div className="radioGroup-header">
-            <span className="radioGroup-required">*</span>
-          </div>
-        )
+        <></>
       )}
 
       {options.map((option: optionType) => (
@@ -56,10 +56,10 @@ const RadioGroup: React.FC<RadioGroupPropsType> = ({
             name={name}
             id={option.id}
             disabled={option.disabled}
-            checked={selectedOptionValue === option.value ? true : false}
+            checked={selectedOption === option.value ? true : false}
             onChange={() => {
               onChange(option.value);
-              setSelectedOptionValue(option.value);
+              setSelectedOption(option.value);
             }}
           />
           <span
