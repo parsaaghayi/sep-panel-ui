@@ -1,6 +1,5 @@
-import React, { useEffect, useState } from "react";
+import React from "react";
 import "./style.css";
-
 import warning from "./../../images/warning.svg";
 import error from "./../../images/error.svg";
 import Button from "../Button";
@@ -32,9 +31,9 @@ const Modal: React.FC<ModalPropsType> = ({
     : false,
   onSubmit,
 }) => {
-  const [showModalState, setshowModalState] = useState(showModal);
-  const [isOpen, setIsOpen] = useState(showModal);
-  useEffect(() => {
+  const [showModalState, setshowModalState] = React.useState(showModal);
+  const [isOpen, setIsOpen] = React.useState(showModal);
+  React.useEffect(() => {
     if (!showModalState) {
       setTimeout(() => {
         setIsOpen(false);
@@ -53,7 +52,7 @@ const Modal: React.FC<ModalPropsType> = ({
     <>
       {isOpen && (
         <div
-          className={`modal-container ${showModalState ? "show" : ""}`}
+          className={`modal-container ${showModalState ? "show" : ""} ${className ? className : ""}`}
           onClick={(e) => {
             if (onClickOutClose) {
               handleModalClick(e);
