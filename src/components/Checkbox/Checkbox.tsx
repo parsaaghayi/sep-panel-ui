@@ -4,6 +4,7 @@ import "./style.css";
 type CheckboxPropsType = {
   label?: string;
   checked: boolean;
+  className?: string;
   disabled?: boolean;
   name?: string;
   id: string;
@@ -14,6 +15,7 @@ type CheckboxPropsType = {
 const Checkbox: React.FC<CheckboxPropsType> = ({
   label,
   checked,
+  className,
   disabled,
   name,
   id,
@@ -24,7 +26,7 @@ const Checkbox: React.FC<CheckboxPropsType> = ({
     onChange(!checked);
   }
   return (
-    <div className="checkbox-container">
+    <div className={`checkbox-container ${className ? className : ""}`}>
       <input
         type="checkbox"
         className={`checkbox-input ${disabled ? "disabled" : ""}`}
@@ -41,7 +43,7 @@ const Checkbox: React.FC<CheckboxPropsType> = ({
       >
         {label}
       </label>
-      {required ? <span className="checkbox-required">*</span> : <></>}
+      {required && <span className="checkbox-required">*</span>}
     </div>
   );
 };

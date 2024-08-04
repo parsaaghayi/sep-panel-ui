@@ -8,6 +8,7 @@ import Button from "../Button";
 type ModalPropsType = {
   title: string;
   type?: "base" | "warning" | "danger";
+  className?: string;
   showModal: boolean;
   children: React.ReactElement;
   onClickOutClose?: boolean;
@@ -21,6 +22,7 @@ type ModalPropsType = {
 const Modal: React.FC<ModalPropsType> = ({
   title,
   type,
+  className,
   showModal,
   children,
   submitButtonLabel,
@@ -49,7 +51,7 @@ const Modal: React.FC<ModalPropsType> = ({
 
   return (
     <>
-      {isOpen ? (
+      {isOpen && (
         <div
           className={`modal-container ${showModalState ? "show" : ""}`}
           onClick={(e) => {
@@ -71,45 +73,38 @@ const Modal: React.FC<ModalPropsType> = ({
               {title}
             </h2>
             <div className="modal-description">{children}</div>
-            {submitButtonLabel || cancelButtonLabel ? (
-              <div className="modal-footer">
-                {cancelButtonLabel ? (
-                  <div className="modal-button">
-                    <Button
-                      label={cancelButtonLabel}
-                      colorType="subtle"
-                      onClick={() => setshowModalState(false)}
-                    />
-                  </div>
-                ) : (
-                  <></>
-                )}
+            {submitButtonLabel ||
+              (cancelButtonLabel && (
+                <div className="modal-footer">
+                  {cancelButtonLabel && (
+                    <div className="modal-button">
+                      <Button
+                        label={cancelButtonLabel}
+                        colorType="subtle"
+                        onClick={() => setshowModalState(false)}
+                      />
+                    </div>
+                  )}
 
-                {submitButtonLabel ? (
-                  <div className="modal-button">
-                    <Button
-                      label={submitButtonLabel}
-                      colorType={
-                        type === "danger"
-                          ? "danger"
-                          : type === "warning"
-                            ? "warning"
-                            : "primary"
-                      }
-                      onClick={() => onSubmit()}
-                    />
-                  </div>
-                ) : (
-                  <></>
-                )}
-              </div>
-            ) : (
-              <></>
-            )}
+                  {submitButtonLabel && (
+                    <div className="modal-button">
+                      <Button
+                        label={submitButtonLabel}
+                        colorType={
+                          type === "danger"
+                            ? "danger"
+                            : type === "warning"
+                              ? "warning"
+                              : "primary"
+                        }
+                        onClick={() => onSubmit()}
+                      />
+                    </div>
+                  )}
+                </div>
+              ))}
           </div>
         </div>
-      ) : (
-        <></>
       )}
     </>
   );
