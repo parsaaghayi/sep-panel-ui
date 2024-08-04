@@ -12,6 +12,7 @@ type RadioGroupPropsType = {
   title?: string;
   options: optionType[];
   selectedOptionValue: string | number;
+  flexDirection: "column" | "row";
   name: string;
   required?: boolean;
   onChange: (value: string | number) => void;
@@ -21,13 +22,14 @@ const RadioGroup: React.FC<RadioGroupPropsType> = ({
   title,
   options,
   selectedOptionValue,
+  flexDirection,
   name,
   required,
   onChange,
 }) => {
   const [selectedOption, setSelectedOption] = useState(selectedOptionValue);
   return (
-    <div className="radioGroup-container">
+    <div className={`radioGroup-container ${flexDirection}`}>
       {title && required ? (
         <div className="radioGroup-header">
           <h2 className="radioGroup-title">{title}</h2>

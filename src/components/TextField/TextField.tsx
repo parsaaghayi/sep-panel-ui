@@ -1,6 +1,5 @@
 import React, { ChangeEvent } from "react";
 import "./style.css";
-
 import Info from "./../../images/info.svg";
 import Success from "./../../images/success.svg";
 import Error from "./../../images/error.svg";

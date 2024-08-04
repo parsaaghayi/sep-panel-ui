@@ -1,4 +1,4 @@
-import React from "react";
+import React, { useEffect, useState } from "react";
 import "./style.css";
 import warning from "./../../images/warning.svg";
 import error from "./../../images/error.svg";
@@ -9,6 +9,7 @@ type ModalPropsType = {
   type?: "base" | "warning" | "danger";
   className?: string;
   showModal: boolean;
+  setShowModal: React.Dispatch<React.SetStateAction<boolean>>;
   children: React.ReactElement;
   onClickOutClose?: boolean;
   submitButtonLabel?: string;
@@ -23,6 +24,7 @@ const Modal: React.FC<ModalPropsType> = ({
   type,
   className,
   showModal,
+  setShowModal,
   children,
   submitButtonLabel,
   cancelButtonLabel,
@@ -31,28 +33,26 @@ const Modal: React.FC<ModalPropsType> = ({
     : false,
   onSubmit,
 }) => {
-  const [showModalState, setshowModalState] = React.useState(showModal);
-  const [isOpen, setIsOpen] = React.useState(showModal);
-  React.useEffect(() => {
-    if (!showModalState) {
+  useEffect(() => {
+    if (!showModal) {
       setTimeout(() => {
-        setIsOpen(false);
+        setShowModal(false);
       }, 300);
     }
-  }, [showModalState]);
+  }, [showModal]);
 
   function handleModalClick(e: React.MouseEvent<HTMLDivElement, MouseEvent>) {
     const target = e.target as HTMLElement;
     if (target.classList.contains("modal-container")) {
-      setshowModalState(false);
+      setShowModal(false);
     }
   }
 
   return (
     <>
-      {isOpen && (
+      {showModal && (
         <div
-          className={`modal-container ${showModalState ? "show" : ""} ${className ? className : ""}`}
+          className={`modal-container ${showModal ? "show" : ""} ${className ? className : ""}`}
           onClick={(e) => {
             if (onClickOutClose) {
               handleModalClick(e);
@@ -80,7 +80,7 @@ const Modal: React.FC<ModalPropsType> = ({
                       <Button
                         label={cancelButtonLabel}
                         colorType="subtle"
-                        onClick={() => setshowModalState(false)}
+                        onClick={() => setShowModal(false)}
                       />
                     </div>
                   )}

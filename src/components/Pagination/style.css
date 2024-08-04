@@ -1,9 +1,7 @@
 .paginationParent {
   display: flex;
-  justify-content: center;
   padding: 20px 0;
   width: 100%;
-  /* direction: rtl; */
 }
 .paginationParent .paginationNumber {
   display: inline-flex;

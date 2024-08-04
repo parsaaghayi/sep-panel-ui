@@ -6,6 +6,7 @@ import arrowLeft from "./../../images/arrow-left.svg";
 type PaginationPropsType = {
   currentPage: number;
   totalPage: number;
+  className?: string;
   setPageNumber?: (pageNumber: number) => void;
   direction: "rtl" | "ltr";
 };
@@ -13,6 +14,7 @@ type PaginationPropsType = {
 const Pagination: React.FC<PaginationPropsType> = ({
   currentPage,
   totalPage,
+  className,
   setPageNumber,
   direction,
 }) => {
@@ -31,7 +33,7 @@ const Pagination: React.FC<PaginationPropsType> = ({
     <>
       {currentPage > 0 ? (
         <div
-          className="paginationParent select-none"
+          className={`paginationParent select-none ${className ? className : ""}`}
           style={{ direction: `${direction}` }}
         >
           <div

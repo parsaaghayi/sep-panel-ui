@@ -11,7 +11,7 @@ const Breadcrumb: React.FC<BreadcrumbPropsType> = ({ titles, className }) => {
     <div className={`breadcrumb-container ${className ? className : ""}`}>
       {titles.map((breadcrumbItem, index) => (
         <div className="breadcrumb-item" key={index}>
-          {breadcrumbItem}
+          {breadcrumbItem}{" "}
           {index + 1 !== titles.length && (
             <span className="breadcrumb-slash">/</span>
           )}

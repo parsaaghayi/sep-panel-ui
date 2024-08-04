@@ -3,10 +3,15 @@
   padding: 0;
 }
 .radioGroup-container {
-  /* direction: rtl; */
   position: relative;
-  display: inline-flex;
+  display: flex;
   padding: 4px;
+}
+.radioGroup-container.row {
+  flex-direction: row;
+  gap: 24px;
+}
+.radioGroup-container.column {
   flex-direction: column;
   gap: 4px;
 }
