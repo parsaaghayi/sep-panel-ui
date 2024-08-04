@@ -5,12 +5,13 @@ import avatar from "./../../images/avatar.svg";
 
 type AvatarPropsType = {
   picUrl?: string;
+  className?: string;
 };
 
-const Avatar: React.FC<AvatarPropsType> = ({ picUrl }) => {
+const Avatar: React.FC<AvatarPropsType> = ({ picUrl, className }) => {
   return (
     <div
-      className="avatar-container"
+      className={`avatar-container ${className ? className : ""}`}
       style={{
         background: `lightblue url('${picUrl ? picUrl : avatar}')`,
         backgroundPosition: "center",

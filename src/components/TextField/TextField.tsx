@@ -9,6 +9,7 @@ type TextFieldPropsType = {
   type: "email" | "number" | "password" | "tel" | "text" | "url";
   direction?: "rtl" | "ltr";
   label?: string;
+  className?: string;
   placeholder?: string;
   id: string;
   name?: string;
@@ -26,6 +27,7 @@ const TextField: React.FC<TextFieldPropsType> = ({
   type,
   direction,
   label,
+  className,
   placeholder,
   id,
   name,
@@ -44,24 +46,19 @@ const TextField: React.FC<TextFieldPropsType> = ({
 
   return (
     <div className="textField-container">
-      {label ? (
+      {label && (
         <label htmlFor={id} className="textField-label">
           {label}
         </label>
-      ) : (
-        <></>
       )}
       <div
         className={`textField-input ${errorMessage ? "errorMessage" : ""} ${disabled ? "disabled" : ""}`}
       >
-        {firstIconSrc ? (
-          <img src={firstIconSrc} alt="first icon for input" />
-        ) : (
-          <></>
-        )}
+        {firstIconSrc && <img src={firstIconSrc} alt="first icon for input" />}
 
         <input
           type={type}
+          className={`${className ? className : ""}`}
           id={id}
           name={name}
           placeholder={placeholder ? placeholder : ""}
@@ -70,11 +67,7 @@ const TextField: React.FC<TextFieldPropsType> = ({
           value={value}
           onChange={(e) => handleInputValue(e)}
         />
-        {lastIconSrc ? (
-          <img src={lastIconSrc} alt="last icon for input" />
-        ) : (
-          <></>
-        )}
+        {lastIconSrc && <img src={lastIconSrc} alt="last icon for input" />}
       </div>
       <div className="textField-message">
         {guidMessage ? (

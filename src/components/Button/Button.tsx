@@ -54,20 +54,16 @@ const Button: React.FC<ButtonPropsType> = ({
             <img src={more} width={24} height={24} alt="more icon" />
           ) : (
             <>
-              {fistIconSrc ? (
+              {fistIconSrc && (
                 <img
                   src={fistIconSrc}
                   className="first-icon"
                   alt="first icon"
                 />
-              ) : (
-                <></>
               )}
               {label}
-              {lastIconSrc ? (
+              {lastIconSrc && (
                 <img src={lastIconSrc} className="last-icon" alt="last icon" />
-              ) : (
-                <></>
               )}
             </>
           )}
