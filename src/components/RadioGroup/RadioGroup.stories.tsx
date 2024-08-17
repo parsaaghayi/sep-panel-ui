@@ -12,6 +12,7 @@ type Story = StoryObj<typeof meta>;
 export const withTitleRequired: Story = {
   args: {
     title: "test radio group",
+    flexDirection: "row",
     options: [
       {
         label: "label 1",
@@ -74,6 +75,7 @@ export const withTitleRequired: Story = {
 
 export const withTitleNotRequired: Story = {
   args: {
+    flexDirection: "column",
     title: "test radio group",
     options: [
       {
@@ -135,6 +137,7 @@ export const withTitleNotRequired: Story = {
 };
 export const withoutTitleRequired: Story = {
   args: {
+    flexDirection: "column",
     options: [
       {
         label: "label 1",
@@ -197,6 +200,7 @@ export const withoutTitleRequired: Story = {
 
 export const withoutTitleNotRequired: Story = {
   args: {
+    flexDirection: "row",
     options: [
       {
         label: "label 1",

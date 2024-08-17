@@ -9,6 +9,7 @@ export { default as Pagination } from "./Pagination";
 export { default as Progressbar } from "./Progressbar";
 export { default as ProgressTracker } from "./ProgressTracker";
 export { default as RadioGroup } from "./RadioGroup";
+export { default as SelectInput } from "./SelectInput";
 export { default as Tabs } from "./Tabs";
 export { default as Toggle } from "./Toggle";
 export { default as TextField } from "./TextField";
