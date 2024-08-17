@@ -68,38 +68,40 @@ const TextField: React.FC<TextFieldPropsType> = ({
         />
         {lastIconSrc && <img src={lastIconSrc} alt="last icon for input" />}
       </div>
-      <div className="textField-message">
-        {guidMessage ? (
-          <img
-            className="textField-guidIcon"
-            src={Info}
-            alt="guidMessage icon"
-          />
-        ) : successMessage ? (
-          <img
-            className="textField-successIcon"
-            src={Success}
-            alt="successMessage icon"
-          />
-        ) : errorMessage ? (
-          <img
-            className="textField-errorIcon"
-            src={Error}
-            alt="errorMessage icon"
-          />
-        ) : (
-          <></>
-        )}
-        {guidMessage ? (
-          <p className="textField-guidMessage">{guidMessage}</p>
-        ) : successMessage ? (
-          <p className="textField-successMessage">{successMessage}</p>
-        ) : errorMessage ? (
-          <p className="textField-errorMessage">{errorMessage}</p>
-        ) : (
-          <></>
-        )}
-      </div>
+      {guidMessage || successMessage || errorMessage ? (
+        <div className="textField-message">
+          {guidMessage ? (
+            <img
+              className="textField-guidIcon"
+              src={Info}
+              alt="guidMessage icon"
+            />
+          ) : successMessage ? (
+            <img
+              className="textField-successIcon"
+              src={Success}
+              alt="successMessage icon"
+            />
+          ) : errorMessage ? (
+            <img
+              className="textField-errorIcon"
+              src={Error}
+              alt="errorMessage icon"
+            />
+          ) : (
+            <></>
+          )}
+          {guidMessage ? (
+            <p className="textField-guidMessage">{guidMessage}</p>
+          ) : successMessage ? (
+            <p className="textField-successMessage">{successMessage}</p>
+          ) : errorMessage ? (
+            <p className="textField-errorMessage">{errorMessage}</p>
+          ) : (
+            <></>
+          )}
+        </div>
+      ) : null}
     </div>
   );
 };

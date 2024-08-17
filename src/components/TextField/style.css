@@ -1,6 +1,7 @@
 .textField-container {
   display: flex;
   flex-direction: column;
+  justify-content: center;
   width: 100%;
   gap: 4px;
   box-sizing: border-box;
