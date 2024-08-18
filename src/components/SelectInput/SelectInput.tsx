@@ -52,9 +52,9 @@ const SelectInput: React.FC<SelectInputPropsType> = ({
       className={`selectInput-container ${disabled ? "disabled" : ""} ${className ? className : ""}`}
     >
       <div className="selectInput-title">
-        <p className="selectInput-title-text" onClick={openMenu}>
+        <div className="selectInput-title-text" onClick={openMenu}>
           {label}
-        </p>
+        </div>
         {required ? (
           <span className="selectInput-title-required" onClick={openMenu}>
             *
@@ -64,30 +64,30 @@ const SelectInput: React.FC<SelectInputPropsType> = ({
       <div className="selectInput-input" onClick={openMenu}>
         {iconSrc && <img src={iconSrc} alt="first icon for input" />}
         {selectedOption == null ? (
-          <p className="selectInput-input-placeholder">{placeHolder}</p>
+          <div className="selectInput-input-placeholder">{placeHolder}</div>
         ) : (
-          <p className="selectInput-input-text">{selectedOption}</p>
+          <div className="selectInput-input-text">{selectedOption}</div>
         )}
 
         <span className="selectInput-input-dropdownIcon"></span>
       </div>
       {isOpen ? (
         <div className="selectInput-menu">
-          <p
+          <div
             className="selectInput-menu-menuItem"
             key={0}
             onClick={() => setSelectedOptionValueToNull()}
           >
             {placeHolder}
-          </p>
+          </div>
           {menuItems.map((menuItem: optionType, key: number) => (
-            <p
+            <div
               className="selectInput-menu-menuItem"
               key={key + 1}
               onClick={() => setSelectedOptionValue(menuItem)}
             >
               {menuItem.label}
-            </p>
+            </div>
           ))}
         </div>
       ) : null}
