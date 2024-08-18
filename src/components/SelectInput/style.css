@@ -52,7 +52,7 @@
 }
 .selectInput-input:hover {
   display: flex;
-  padding: 8px;
+  padding: 6px;
   align-items: center;
   gap: 6px;
   border-radius: 3px;
