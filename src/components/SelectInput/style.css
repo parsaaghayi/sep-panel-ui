@@ -40,7 +40,7 @@
 }
 .selectInput-input {
   display: flex;
-  padding: 8px;
+  padding: 6px;
   align-items: center;
   justify-content: space-between;
   gap: 6px;
