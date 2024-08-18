@@ -14,10 +14,8 @@ type SelectInputPropsType = {
   required?: boolean;
   menuItems: optionType[];
   disabled?: boolean;
-  selectedOption: number | string | null;
-  setSelectedOption: React.Dispatch<
-    React.SetStateAction<number | string | null>
-  >;
+  selectedOption: optionType | null;
+  setSelectedOption: React.Dispatch<React.SetStateAction<optionType | null>>;
   onChange: () => void;
 };
 
@@ -40,7 +38,7 @@ const SelectInput: React.FC<SelectInputPropsType> = ({
   function setSelectedOptionValue(option: optionType) {
     onChange();
     setIsOpen(false);
-    setSelectedOption(option.value);
+    setSelectedOption(option);
   }
   function setSelectedOptionValueToNull() {
     onChange();
@@ -66,7 +64,7 @@ const SelectInput: React.FC<SelectInputPropsType> = ({
         {selectedOption == null ? (
           <div className="selectInput-input-placeholder">{placeHolder}</div>
         ) : (
-          <div className="selectInput-input-text">{selectedOption}</div>
+          <div className="selectInput-input-text">{selectedOption.label}</div>
         )}
 
         <span className="selectInput-input-dropdownIcon"></span>
