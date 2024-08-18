@@ -10,7 +10,7 @@ type SelectInputPropsType = {
   label?: string;
   iconSrc?: string;
   placeHolder?: string;
-  className: string;
+  className?: string;
   required?: boolean;
   menuItems: optionType[];
   disabled?: boolean;
