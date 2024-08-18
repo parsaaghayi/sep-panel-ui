@@ -16,7 +16,7 @@ type SelectInputPropsType = {
   disabled?: boolean;
   selectedOption: optionType | null;
   setSelectedOption: React.Dispatch<React.SetStateAction<optionType | null>>;
-  onChange: () => void;
+  onChange: (option: optionType | null) => void;
 };
 
 const SelectInput: React.FC<SelectInputPropsType> = ({
@@ -36,12 +36,12 @@ const SelectInput: React.FC<SelectInputPropsType> = ({
     !disabled && setIsOpen(!isOpen);
   }
   function setSelectedOptionValue(option: optionType) {
-    onChange();
+    onChange(option);
     setIsOpen(false);
     setSelectedOption(option);
   }
   function setSelectedOptionValueToNull() {
-    onChange();
+    onChange(null);
     setIsOpen(false);
     setSelectedOption(null);
   }
