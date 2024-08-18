@@ -91,7 +91,7 @@ const SelectInput: React.FC<SelectInputPropsType> = ({
           ))}
         </div>
       ) : null}
-      <div className="out-of-component" onClick={() => setIsOpen(false)}></div>
+      {/* <div className="out-of-component" onClick={() => setIsOpen(false)}></div> */}
     </div>
   );
 };
