@@ -7,10 +7,10 @@ type optionType = {
 };
 
 type SelectInputPropsType = {
-  title?: string;
+  label?: string;
   iconSrc?: string;
   placeHolder?: string;
-  name: string;
+  className: string;
   required?: boolean;
   menuItems: optionType[];
   disabled?: boolean;
@@ -22,9 +22,9 @@ type SelectInputPropsType = {
 };
 
 const SelectInput: React.FC<SelectInputPropsType> = ({
-  title,
+  label,
   iconSrc,
-  name,
+  className,
   placeHolder,
   required,
   menuItems,
@@ -48,10 +48,12 @@ const SelectInput: React.FC<SelectInputPropsType> = ({
     setSelectedOption(null);
   }
   return (
-    <div className={`selectInput-container ${disabled ? "disabled" : ""}`}>
+    <div
+      className={`selectInput-container ${disabled ? "disabled" : ""} ${className ? className : ""}`}
+    >
       <div className="selectInput-title">
         <p className="selectInput-title-text" onClick={openMenu}>
-          {title}
+          {label}
         </p>
         {required ? (
           <span className="selectInput-title-required" onClick={openMenu}>

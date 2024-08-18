@@ -11,7 +11,7 @@ type Story = StoryObj<typeof meta>;
 
 export const withTitleRequired: Story = {
   args: {
-    title: "selectInput",
+    label: "selectInput",
     name: "test",
     required: true,
     placeHolder: "choose an option",
