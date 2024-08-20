@@ -1,7 +1,4 @@
----
-sidebar_label: "تغییر وضعیت - Toggle"
-sidebar_position: 19
----
+
 
 # Toggle
 

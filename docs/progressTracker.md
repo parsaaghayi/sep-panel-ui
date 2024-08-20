@@ -1,7 +1,4 @@
----
-sidebar_label: "دنباله‌ی پیشرفت - ProgressTracker"
-sidebar_position: 14
----
+
 
 # ProgressTracker
 

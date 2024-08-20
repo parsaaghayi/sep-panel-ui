@@ -1,7 +1,4 @@
----
-sidebar_label: "فیلد متن - TextField"
-sidebar_position: 18
----
+
 
 # TextField
 

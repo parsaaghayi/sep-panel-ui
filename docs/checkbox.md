@@ -1,7 +1,3 @@
----
-sidebar_label: "چک‌باکش - Checkbox"
-sidebar_position: 9
----
 
 # Checkbox
 

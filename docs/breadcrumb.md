@@ -1,7 +1,4 @@
----
-sidebar_label: "بردکرام - Breadcrumb"
-sidebar_position: 7
----
+
 # Breadcrumb
 
 ## معرفی

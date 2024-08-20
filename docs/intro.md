@@ -1,7 +1,4 @@
----
-sidebar_label: "معرفی"
-sidebar_position: 0
----
+
 
 # معرفی
 

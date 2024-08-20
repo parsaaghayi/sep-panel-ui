@@ -1,7 +1,4 @@
----
-sidebar_label: "صفحه‌بندی - Pagination"
-sidebar_position: 12
----
+
 
 # Pagination
 

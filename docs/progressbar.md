@@ -1,7 +1,4 @@
----
-sidebar_label: "نوارپیشرفت - Progressbar"
-sidebar_position: 13
----
+
 
 # Progressbar
 

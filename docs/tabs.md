@@ -1,7 +1,4 @@
----
-sidebar_label: "تب‌ها - Tabs"
-sidebar_position: 17
----
+
 
 # Tabs
 

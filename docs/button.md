@@ -1,7 +1,4 @@
----
-sidebar_label: "دکمه - Button"
-sidebar_position: 8
----
+
 
 # Button
 

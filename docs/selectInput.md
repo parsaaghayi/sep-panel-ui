@@ -1,7 +1,4 @@
----
-sidebar_label: "ورودی انتخابی - SelectInput"
-sidebar_position: 16
----
+
 
 # SelectInput
 

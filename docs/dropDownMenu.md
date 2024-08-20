@@ -1,7 +1,3 @@
----
-sidebar_label: "منوی دراپ‌دان - DropDownMenu"
-sidebar_position: 10
----
 
 # DropDownMenu
 

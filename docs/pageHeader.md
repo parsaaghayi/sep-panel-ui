@@ -1,7 +1,4 @@
----
-sidebar_label: "سربرگ - PageHeader"
-sidebar_position: 11
----
+
 
 # PageHeader
 

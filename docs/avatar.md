@@ -1,7 +1,4 @@
----
-sidebar_label: "آواتار - Avatar"
-sidebar_position: 6
----
+
 # Avatar
 
 ## معرفی
