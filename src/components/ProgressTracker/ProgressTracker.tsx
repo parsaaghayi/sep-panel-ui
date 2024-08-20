@@ -18,7 +18,6 @@ const ProgressTracker: React.FC<ProgressTrackerPropsType> = ({
         <div
           className={`progressTracker-step ${activeStep === index ? "active" : ""}`}
           key={`${stepTitle}-${index}`}
-          // style={{ width: `${100 / stepTitles.length}%` }}
         >
           <span
             className="progressTracker-stepCircle"

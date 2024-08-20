@@ -1,6 +1,6 @@
 {
   "name": "@parsaaghayi/sep-panel-ui",
-  "version": "0.0.77",
+  "version": "0.0.78",
   "description": "This is a React UI kit for Hooshmand Sepehr company panel projects, this UI Kit is based on atlassian design system",
   "scripts": {
     "build": "rmdir /s dist && rollup -c --bundleConfigAsCjs",
