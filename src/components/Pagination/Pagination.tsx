@@ -31,7 +31,7 @@ const Pagination: React.FC<PaginationPropsType> = ({
 
   return (
     <>
-      {currentPage > 0 ? (
+      {Number(currentPage) > 0 ? (
         <div
           className={`paginationParent select-none ${className ? className : ""}`}
           style={{ direction: `${direction}` }}
@@ -43,7 +43,7 @@ const Pagination: React.FC<PaginationPropsType> = ({
                 setPageNumberFunc(currentPage - 1);
               }
             }}
-            className={`prev ${currentPage === 1 ? "disable" : ""}`}
+            className={`prev ${Number(currentPage) === 1 ? "disable" : ""}`}
           >
             {direction === "rtl" ? (
               <img src={arrowRight} alt="arrow right" />
@@ -51,12 +51,12 @@ const Pagination: React.FC<PaginationPropsType> = ({
               <img src={arrowLeft} alt="arrow left" />
             )}
           </div>
-          {totalPage > 0 ? (
+          {Number(totalPage) > 0 ? (
             <>
-              {totalPage === 1 ? (
+              {Number(totalPage) === 1 ? (
                 <div
                   key={1}
-                  className={`paginationNumber ${currentPage === 1 ? "currentPage" : ""}`}
+                  className={`paginationNumber ${Number(currentPage) === 1 ? "currentPage" : ""}`}
                 >
                   1
                 </div>
@@ -65,7 +65,7 @@ const Pagination: React.FC<PaginationPropsType> = ({
                   <div
                     key={1}
                     onClick={() => setPageNumberFunc(1)}
-                    className={`paginationNumber ${currentPage === 1 ? "currentPage" : ""}`}
+                    className={`paginationNumber ${Number(currentPage) === 1 ? "currentPage" : ""}`}
                   >
                     1
                   </div>
@@ -277,24 +277,24 @@ const Pagination: React.FC<PaginationPropsType> = ({
                     3
                   </div>
                   <div
-                    key={totalPage + 5}
+                    key={Number(totalPage) + 5}
                     className={`paginationNumber betweenPages`}
                   >
                     ...
                   </div>
                   <div
-                    key={totalPage - 1}
+                    key={Number(totalPage) - 1}
                     onClick={() => setPageNumberFunc(totalPage - 1)}
                     className="paginationNumber"
                   >
-                    {totalPage - 1}
+                    {Number(totalPage) - 1}
                   </div>
                   <div
-                    key={totalPage}
+                    key={Number(totalPage)}
                     onClick={() => setPageNumberFunc(totalPage)}
                     className="paginationNumber"
                   >
-                    {totalPage}
+                    {Number(totalPage)}
                   </div>
                 </>
               ) : currentPage === 2 ? (
@@ -328,24 +328,24 @@ const Pagination: React.FC<PaginationPropsType> = ({
                     4
                   </div>
                   <div
-                    key={totalPage + 5}
+                    key={Number(totalPage) + 5}
                     className="paginationNumber betweenPages"
                   >
                     ...
                   </div>
                   <div
-                    key={totalPage - 1}
+                    key={Number(totalPage) - 1}
                     onClick={() => setPageNumberFunc(totalPage - 1)}
                     className="paginationNumber"
                   >
-                    {totalPage - 1}
+                    {Number(totalPage) - 1}
                   </div>
                   <div
-                    key={totalPage}
+                    key={Number(totalPage)}
                     onClick={() => setPageNumberFunc(totalPage)}
                     className="paginationNumber"
                   >
-                    {totalPage}
+                    {Number(totalPage)}
                   </div>
                 </>
               ) : currentPage === 3 ? (
@@ -379,24 +379,24 @@ const Pagination: React.FC<PaginationPropsType> = ({
                     4
                   </div>
                   <div
-                    key={totalPage + 5}
+                    key={Number(totalPage) + 5}
                     className="paginationNumber betweenPages"
                   >
                     ...
                   </div>
                   <div
-                    key={totalPage - 1}
+                    key={Number(totalPage) - 1}
                     onClick={() => setPageNumberFunc(totalPage - 1)}
                     className="paginationNumber"
                   >
-                    {totalPage - 1}
+                    {Number(totalPage) - 1}
                   </div>
                   <div
-                    key={totalPage}
+                    key={Number(totalPage)}
                     onClick={() => setPageNumberFunc(totalPage)}
                     className="paginationNumber"
                   >
-                    {totalPage}
+                    {Number(totalPage)}
                   </div>
                 </>
               ) : currentPage === totalPage - 2 ? (
@@ -423,38 +423,38 @@ const Pagination: React.FC<PaginationPropsType> = ({
                     3
                   </div>
                   <div
-                    key={totalPage + 5}
+                    key={Number(totalPage) + 5}
                     className="paginationNumber betweenPages"
                   >
                     ...
                   </div>
                   <div
-                    key={totalPage - 3}
+                    key={Number(totalPage) - 3}
                     onClick={() => setPageNumberFunc(totalPage - 3)}
                     className="paginationNumber"
                   >
-                    {totalPage - 3}
+                    {Number(totalPage) - 3}
                   </div>
                   <div
-                    key={totalPage - 2}
+                    key={Number(totalPage) - 2}
                     onClick={() => setPageNumberFunc(totalPage - 2)}
                     className="paginationNumber currentPage"
                   >
-                    {totalPage - 2}
+                    {Number(totalPage) - 2}
                   </div>
                   <div
-                    key={totalPage - 1}
+                    key={Number(totalPage) - 1}
                     onClick={() => setPageNumberFunc(totalPage - 1)}
                     className={`paginationNumber `}
                   >
-                    {totalPage - 1}
+                    {Number(totalPage) - 1}
                   </div>
                   <div
-                    key={totalPage}
+                    key={Number(totalPage)}
                     onClick={() => setPageNumberFunc(totalPage)}
                     className="paginationNumber"
                   >
-                    {totalPage}
+                    {Number(totalPage)}
                   </div>
                 </>
               ) : currentPage === totalPage - 1 ? (
@@ -481,31 +481,31 @@ const Pagination: React.FC<PaginationPropsType> = ({
                     3
                   </div>
                   <div
-                    key={totalPage + 5}
+                    key={Number(totalPage) + 5}
                     className="paginationNumber betweenPages"
                   >
                     ...
                   </div>
                   <div
-                    key={totalPage - 2}
+                    key={Number(totalPage) - 2}
                     onClick={() => setPageNumberFunc(totalPage - 2)}
                     className="paginationNumber"
                   >
-                    {totalPage - 2}
+                    {Number(totalPage) - 2}
                   </div>
                   <div
-                    key={totalPage - 1}
+                    key={Number(totalPage) - 1}
                     onClick={() => setPageNumberFunc(totalPage - 1)}
                     className="paginationNumber currentPage"
                   >
-                    {totalPage - 1}
+                    {Number(totalPage) - 1}
                   </div>
                   <div
-                    key={totalPage}
+                    key={Number(totalPage)}
                     onClick={() => setPageNumberFunc(totalPage)}
                     className="paginationNumber"
                   >
-                    {totalPage}
+                    {Number(totalPage)}
                   </div>
                 </>
               ) : currentPage === totalPage ? (
@@ -532,24 +532,24 @@ const Pagination: React.FC<PaginationPropsType> = ({
                     3
                   </div>
                   <div
-                    key={totalPage + 5}
+                    key={Number(totalPage) + 5}
                     className="paginationNumber betweenPages"
                   >
                     ...
                   </div>
                   <div
-                    key={totalPage - 1}
+                    key={Number(totalPage) - 1}
                     onClick={() => setPageNumberFunc(totalPage - 1)}
                     className="paginationNumber"
                   >
-                    {totalPage - 1}
+                    {Number(totalPage) - 1}
                   </div>
                   <div
-                    key={totalPage}
+                    key={Number(totalPage)}
                     onClick={() => setPageNumberFunc(totalPage)}
                     className="paginationNumber currentPage"
                   >
-                    {totalPage}
+                    {Number(totalPage)}
                   </div>
                 </>
               ) : (
@@ -569,35 +569,35 @@ const Pagination: React.FC<PaginationPropsType> = ({
                     2
                   </div>
                   <div
-                    key={totalPage + 1}
+                    key={Number(totalPage) + 1}
                     className="paginationNumber betweenPages"
                   >
                     ...
                   </div>
                   <div
-                    key={currentPage - 1}
+                    key={Number(currentPage) - 1}
                     onClick={() => setPageNumberFunc(currentPage - 1)}
                     className="paginationNumber"
                   >
-                    {currentPage - 1}
+                    {Number(currentPage) - 1}
                   </div>
                   <div
-                    key={currentPage}
+                    key={Number(currentPage)}
                     onClick={() => setPageNumberFunc(currentPage)}
                     className="paginationNumber currentPage"
                   >
-                    {currentPage}
+                    {Number(currentPage)}
                   </div>
                   <div
-                    key={currentPage + 1}
+                    key={Number(currentPage) + 1}
                     onClick={() => setPageNumberFunc(currentPage + 1)}
                     className="paginationNumber"
                   >
-                    {currentPage + 1}
+                    {Number(currentPage) + 1}
                   </div>
-                  {currentPage !== totalPage - 3 ? (
+                  {Number(currentPage) !== totalPage - 3 ? (
                     <div
-                      key={totalPage + 2}
+                      key={Number(totalPage) + 2}
                       className="paginationNumber betweenPages"
                     >
                       ...
@@ -606,18 +606,18 @@ const Pagination: React.FC<PaginationPropsType> = ({
                     <></>
                   )}
                   <div
-                    key={totalPage - 1}
+                    key={Number(totalPage) - 1}
                     onClick={() => setPageNumberFunc(totalPage - 1)}
                     className="paginationNumber"
                   >
-                    {totalPage - 1}
+                    {Number(totalPage) - 1}
                   </div>
                   <div
-                    key={totalPage}
+                    key={Number(totalPage)}
                     onClick={() => setPageNumberFunc(totalPage)}
                     className="paginationNumber"
                   >
-                    {totalPage}
+                    {Number(totalPage)}
                   </div>
                 </>
               )}
@@ -633,7 +633,7 @@ const Pagination: React.FC<PaginationPropsType> = ({
                 setPageNumberFunc(currentPage + 1);
               }
             }}
-            className={`next ${currentPage === totalPage ? "disable" : ""}`}
+            className={`next ${Number(currentPage) === totalPage ? "disable" : ""}`}
           >
             {direction === "rtl" ? (
               <img src={arrowLeft} alt="arrow left" />
@@ -641,6 +641,35 @@ const Pagination: React.FC<PaginationPropsType> = ({
               <img src={arrowRight} alt="arrow right" />
             )}
           </div>
+          {/* Go to page input */}
+          <div className="paginationGotoBox">
+            <input
+              type="number"
+              min={1}
+              max={totalPage}
+              placeholder="رفتن به صفحه"
+              className="paginationGotoInput"
+              onKeyDown={(e) => {
+                if (e.key === "Enter") {
+                  const val = Number((e.target as HTMLInputElement).value);
+                  if (val > 0 && val <= totalPage) setPageNumberFunc(val);
+                }
+              }}
+            />
+            <button
+              type="button"
+              className="paginationGotoButton"
+              onClick={(e) => {
+                const input = e.currentTarget
+                  .previousElementSibling as HTMLInputElement;
+                const val = Number(input.value);
+                if (val > 0 && val <= totalPage) setPageNumberFunc(val);
+              }}
+            >
+              برو
+            </button>
+          </div>
+          {/* End go to page input */}
         </div>
       ) : (
         <></>

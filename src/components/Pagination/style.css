@@ -77,3 +77,49 @@
 .paginationParent .next.disable {
   cursor: default;
 }
+.paginationGotoBox {
+  display: inline-flex;
+  align-items: center;
+  gap: 8px;
+  margin-right: 8px;
+  background: var(--neutral-light-n-100, #f4f5f7);
+  border-radius: 8px;
+  padding: 4px 8px;
+  box-shadow: 0 1px 2px rgba(9, 30, 66, 0.04);
+}
+
+.paginationGotoInput {
+  width: 100px;
+  border: 1px solid var(--neutral-light-n-200, #dfe1e6);
+  border-radius: 6px;
+  padding: 4px 8px;
+  font-size: 14px;
+  outline: none;
+  transition: border 0.2s;
+  background: #fff;
+}
+
+.paginationGotoInput:focus {
+  border: 1.5px solid var(--primary, #0052cc);
+}
+
+.paginationGotoButton {
+  padding: 4px 12px;
+  border: none;
+  border-radius: 6px;
+  background: var(--primary, #0052cc);
+  color: #fff;
+  font-size: 14px;
+  cursor: pointer;
+  transition: background 0.2s;
+}
+
+.paginationGotoButton:disabled {
+  background: var(--neutral-light-n-200, #dfe1e6);
+  color: #aaa;
+  cursor: not-allowed;
+}
+
+.paginationGotoButton:not(:disabled):hover {
+  background: var(--primary-dark, #0747a6);
+}

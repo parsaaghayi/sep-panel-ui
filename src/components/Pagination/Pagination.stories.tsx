@@ -11,9 +11,9 @@ type Story = StoryObj<typeof meta>;
 
 export const test: Story = {
   args: {
-    currentPage: 1,
-    totalPage: 27,
+    currentPage: 177,
+    totalPage: 270,
     setPageNumber: (pageNumber: number) => console.log("hello"),
-    direction: "ltr"
+    direction: "rtl"
   },
 };
