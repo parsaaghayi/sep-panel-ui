@@ -12,7 +12,6 @@ type Story = StoryObj<typeof meta>;
 export const withTitleRequired: Story = {
   args: {
     label: "selectInput",
-    name: "test",
     required: true,
     placeHolder: "choose an option",
     // disabled: true,
@@ -29,6 +28,8 @@ export const withTitleRequired: Story = {
       { label: "menu Item 10", value: 10 },
       { label: "menu Item 11", value: 11 },
     ],
-    onChange: () => console.log("hello"),
+    selectedOption: null,
+    setSelectedOption: () => {},
+    onChange: (option: any) => console.log("hello", option),
   },
 };

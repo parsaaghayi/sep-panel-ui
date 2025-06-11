@@ -63,6 +63,7 @@ describe("RadioGroup", () => {
         selectedOptionValue="label1"
         name="test"
         required={true}
+        flexDirection="column"
         onChange={(value) => console.log(value)}
       />
     );

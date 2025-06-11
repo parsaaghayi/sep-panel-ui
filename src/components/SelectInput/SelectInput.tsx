@@ -1,4 +1,4 @@
-import React, { ReactElement, useState } from "react";
+import React, { useState, useRef, useEffect } from "react";
 import "./style.css";
 
 type optionType = {
@@ -32,6 +32,8 @@ const SelectInput: React.FC<SelectInputPropsType> = ({
   onChange,
 }) => {
   const [isOpen, setIsOpen] = useState<boolean>(false);
+  const containerRef = useRef<HTMLDivElement>(null);
+
   function openMenu() {
     !disabled && setIsOpen(!isOpen);
   }
@@ -45,9 +47,33 @@ const SelectInput: React.FC<SelectInputPropsType> = ({
     setIsOpen(false);
     setSelectedOption(null);
   }
+
+  // Close menu when clicking outside
+  useEffect(() => {
+    function handleClickOutside(event: MouseEvent) {
+      if (
+        containerRef.current &&
+        !containerRef.current.contains(event.target as Node)
+      ) {
+        setIsOpen(false);
+      }
+    }
+    if (isOpen) {
+      document.addEventListener("mousedown", handleClickOutside);
+    } else {
+      document.removeEventListener("mousedown", handleClickOutside);
+    }
+    return () => {
+      document.removeEventListener("mousedown", handleClickOutside);
+    };
+  }, [isOpen]);
+
   return (
     <div
-      className={`selectInput-container ${disabled ? "disabled" : ""} ${className ? className : ""}`}
+      ref={containerRef}
+      className={`selectInput-container ${disabled ? "disabled" : ""} ${
+        className ? className : ""
+      }`}
     >
       <div className="selectInput-title">
         <div className="selectInput-title-text" onClick={openMenu}>
@@ -89,7 +115,6 @@ const SelectInput: React.FC<SelectInputPropsType> = ({
           ))}
         </div>
       ) : null}
-      {/* <div className="out-of-component" onClick={() => setIsOpen(false)}></div> */}
     </div>
   );
 };
