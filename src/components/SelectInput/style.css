@@ -49,6 +49,8 @@
   background: #fafbfc;
   cursor: pointer;
   z-index: 200;
+  outline: none;
+  transition: all 0.2s ease;
 }
 .selectInput-input:hover {
   display: flex;
@@ -58,6 +60,14 @@
   border-radius: 3px;
   border: 2px solid #dfe1e6;
   background: #ebecf0;
+}
+.selectInput-input:focus {
+  border: 2px solid #0052cc;
+  background: #fff;
+  box-shadow: 0 0 0 2px rgba(0, 82, 204, 0.2);
+}
+.selectInput-input:focus:hover {
+  background: #f4f5f7;
 }
 
 .selectInput-input-dropdownIcon {
@@ -123,6 +133,18 @@
   cursor: pointer;
   user-select: none;
   z-index: 110;
+  transition: background-color 0.15s ease;
+}
+.selectInput-menu-menuItem:hover,
+.selectInput-menu-menuItem.highlighted {
+  background-color: #ebecf0;
+}
+.selectInput-menu-menuItem.selected {
+  background-color: #e3fcef;
+  font-weight: 500;
+}
+.selectInput-menu-menuItem.selected.highlighted {
+  background-color: #d4edda;
 }
 
 .selectInput-container.disabled .selectInput-input {
