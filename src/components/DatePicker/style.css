@@ -14,31 +14,31 @@
   width: 100%;
 }
 
-/* Sizes */
-.datePicker-sm .datePicker-input {
+/* Sizes — use compound selectors to beat the base rule */
+.datePicker-container.datePicker-sm .datePicker-input {
   height: 32px;
   padding: 6px;
 }
 
-.datePicker-sm .datePicker-inputElement {
+.datePicker-container.datePicker-sm .datePicker-inputElement {
   font-size: 12px;
 }
 
-.datePicker-md .datePicker-input {
+.datePicker-container.datePicker-md .datePicker-input {
   height: 40px;
   padding: 8px;
 }
 
-.datePicker-md .datePicker-inputElement {
+.datePicker-container.datePicker-md .datePicker-inputElement {
   font-size: 14px;
 }
 
-.datePicker-lg .datePicker-input {
+.datePicker-container.datePicker-lg .datePicker-input {
   height: 48px;
   padding: 12px;
 }
 
-.datePicker-lg .datePicker-inputElement {
+.datePicker-container.datePicker-lg .datePicker-inputElement {
   font-size: 16px;
 }
 
@@ -312,6 +312,14 @@
   color: var(--neutral-light-n-200, #6b778c);
 }
 
+.datePicker-calendar-navButton svg {
+  display: block;
+}
+
+.datePicker-calendar-navButton-rtl svg {
+  transform: rotate(180deg);
+}
+
 .datePicker-calendar-monthYear {
   font-size: 16px;
   font-weight: 600;
@@ -405,5 +413,163 @@
 
 .datePicker-calendar-rtl .datePicker-calendar-monthYear {
   text-align: center;
+}
+
+/* ------------------------------------------------------------------ */
+/* Header label (navigable)                                            */
+/* ------------------------------------------------------------------ */
+
+.calendarPicker-headerLabel {
+  cursor: pointer;
+  user-select: none;
+}
+
+.calendarPicker-headerLabel:hover {
+  color: var(--neutral-light-n-200, #42526e);
+}
+
+/* ------------------------------------------------------------------ */
+/* Month / Year grids                                                  */
+/* ------------------------------------------------------------------ */
+
+.calendarPicker-grid {
+  display: grid;
+  gap: 2px;
+  padding: 12px 16px 16px;
+}
+
+.calendarPicker-monthGrid {
+  grid-template-columns: repeat(3, 1fr);
+}
+
+.calendarPicker-yearGrid {
+  grid-template-columns: repeat(3, 1fr);
+}
+
+.calendarPicker-month,
+.calendarPicker-year {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  height: 44px;
+  font-size: 13px;
+  font-weight: 500;
+  color: var(--neutral-light-n-200, #6b778c);
+  border-radius: 4px;
+  cursor: pointer;
+  transition: all 0.2s ease;
+  white-space: nowrap;
+  overflow: hidden;
+  text-overflow: ellipsis;
+  padding: 0 4px;
+}
+
+.calendarPicker-month:hover,
+.calendarPicker-year:hover {
+  background: var(--neutral-light-n-20, #f4f5f7);
+}
+
+.calendarPicker-cell-selected {
+  background: var(--Blue-B100, #4c9aff);
+  color: #fff;
+  font-weight: 600;
+}
+
+.calendarPicker-cell-selected:hover {
+  background: var(--Blue-B200, #3b82f6);
+}
+
+.calendarPicker-cell-disabled {
+  color: var(--neutral-light-n-70, #a5adba);
+  cursor: not-allowed;
+  opacity: 0.5;
+}
+
+.calendarPicker-cell-disabled:hover {
+  background: transparent;
+}
+
+.calendarPicker-month-viewing,
+.calendarPicker-year-viewing {
+  outline: 1px solid var(--Blue-B100, #4c9aff);
+  outline-offset: -1px;
+}
+
+/* ------------------------------------------------------------------ */
+/* Range selection                                                     */
+/* ------------------------------------------------------------------ */
+
+.datePicker-calendar-day-start,
+.datePicker-calendar-day-end {
+  background: var(--Blue-B100, #4c9aff);
+  color: #fff;
+  font-weight: 600;
+  border-radius: 4px;
+}
+
+.datePicker-calendar-day-start:hover,
+.datePicker-calendar-day-end:hover {
+  background: var(--Blue-B200, #3b82f6);
+}
+
+.datePicker-calendar-day-inRange {
+  background: var(--Blue-B50, #deebff);
+}
+
+/* ------------------------------------------------------------------ */
+/* Inline calendar (DayPicker)                                         */
+/* ------------------------------------------------------------------ */
+
+.dayPicker-wrapper {
+  display: inline-block;
+  width: 100%;
+  max-width: 320px;
+}
+
+.dayPicker-wrapper .datePicker-label {
+  display: block;
+  margin-bottom: 8px;
+  color: var(--neutral-light-n-200, #6b778c);
+  font-size: 12px;
+  font-weight: 600;
+  line-height: 16px;
+}
+
+.calendarPicker-inline {
+  position: static;
+  box-shadow: 0 1px 2px rgba(9, 30, 66, 0.12);
+  margin-top: 0;
+  width: 100%;
+  min-width: 0;
+  max-width: none;
+  background: white;
+  border: 1px solid var(--neutral-light-n-40, #dfe1e6);
+  border-radius: 8px;
+  padding: 8px 0;
+}
+
+/* ------------------------------------------------------------------ */
+/* Clear button                                                        */
+/* ------------------------------------------------------------------ */
+
+.calendarPicker-clear {
+  display: block;
+  width: calc(100% - 32px);
+  margin: 0 16px 12px;
+  padding: 6px;
+  background: none;
+  border: 1px solid var(--neutral-light-n-40, #dfe1e6);
+  border-radius: 4px;
+  font-size: 12px;
+  font-weight: 500;
+  color: var(--neutral-light-n-100, #7a869a);
+  cursor: pointer;
+  transition: all 0.2s ease;
+}
+
+.calendarPicker-clear:hover {
+  background: var(--neutral-light-n-20, #f4f5f7);
+  color: var(--Red-R400, #de350b);
+  border-color: var(--Red-R400, #de350b);
 }
 

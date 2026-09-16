@@ -2,22 +2,23 @@ import * as React from "react";
 import { useState } from "react";
 import CalendarCore from "./CalendarCore";
 import PickerShell from "./PickerShell";
-import { DatePickerProps, PickerOutputValue } from "./types";
+import { RangePickerProps, PickerOutputValue } from "./types";
 import {
   formatForDisplay,
-  makeOutput,
+  makeRangeOutput,
   resolveConfig,
-  resolveValue,
+  resolveRange,
 } from "./valueUtils";
 
-function DatePicker<O extends "date" | "string" = "date">(
-  props: DatePickerProps<O>
+function RangePicker<O extends "date" | "string" = "date">(
+  props: RangePickerProps<O>
 ): React.ReactElement {
   const {
     value,
     onChange,
     minDate,
     maxDate,
+    separator = "–",
     calendar,
     locale,
     direction,
@@ -45,8 +46,13 @@ function DatePicker<O extends "date" | "string" = "date">(
   });
   const [open, setOpen] = useState(false);
 
-  const internalDate = resolveValue(value ?? null, cfg);
-  const displayValue = formatForDisplay(internalDate, cfg);
+  const range = resolveRange(value, cfg);
+  const startText = formatForDisplay(range.start, cfg);
+  const endText = formatForDisplay(range.end, cfg);
+  const displayValue =
+    startText && endText
+      ? `${startText}${separator}${endText}`
+      : startText || endText || "";
 
   return (
     <PickerShell
@@ -63,13 +69,17 @@ function DatePicker<O extends "date" | "string" = "date">(
           locale={cfg.locale}
           direction={cfg.direction}
           monthLabel={cfg.monthLabel}
-          mode="single"
+          mode="range"
           initialView="days"
-          value={internalDate}
+          range={range}
           minDate={minDate}
           maxDate={maxDate}
-          onSelectDate={(date) => {
-            onChange?.(makeOutput(date, cfg) as PickerOutputValue<O>);
+          onRangeSelect={(selected) => {
+            const out = makeRangeOutput(selected, cfg);
+            onChange?.({
+              start: out.start as PickerOutputValue<O>,
+              end: out.end as PickerOutputValue<O>,
+            });
             setOpen(false);
           }}
         />
@@ -78,4 +88,4 @@ function DatePicker<O extends "date" | "string" = "date">(
   );
 }
 
-export default DatePicker;
+export default RangePicker;

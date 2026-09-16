@@ -10,6 +10,10 @@ const meta: Meta<typeof DatePicker> = {
   },
   tags: ['autodocs'],
   argTypes: {
+    calendar: {
+      control: { type: 'select' },
+      options: ['jalali', 'gregorian'],
+    },
     locale: {
       control: { type: 'select' },
       options: ['fa', 'en'],
@@ -17,6 +21,14 @@ const meta: Meta<typeof DatePicker> = {
     direction: {
       control: { type: 'select' },
       options: ['rtl', 'ltr'],
+    },
+    monthLabel: {
+      control: { type: 'select' },
+      options: ['name', 'number'],
+    },
+    output: {
+      control: { type: 'select' },
+      options: ['date', 'string'],
     },
     size: {
       control: { type: 'select' },
@@ -329,6 +341,171 @@ export const Interactive: Story = {
             </p>
           )}
         </div>
+      </div>
+    );
+  },
+};
+
+/* ══════════════════════════════════════════════════════════════════════ */
+/* Shamsi / Miladi — dual calendar, month labels & flexible output       */
+/* ══════════════════════════════════════════════════════════════════════ */
+
+// Shamsi (Jalali) explicit — digits فارسی، تقویم شمسی
+export const Shamsi: Story = {
+  args: {
+    id: 'shamsi-datepicker',
+    label: 'تاریخ شمسی',
+    placeholder: 'تاریخ را انتخاب کنید',
+    calendar: 'jalali',
+    locale: 'fa',
+    direction: 'rtl',
+    size: 'md',
+    variant: 'outlined',
+    color: 'primary',
+  },
+  render: (args) => {
+    const [value, setValue] = useState<Date | null>(null);
+    return (
+      <div style={{ width: '300px' }}>
+        <DatePicker
+          {...args}
+          value={value}
+          onChange={setValue}
+        />
+        {value && (
+          <p style={{ marginTop: '8px', fontSize: '14px', color: '#666' }}>
+            مقدار (Date): {value.toISOString().slice(0, 10)}
+          </p>
+        )}
+      </div>
+    );
+  },
+};
+
+// Miladi with Persian month names (ژوئن) — digits فارسی اما تقویم میلادی
+export const MiladiWithPersianNames: Story = {
+  args: {
+    id: 'miladi-persian',
+    label: 'تاریخ میلادی (فارسی)',
+    placeholder: 'تاریخ را انتخاب کنید',
+    calendar: 'gregorian',
+    locale: 'fa',
+    direction: 'rtl',
+    format: 'YYYY/MMMM/DD',
+    size: 'md',
+    variant: 'outlined',
+    color: 'primary',
+  },
+  render: (args) => {
+    const [value, setValue] = useState<Date | null>(null);
+    return (
+      <div style={{ width: '300px' }}>
+        <DatePicker
+          {...args}
+          value={value}
+          onChange={setValue}
+        />
+      </div>
+    );
+  },
+};
+
+// Month label: name (شهریور) vs number (ماه ۶)
+export const MonthNameVsNumber: Story = {
+  render: () => {
+    const [v1, setV1] = useState<Date | null>(null);
+    const [v2, setV2] = useState<Date | null>(null);
+    return (
+      <div style={{ display: 'flex', gap: '24px' }}>
+        <div style={{ width: '300px' }}>
+          <p style={{ fontSize: '13px', marginBottom: '4px' }}>monthLabel = "name" → شهریور</p>
+          <DatePicker
+            id="dp-name"
+            label="نام ماه"
+            calendar="jalali"
+            locale="fa"
+            direction="rtl"
+            monthLabel="name"
+            format="YYYY/MMMM"
+            value={v1}
+            onChange={setV1}
+          />
+        </div>
+        <div style={{ width: '300px' }}>
+          <p style={{ fontSize: '13px', marginBottom: '4px' }}>monthLabel = "number" → «ماه ۶»</p>
+          <DatePicker
+            id="dp-num"
+            label="شماره ماه"
+            calendar="jalali"
+            locale="fa"
+            direction="rtl"
+            monthLabel="number"
+            format="YYYY/MMMM"
+            value={v2}
+            onChange={setV2}
+          />
+        </div>
+      </div>
+    );
+  },
+};
+
+// Show Shamsi → output Miladi (string). value را هم می‌توان میلادی داد.
+export const ShamsiInputMiladiOutput: Story = {
+  render: () => {
+    const [value, setValue] = useState<string | null>(null);
+    return (
+      <div style={{ width: '300px' }}>
+        <p style={{ fontSize: '13px', marginBottom: '4px' }}>
+          نمایش شمسی — خروجی میلادی (string)
+        </p>
+        <DatePicker<"string">
+          id="shamsi-miladi-out"
+          label="تاریخ"
+          calendar="jalali"
+          locale="fa"
+          direction="rtl"
+          format="YYYY/MM/DD"
+          output="string"
+          outputCalendar="gregorian"
+          outputFormat="YYYY-MM-DD"
+          value={value}
+          onChange={setValue}
+        />
+        {value && (
+          <pre style={{ marginTop: '8px', fontSize: '12px', direction: 'ltr' }}>
+            {value}
+          </pre>
+        )}
+      </div>
+    );
+  },
+};
+
+// Miladi English output
+export const MiladiEnglishOutput: Story = {
+  render: () => {
+    const [value, setValue] = useState<string | null>(null);
+    return (
+      <div style={{ width: '300px' }}>
+        <p style={{ fontSize: '13px', marginBottom: '4px' }}>View: Miladi input — output "2026-06-01"</p>
+        <DatePicker<"string">
+          id="miladi-out"
+          label="Date"
+          calendar="gregorian"
+          locale="en"
+          direction="ltr"
+          format="MM/DD/YYYY"
+          output="string"
+          outputFormat="YYYY-MM-DD"
+          value={value}
+          onChange={setValue}
+        />
+        {value && (
+          <pre style={{ marginTop: '8px', fontSize: '12px', direction: 'ltr' }}>
+            {value}
+          </pre>
+        )}
       </div>
     );
   },

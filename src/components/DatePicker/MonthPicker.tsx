@@ -2,7 +2,7 @@ import * as React from "react";
 import { useState } from "react";
 import CalendarCore from "./CalendarCore";
 import PickerShell from "./PickerShell";
-import { DatePickerProps, PickerOutputValue } from "./types";
+import { MonthPickerProps, PickerOutputValue } from "./types";
 import {
   formatForDisplay,
   makeOutput,
@@ -10,8 +10,8 @@ import {
   resolveValue,
 } from "./valueUtils";
 
-function DatePicker<O extends "date" | "string" = "date">(
-  props: DatePickerProps<O>
+function MonthPicker<O extends "date" | "string" = "date">(
+  props: MonthPickerProps<O>
 ): React.ReactElement {
   const {
     value,
@@ -36,7 +36,7 @@ function DatePicker<O extends "date" | "string" = "date">(
     locale,
     direction,
     monthLabel,
-    format,
+    format: format ?? "YYYY/MM",
     parseFormat,
     parseCalendar,
     output,
@@ -64,11 +64,11 @@ function DatePicker<O extends "date" | "string" = "date">(
           direction={cfg.direction}
           monthLabel={cfg.monthLabel}
           mode="single"
-          initialView="days"
+          initialView="months"
           value={internalDate}
           minDate={minDate}
           maxDate={maxDate}
-          onSelectDate={(date) => {
+          onSelectMonth={(date) => {
             onChange?.(makeOutput(date, cfg) as PickerOutputValue<O>);
             setOpen(false);
           }}
@@ -78,4 +78,4 @@ function DatePicker<O extends "date" | "string" = "date">(
   );
 }
 
-export default DatePicker;
+export default MonthPicker;
