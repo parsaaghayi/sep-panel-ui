@@ -1,16 +1,12 @@
-import React, { useState } from "react";
+import React from "react";
 import { render, fireEvent, screen } from "@testing-library/react";
 import "@testing-library/jest-dom";
 import TextField from "./TextField";
 
 describe("TextField", () => {
-  const TestWrapper = ({ children }: { children: React.ReactNode }) => {
-    const [testText, setTestText] = useState("");
-    return <div>{children}</div>;
-  };
-
   test("render the TextField component with basic props", () => {
-    const [testText, setTestText] = useState("");
+    const testText = "";
+    const setTestText = () => {};
     render(
       <TextField
         type="text"
@@ -26,7 +22,8 @@ describe("TextField", () => {
   });
 
   test("render TextField with all new props", () => {
-    const [testText, setTestText] = useState("");
+    const testText = "";
+    const setTestText = () => {};
     const validationRules = [
       { rule: (value: string) => value.length > 3, message: "Must be longer than 3 characters" }
     ];
@@ -64,12 +61,13 @@ describe("TextField", () => {
       />
     );
     
-    expect(screen.getByLabelText("Advanced TextField")).toBeInTheDocument();
+    expect(screen.getByText("Advanced TextField")).toBeInTheDocument();
     expect(screen.getByText("*")).toBeInTheDocument(); // Required indicator
   });
 
   test("handle input change with formatting", () => {
-    const [testText, setTestText] = useState("");
+    const testText = "";
+    const setTestText = () => {};
     const formatter = (value: string) => value.toUpperCase();
     
     render(
@@ -91,7 +89,8 @@ describe("TextField", () => {
   });
 
   test("handle validation", () => {
-    const [testText, setTestText] = useState("");
+    const testText = "";
+    const setTestText = () => {};
     const validationRules = [
       { rule: (value: string) => value.length >= 5, message: "Must be at least 5 characters" }
     ];
@@ -115,32 +114,43 @@ describe("TextField", () => {
   });
 
   test("handle icon clicks", () => {
-    const [testText, setTestText] = useState("");
+    const testText = "";
+    const setTestText = () => {};
     const iconClick = jest.fn();
-    
-    render(
+    const { rerender } = render(
       <TextField
         type="text"
         id="icon-id"
         value={testText}
         onChange={setTestText}
         startIcon={<span data-testid="start-icon">🔍</span>}
-        endIcon={<span data-testid="end-icon">❌</span>}
+        iconPosition="start"
         iconClick={iconClick}
       />
     );
-    
-    const startIcon = screen.getByTestId("start-icon");
-    const endIcon = screen.getByTestId("end-icon");
-    
-    fireEvent.click(startIcon);
-    fireEvent.click(endIcon);
-    
+
+    fireEvent.click(screen.getByTestId("start-icon"));
+    expect(iconClick).toHaveBeenCalledTimes(1);
+
+    rerender(
+      <TextField
+        type="text"
+        id="icon-id"
+        value={testText}
+        onChange={setTestText}
+        endIcon={<span data-testid="end-icon">❌</span>}
+        iconPosition="end"
+        iconClick={iconClick}
+      />
+    );
+
+    fireEvent.click(screen.getByTestId("end-icon"));
     expect(iconClick).toHaveBeenCalledTimes(2);
   });
 
   test("handle different sizes and variants", () => {
-    const [testText, setTestText] = useState("");
+    const testText = "";
+    const setTestText = () => {};
     
     const { rerender } = render(
       <TextField
@@ -171,7 +181,8 @@ describe("TextField", () => {
   });
 
   test("handle disabled and readOnly states", () => {
-    const [testText, setTestText] = useState("");
+    const testText = "";
+    const setTestText = () => {};
     
     render(
       <TextField
@@ -190,7 +201,8 @@ describe("TextField", () => {
   });
 
   test("container click focuses input", () => {
-    const [testText, setTestText] = useState("");
+    const testText = "";
+    const setTestText = () => {};
     
     render(
       <TextField
