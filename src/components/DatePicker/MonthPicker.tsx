@@ -3,15 +3,10 @@ import { useState } from "react";
 import CalendarCore from "./CalendarCore";
 import PickerShell from "./PickerShell";
 import { MonthPickerProps, PickerOutputValue } from "./types";
-import {
-  formatForDisplay,
-  makeOutput,
-  resolveConfig,
-  resolveValue,
-} from "./valueUtils";
+import { formatForDisplay, makeOutput, resolveConfig, resolveValue } from "./valueUtils";
 
 function MonthPicker<O extends "date" | "string" = "date">(
-  props: MonthPickerProps<O>
+  props: MonthPickerProps<O>,
 ): React.ReactElement {
   const {
     value,

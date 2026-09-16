@@ -6,12 +6,7 @@ export type MonthLabelStyle = "name" | "number";
 export type Direction = "rtl" | "ltr";
 export type PickerSize = "sm" | "md" | "lg";
 export type PickerVariant = "outlined" | "filled" | "standard";
-export type PickerColor =
-  | "primary"
-  | "secondary"
-  | "error"
-  | "warning"
-  | "success";
+export type PickerColor = "primary" | "secondary" | "error" | "warning" | "success";
 
 /** A date expressed inside a specific calendar system */
 export interface ComponentDate {
@@ -92,8 +87,7 @@ export interface PickerInputProps {
 }
 
 export interface DatePickerProps<O extends "date" | "string" = "date">
-  extends CalendarConfigProps,
-    PickerInputProps {
+  extends CalendarConfigProps, PickerInputProps {
   output?: O;
   value?: PickerValue;
   onChange?: (value: PickerOutputValue<O>) => void;
@@ -112,22 +106,17 @@ export interface DateRange {
 }
 
 export interface RangePickerProps<O extends "date" | "string" = "date">
-  extends CalendarConfigProps,
-    PickerInputProps {
+  extends CalendarConfigProps, PickerInputProps {
   output?: O;
   value?: DateRangeValue | null;
-  onChange?: (value: {
-    start: PickerOutputValue<O>;
-    end: PickerOutputValue<O>;
-  }) => void;
+  onChange?: (value: { start: PickerOutputValue<O>; end: PickerOutputValue<O> }) => void;
   minDate?: Date;
   maxDate?: Date;
   /** Separator shown between start and end (default: "–") */
   separator?: string;
 }
 
-export interface DayPickerProps<O extends "date" | "string" = "date">
-  extends CalendarConfigProps {
+export interface DayPickerProps<O extends "date" | "string" = "date"> extends CalendarConfigProps {
   output?: O;
   id?: string;
   className?: string;
@@ -139,8 +128,7 @@ export interface DayPickerProps<O extends "date" | "string" = "date">
 }
 
 export interface MonthPickerProps<O extends "date" | "string" = "date">
-  extends CalendarConfigProps,
-    PickerInputProps {
+  extends CalendarConfigProps, PickerInputProps {
   output?: O;
   value?: PickerValue;
   onChange?: (value: PickerOutputValue<O>) => void;
@@ -149,8 +137,7 @@ export interface MonthPickerProps<O extends "date" | "string" = "date">
 }
 
 export interface YearPickerProps<O extends "date" | "string" = "date">
-  extends CalendarConfigProps,
-    PickerInputProps {
+  extends CalendarConfigProps, PickerInputProps {
   output?: O;
   value?: PickerValue;
   onChange?: (value: PickerOutputValue<O>) => void;

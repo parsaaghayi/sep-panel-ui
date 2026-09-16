@@ -1,34 +1,29 @@
-import React from 'react';
-import { render, screen, fireEvent } from '@testing-library/react';
-import DatePicker from './DatePicker';
+import React from "react";
+import { render, screen, fireEvent } from "@testing-library/react";
+import DatePicker from "./DatePicker";
 
 // Mock the images
-jest.mock('../../images/info.svg', () => 'info-icon');
-jest.mock('../../images/success.svg', () => 'success-icon');
-jest.mock('../../images/error.svg', () => 'error-icon');
+jest.mock("../../images/info.svg", () => "info-icon");
+jest.mock("../../images/success.svg", () => "success-icon");
+jest.mock("../../images/error.svg", () => "error-icon");
 
-describe('DatePicker', () => {
+describe("DatePicker", () => {
   const mockOnChange = jest.fn();
 
   beforeEach(() => {
     mockOnChange.mockClear();
   });
 
-  test('renders DatePicker with basic props', () => {
+  test("renders DatePicker with basic props", () => {
     render(
-      <DatePicker
-        id="test-datepicker"
-        label="تاریخ شروع"
-        value={null}
-        onChange={mockOnChange}
-      />
+      <DatePicker id="test-datepicker" label="تاریخ شروع" value={null} onChange={mockOnChange} />,
     );
 
-    expect(screen.getByLabelText('تاریخ شروع')).toBeInTheDocument();
-    expect(screen.getByRole('textbox')).toBeInTheDocument();
+    expect(screen.getByLabelText("تاریخ شروع")).toBeInTheDocument();
+    expect(screen.getByRole("textbox")).toBeInTheDocument();
   });
 
-  test('renders with Persian locale and RTL direction', () => {
+  test("renders with Persian locale and RTL direction", () => {
     render(
       <DatePicker
         id="test-datepicker"
@@ -37,14 +32,14 @@ describe('DatePicker', () => {
         direction="rtl"
         value={null}
         onChange={mockOnChange}
-      />
+      />,
     );
 
-    const container = screen.getByLabelText('تاریخ شروع').closest('.datePicker-container');
-    expect(container).toHaveStyle('direction: rtl');
+    const container = screen.getByLabelText("تاریخ شروع").closest(".datePicker-container");
+    expect(container).toHaveStyle("direction: rtl");
   });
 
-  test('renders with English locale and LTR direction', () => {
+  test("renders with English locale and LTR direction", () => {
     render(
       <DatePicker
         id="test-datepicker"
@@ -53,16 +48,16 @@ describe('DatePicker', () => {
         direction="ltr"
         value={null}
         onChange={mockOnChange}
-      />
+      />,
     );
 
-    const container = screen.getByLabelText('Start Date').closest('.datePicker-container');
-    expect(container).toHaveStyle('direction: ltr');
+    const container = screen.getByLabelText("Start Date").closest(".datePicker-container");
+    expect(container).toHaveStyle("direction: ltr");
   });
 
-  test('displays selected date correctly', () => {
+  test("displays selected date correctly", () => {
     const testDate = new Date(2024, 0, 15); // January 15, 2024
-    
+
     render(
       <DatePicker
         id="test-datepicker"
@@ -70,33 +65,28 @@ describe('DatePicker', () => {
         value={testDate}
         onChange={mockOnChange}
         locale="fa"
-      />
+      />,
     );
 
     // The date should be displayed in Persian format
-    const input = screen.getByRole('textbox') as HTMLInputElement;
-    expect(input.value).toContain('۱۴۰۲');
-    expect(input.value).toContain('۱۰');
+    const input = screen.getByRole("textbox") as HTMLInputElement;
+    expect(input.value).toContain("۱۴۰۲");
+    expect(input.value).toContain("۱۰");
   });
 
-  test('opens calendar when clicked', () => {
+  test("opens calendar when clicked", () => {
     render(
-      <DatePicker
-        id="test-datepicker"
-        label="تاریخ شروع"
-        value={null}
-        onChange={mockOnChange}
-      />
+      <DatePicker id="test-datepicker" label="تاریخ شروع" value={null} onChange={mockOnChange} />,
     );
 
-    const input = screen.getByRole('textbox');
+    const input = screen.getByRole("textbox");
     fireEvent.click(input);
 
     // Calendar should be visible
-    expect(screen.getByRole('textbox')).toBeInTheDocument();
+    expect(screen.getByRole("textbox")).toBeInTheDocument();
   });
 
-  test('renders with different sizes', () => {
+  test("renders with different sizes", () => {
     const { rerender } = render(
       <DatePicker
         id="test-datepicker"
@@ -104,11 +94,11 @@ describe('DatePicker', () => {
         size="sm"
         value={null}
         onChange={mockOnChange}
-      />
+      />,
     );
 
-    let container = screen.getByLabelText('تاریخ شروع').closest('.datePicker-container');
-    expect(container).toHaveClass('datePicker-sm');
+    let container = screen.getByLabelText("تاریخ شروع").closest(".datePicker-container");
+    expect(container).toHaveClass("datePicker-sm");
 
     rerender(
       <DatePicker
@@ -117,14 +107,14 @@ describe('DatePicker', () => {
         size="lg"
         value={null}
         onChange={mockOnChange}
-      />
+      />,
     );
 
-    container = screen.getByLabelText('تاریخ شروع').closest('.datePicker-container');
-    expect(container).toHaveClass('datePicker-lg');
+    container = screen.getByLabelText("تاریخ شروع").closest(".datePicker-container");
+    expect(container).toHaveClass("datePicker-lg");
   });
 
-  test('renders with different variants', () => {
+  test("renders with different variants", () => {
     const { rerender } = render(
       <DatePicker
         id="test-datepicker"
@@ -132,11 +122,11 @@ describe('DatePicker', () => {
         variant="outlined"
         value={null}
         onChange={mockOnChange}
-      />
+      />,
     );
 
-    let container = screen.getByLabelText('تاریخ شروع').closest('.datePicker-container');
-    expect(container).toHaveClass('datePicker-outlined');
+    let container = screen.getByLabelText("تاریخ شروع").closest(".datePicker-container");
+    expect(container).toHaveClass("datePicker-outlined");
 
     rerender(
       <DatePicker
@@ -145,14 +135,14 @@ describe('DatePicker', () => {
         variant="filled"
         value={null}
         onChange={mockOnChange}
-      />
+      />,
     );
 
-    container = screen.getByLabelText('تاریخ شروع').closest('.datePicker-container');
-    expect(container).toHaveClass('datePicker-filled');
+    container = screen.getByLabelText("تاریخ شروع").closest(".datePicker-container");
+    expect(container).toHaveClass("datePicker-filled");
   });
 
-  test('renders with error message', () => {
+  test("renders with error message", () => {
     render(
       <DatePicker
         id="test-datepicker"
@@ -160,13 +150,13 @@ describe('DatePicker', () => {
         value={null}
         onChange={mockOnChange}
         errorMessage="تاریخ معتبر انتخاب کنید"
-      />
+      />,
     );
 
-    expect(screen.getByText('تاریخ معتبر انتخاب کنید')).toBeInTheDocument();
+    expect(screen.getByText("تاریخ معتبر انتخاب کنید")).toBeInTheDocument();
   });
 
-  test('renders with success message', () => {
+  test("renders with success message", () => {
     render(
       <DatePicker
         id="test-datepicker"
@@ -174,13 +164,13 @@ describe('DatePicker', () => {
         value={null}
         onChange={mockOnChange}
         successMessage="تاریخ با موفقیت انتخاب شد"
-      />
+      />,
     );
 
-    expect(screen.getByText('تاریخ با موفقیت انتخاب شد')).toBeInTheDocument();
+    expect(screen.getByText("تاریخ با موفقیت انتخاب شد")).toBeInTheDocument();
   });
 
-  test('renders with guid message', () => {
+  test("renders with guid message", () => {
     render(
       <DatePicker
         id="test-datepicker"
@@ -188,13 +178,13 @@ describe('DatePicker', () => {
         value={null}
         onChange={mockOnChange}
         guidMessage="لطفاً تاریخ معتبر انتخاب کنید"
-      />
+      />,
     );
 
-    expect(screen.getByText('لطفاً تاریخ معتبر انتخاب کنید')).toBeInTheDocument();
+    expect(screen.getByText("لطفاً تاریخ معتبر انتخاب کنید")).toBeInTheDocument();
   });
 
-  test('renders as disabled', () => {
+  test("renders as disabled", () => {
     render(
       <DatePicker
         id="test-datepicker"
@@ -202,14 +192,14 @@ describe('DatePicker', () => {
         value={null}
         onChange={mockOnChange}
         disabled={true}
-      />
+      />,
     );
 
-    const input = screen.getByRole('textbox');
+    const input = screen.getByRole("textbox");
     expect(input).toBeDisabled();
   });
 
-  test('renders as read-only', () => {
+  test("renders as read-only", () => {
     render(
       <DatePicker
         id="test-datepicker"
@@ -217,14 +207,14 @@ describe('DatePicker', () => {
         value={null}
         onChange={mockOnChange}
         readOnly={true}
-      />
+      />,
     );
 
-    const input = screen.getByRole('textbox');
-    expect(input).toHaveAttribute('readOnly');
+    const input = screen.getByRole("textbox");
+    expect(input).toHaveAttribute("readOnly");
   });
 
-  test('renders with required indicator', () => {
+  test("renders with required indicator", () => {
     render(
       <DatePicker
         id="test-datepicker"
@@ -232,13 +222,13 @@ describe('DatePicker', () => {
         value={null}
         onChange={mockOnChange}
         required={true}
-      />
+      />,
     );
 
-    expect(screen.getByText('*')).toBeInTheDocument();
+    expect(screen.getByText("*")).toBeInTheDocument();
   });
 
-  test('renders with placeholder', () => {
+  test("renders with placeholder", () => {
     render(
       <DatePicker
         id="test-datepicker"
@@ -246,9 +236,9 @@ describe('DatePicker', () => {
         placeholder="تاریخ را انتخاب کنید"
         value={null}
         onChange={mockOnChange}
-      />
+      />,
     );
 
-    expect(screen.getByPlaceholderText('تاریخ را انتخاب کنید')).toBeInTheDocument();
+    expect(screen.getByPlaceholderText("تاریخ را انتخاب کنید")).toBeInTheDocument();
   });
 });

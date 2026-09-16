@@ -30,7 +30,6 @@ const PickerShell: React.FC<PickerShellProps> = ({
   open,
   onOpenChange,
   displayValue,
-  locale,
   direction,
   children,
 }) => {
@@ -41,10 +40,7 @@ const PickerShell: React.FC<PickerShellProps> = ({
     if (!open) return;
 
     const handleClickOutside = (event: MouseEvent) => {
-      if (
-        containerRef.current &&
-        !containerRef.current.contains(event.target as Node)
-      ) {
+      if (containerRef.current && !containerRef.current.contains(event.target as Node)) {
         onOpenChange(false);
       }
     };
@@ -136,11 +132,23 @@ const PickerShell: React.FC<PickerShellProps> = ({
       {(guidMessage || successMessage || errorMessage) && (
         <div className="datePicker-message">
           {guidMessage ? (
-            <img className="datePicker-guidIcon" src="/src/images/info.svg" alt="guidMessage icon" />
+            <img
+              className="datePicker-guidIcon"
+              src="/src/images/info.svg"
+              alt="guidMessage icon"
+            />
           ) : successMessage ? (
-            <img className="datePicker-successIcon" src="/src/images/success.svg" alt="successMessage icon" />
+            <img
+              className="datePicker-successIcon"
+              src="/src/images/success.svg"
+              alt="successMessage icon"
+            />
           ) : errorMessage ? (
-            <img className="datePicker-errorIcon" src="/src/images/error.svg" alt="errorMessage icon" />
+            <img
+              className="datePicker-errorIcon"
+              src="/src/images/error.svg"
+              alt="errorMessage icon"
+            />
           ) : null}
 
           {guidMessage ? (

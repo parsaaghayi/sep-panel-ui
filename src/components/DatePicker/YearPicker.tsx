@@ -3,15 +3,10 @@ import { useState } from "react";
 import CalendarCore from "./CalendarCore";
 import PickerShell from "./PickerShell";
 import { YearPickerProps, PickerOutputValue } from "./types";
-import {
-  formatForDisplay,
-  makeOutput,
-  resolveConfig,
-  resolveValue,
-} from "./valueUtils";
+import { formatForDisplay, makeOutput, resolveConfig, resolveValue } from "./valueUtils";
 
 function YearPicker<O extends "date" | "string" = "date">(
-  props: YearPickerProps<O>
+  props: YearPickerProps<O>,
 ): React.ReactElement {
   const {
     value,

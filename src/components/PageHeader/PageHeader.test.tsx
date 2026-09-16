@@ -24,7 +24,7 @@ describe("PageHeader", () => {
         ]}
       >
         <p>filterha</p>
-      </PageHeader>
+      </PageHeader>,
     );
   });
 });

@@ -9,7 +9,7 @@ describe("ProgressTracker", () => {
         direction="ltr"
         stepTitles={["step 1", "step 2", "step 3", "step 4", "step 5"]}
         activeStep={1}
-      />
+      />,
     );
   });
 });

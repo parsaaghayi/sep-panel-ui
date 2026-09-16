@@ -8,12 +8,7 @@ import {
   MonthLabelStyle,
   PickerValue,
 } from "./types";
-import {
-  formatDate,
-  getDirection,
-  parseDateString,
-  startOfDay,
-} from "./calendarUtils";
+import { formatDate, getDirection, parseDateString, startOfDay } from "./calendarUtils";
 
 export interface ResolvedConfig {
   calendar: CalendarSystem;
@@ -45,10 +40,7 @@ export function resolveConfig(props: CalendarConfigProps): ResolvedConfig {
   };
 }
 
-export function resolveValue(
-  value: PickerValue,
-  cfg: ResolvedConfig
-): Date | null {
+export function resolveValue(value: PickerValue, cfg: ResolvedConfig): Date | null {
   if (value === null || value === undefined) return null;
   if (value instanceof Date) {
     return isNaN(value.getTime()) ? null : startOfDay(value);
@@ -56,39 +48,24 @@ export function resolveValue(
   return parseDateString(value, cfg.parseCalendar, cfg.locale, cfg.parseFormat);
 }
 
-export function makeOutput(
-  date: Date | null,
-  cfg: ResolvedConfig
-): Date | string | null {
+export function makeOutput(date: Date | null, cfg: ResolvedConfig): Date | string | null {
   if (!date) return null;
   if (cfg.output === "date") return date;
-  return formatDate(
-    date,
-    cfg.outputCalendar,
-    cfg.locale,
-    cfg.outputFormat,
-    cfg.monthLabel
-  );
+  return formatDate(date, cfg.outputCalendar, cfg.locale, cfg.outputFormat, cfg.monthLabel);
 }
 
 export function formatForDisplay(
   date: Date | null,
   cfg: ResolvedConfig,
-  formatOverride?: string
+  formatOverride?: string,
 ): string {
   if (!date) return "";
-  return formatDate(
-    date,
-    cfg.calendar,
-    cfg.locale,
-    formatOverride ?? cfg.format,
-    cfg.monthLabel
-  );
+  return formatDate(date, cfg.calendar, cfg.locale, formatOverride ?? cfg.format, cfg.monthLabel);
 }
 
 export function resolveRange(
   value: DateRangeValue | null | undefined,
-  cfg: ResolvedConfig
+  cfg: ResolvedConfig,
 ): DateRange {
   return {
     start: value ? resolveValue(value.start, cfg) : null,
@@ -96,10 +73,7 @@ export function resolveRange(
   };
 }
 
-export function makeRangeOutput(
-  range: DateRange,
-  cfg: ResolvedConfig
-): DateRangeValue {
+export function makeRangeOutput(range: DateRange, cfg: ResolvedConfig): DateRangeValue {
   return {
     start: makeOutput(range.start, cfg),
     end: makeOutput(range.end, cfg),

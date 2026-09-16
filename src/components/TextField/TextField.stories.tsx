@@ -75,7 +75,10 @@ export const Advanced: Story = {
     const [value, setValue] = useState("");
     const validationRules = [
       { rule: (val: string) => val.length >= 3, message: "حداقل ۳ کاراکتر وارد کنید" },
-      { rule: (val: string) => /^[a-zA-Z\u0600-\u06FF\s]+$/.test(val), message: "فقط حروف مجاز است" }
+      {
+        rule: (val: string) => /^[a-zA-Z\u0600-\u06FF\s]+$/.test(val),
+        message: "فقط حروف مجاز است",
+      },
     ];
 
     return (
@@ -127,9 +130,27 @@ export const Variants: Story = {
   },
   render: (args) => (
     <div style={{ display: "flex", flexDirection: "column", gap: "20px", width: "300px" }}>
-      <TextField {...args} label="Outlined" id="outlined" variant="outlined" placeholder="Outlined variant" />
-      <TextField {...args} label="Filled" id="filled" variant="filled" placeholder="Filled variant" />
-      <TextField {...args} label="Standard" id="standard" variant="standard" placeholder="Standard variant" />
+      <TextField
+        {...args}
+        label="Outlined"
+        id="outlined"
+        variant="outlined"
+        placeholder="Outlined variant"
+      />
+      <TextField
+        {...args}
+        label="Filled"
+        id="filled"
+        variant="filled"
+        placeholder="Filled variant"
+      />
+      <TextField
+        {...args}
+        label="Standard"
+        id="standard"
+        variant="standard"
+        placeholder="Standard variant"
+      />
     </div>
   ),
 };
@@ -146,11 +167,43 @@ export const Colors: Story = {
   },
   render: (args) => (
     <div style={{ display: "flex", flexDirection: "column", gap: "20px", width: "300px" }}>
-      <TextField {...args} label="Primary" id="primary" color="primary" placeholder="Primary color" />
-      <TextField {...args} label="Secondary" id="secondary" color="secondary" placeholder="Secondary color" />
-      <TextField {...args} label="Error" id="error" color="error" placeholder="Error color" errorMessage="این فیلد اجباری است" />
-      <TextField {...args} label="Warning" id="warning" color="warning" placeholder="Warning color" />
-      <TextField {...args} label="Success" id="success" color="success" placeholder="Success color" successMessage="موفقیت‌آمیز" />
+      <TextField
+        {...args}
+        label="Primary"
+        id="primary"
+        color="primary"
+        placeholder="Primary color"
+      />
+      <TextField
+        {...args}
+        label="Secondary"
+        id="secondary"
+        color="secondary"
+        placeholder="Secondary color"
+      />
+      <TextField
+        {...args}
+        label="Error"
+        id="error"
+        color="error"
+        placeholder="Error color"
+        errorMessage="این فیلد اجباری است"
+      />
+      <TextField
+        {...args}
+        label="Warning"
+        id="warning"
+        color="warning"
+        placeholder="Warning color"
+      />
+      <TextField
+        {...args}
+        label="Success"
+        id="success"
+        color="success"
+        placeholder="Success color"
+        successMessage="موفقیت‌آمیز"
+      />
     </div>
   ),
 };
@@ -175,7 +228,7 @@ export const WithValidation: Story = {
     const [value, setValue] = useState("");
     const validationRules = [
       { rule: (val: string) => val.length >= 5, message: "حداقل ۵ کاراکتر" },
-      { rule: (val: string) => /^[a-zA-Z0-9]+$/.test(val), message: "فقط حروف و اعداد" }
+      { rule: (val: string) => /^[a-zA-Z0-9]+$/.test(val), message: "فقط حروف و اعداد" },
     ];
 
     return (
@@ -205,7 +258,7 @@ export const WithFormatting: Story = {
   },
   render: (args) => {
     const [value, setValue] = useState("");
-    
+
     const formatter = (val: string) => {
       // Format as phone number
       const cleaned = val.replace(/\D/g, "");
@@ -243,9 +296,30 @@ export const States: Story = {
   render: (args) => (
     <div style={{ display: "flex", flexDirection: "column", gap: "20px", width: "300px" }}>
       <TextField {...args} label="عادی" id="normal" value="مقدار عادی" placeholder="حالت عادی" />
-      <TextField {...args} label="غیرفعال" id="disabled" value="مقدار غیرفعال" disabled placeholder="حالت غیرفعال" />
-      <TextField {...args} label="فقط خواندنی" id="readonly" value="مقدار فقط خواندنی" readOnly placeholder="حالت فقط خواندنی" />
-      <TextField {...args} label="اجباری" id="required" value="" required placeholder="فیلد اجباری" />
+      <TextField
+        {...args}
+        label="غیرفعال"
+        id="disabled"
+        value="مقدار غیرفعال"
+        disabled
+        placeholder="حالت غیرفعال"
+      />
+      <TextField
+        {...args}
+        label="فقط خواندنی"
+        id="readonly"
+        value="مقدار فقط خواندنی"
+        readOnly
+        placeholder="حالت فقط خواندنی"
+      />
+      <TextField
+        {...args}
+        label="اجباری"
+        id="required"
+        value=""
+        required
+        placeholder="فیلد اجباری"
+      />
     </div>
   ),
 };

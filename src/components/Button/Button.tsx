@@ -8,14 +8,7 @@ type ButtonPropsType = {
   label: string;
   type?: "submit" | "reset" | "button";
   colorType?:
-    | "base"
-    | "primary"
-    | "secondary"
-    | "warning"
-    | "danger"
-    | "link"
-    | "subtle"
-    | "subtleLink";
+    "base" | "primary" | "secondary" | "warning" | "danger" | "link" | "subtle" | "subtleLink";
   fistIconSrc?: string;
   lastIconSrc?: string;
   className?: string;
@@ -43,7 +36,9 @@ const Button: React.FC<ButtonPropsType> = ({
       disabled={disabled}
       type={type ? type : "button"}
       onClick={() => {
-        onClick ? onClick() : null;
+        if (onClick) {
+          onClick();
+        }
       }}
     >
       {loading ? (
@@ -54,17 +49,9 @@ const Button: React.FC<ButtonPropsType> = ({
             <img src={more} width={24} height={24} alt="more icon" />
           ) : (
             <>
-              {fistIconSrc && (
-                <img
-                  src={fistIconSrc}
-                  className="first-icon"
-                  alt="first icon"
-                />
-              )}
+              {fistIconSrc && <img src={fistIconSrc} className="first-icon" alt="first icon" />}
               {label}
-              {lastIconSrc && (
-                <img src={lastIconSrc} className="last-icon" alt="last icon" />
-              )}
+              {lastIconSrc && <img src={lastIconSrc} className="last-icon" alt="last icon" />}
             </>
           )}
         </>

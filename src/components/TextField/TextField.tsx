@@ -22,7 +22,7 @@ type TextFieldPropsType = {
   name?: string;
   value?: string | number;
   onChange: React.Dispatch<React.SetStateAction<string>>;
-  
+
   // Icon Props
   firstIconSrc?: string;
   lastIconSrc?: string;
@@ -30,17 +30,17 @@ type TextFieldPropsType = {
   endIcon?: React.ReactNode;
   iconPosition?: "start" | "end";
   iconClick?: () => void;
-  
+
   // Message Props
   guidMessage?: string;
   successMessage?: string;
   errorMessage?: string;
-  
+
   // State Props
   disabled?: boolean;
   readOnly?: boolean;
   required?: boolean;
-  
+
   // HTML Input Attributes
   maxLength?: number;
   minLength?: number;
@@ -48,7 +48,7 @@ type TextFieldPropsType = {
   autoComplete?: string;
   autoFocus?: boolean;
   tabIndex?: number;
-  
+
   // Event Handlers
   onKeyDown?: (e: React.KeyboardEvent<HTMLInputElement>) => void;
   onKeyUp?: (e: React.KeyboardEvent<HTMLInputElement>) => void;
@@ -56,26 +56,26 @@ type TextFieldPropsType = {
   onFocus?: (e: React.FocusEvent<HTMLInputElement>) => void;
   onBlur?: (e: React.FocusEvent<HTMLInputElement>) => void;
   onPaste?: (e: React.ClipboardEvent<HTMLInputElement>) => void;
-  
+
   // Validation Props
   validateOnChange?: boolean;
   validateOnBlur?: boolean;
   validationRules?: ValidationRule[];
   customValidator?: (value: string) => string | null;
-  
+
   // Styling Props
   size?: "sm" | "md" | "lg";
   variant?: "outlined" | "filled" | "standard";
   color?: "primary" | "secondary" | "error" | "warning" | "success";
   fullWidth?: boolean;
-  
+
   // Formatting Props
   formatter?: (value: string) => string;
   parser?: (value: string) => string;
   mask?: string;
   allowOnlyNumbers?: boolean;
   allowOnlyLetters?: boolean;
-  
+
   // Accessibility Props
   "aria-label"?: string;
   "aria-describedby"?: string;
@@ -93,7 +93,7 @@ const TextField: React.FC<TextFieldPropsType> = ({
   name,
   value,
   onChange,
-  
+
   // Icon Props
   firstIconSrc,
   lastIconSrc,
@@ -101,17 +101,17 @@ const TextField: React.FC<TextFieldPropsType> = ({
   endIcon,
   iconPosition = "end",
   iconClick,
-  
+
   // Message Props
   guidMessage,
   successMessage,
   errorMessage,
-  
+
   // State Props
   disabled,
   readOnly,
   required,
-  
+
   // HTML Input Attributes
   maxLength,
   minLength,
@@ -119,7 +119,7 @@ const TextField: React.FC<TextFieldPropsType> = ({
   autoComplete,
   autoFocus,
   tabIndex,
-  
+
   // Event Handlers
   onKeyDown,
   onKeyUp,
@@ -127,26 +127,25 @@ const TextField: React.FC<TextFieldPropsType> = ({
   onFocus,
   onBlur,
   onPaste,
-  
+
   // Validation Props
   validateOnChange = true,
   validateOnBlur = true,
   validationRules,
   customValidator,
-  
+
   // Styling Props
   size = "md",
   variant = "outlined",
   color = "primary",
   fullWidth = false,
-  
+
   // Formatting Props
   formatter,
   parser,
-  mask,
   allowOnlyNumbers,
   allowOnlyLetters,
-  
+
   // Accessibility Props
   "aria-label": ariaLabel,
   "aria-describedby": ariaDescribedby,
@@ -210,19 +209,19 @@ const TextField: React.FC<TextFieldPropsType> = ({
   // Handle input change
   const handleInputValue = (event: ChangeEvent<HTMLInputElement>) => {
     let inputValue = event.target.value;
-    
+
     // Apply formatting
     inputValue = formatValue(inputValue);
-    
+
     // Parse value
     const parsedValue = parseValue(inputValue);
-    
+
     // Update internal state
     setInternalValue(inputValue);
-    
+
     // Update parent component
     onChange(parsedValue);
-    
+
     // Validate if needed
     if (validateOnChange) {
       const error = validateInput(parsedValue);
@@ -239,13 +238,13 @@ const TextField: React.FC<TextFieldPropsType> = ({
   // Handle blur
   const handleBlur = (event: React.FocusEvent<HTMLInputElement>) => {
     setIsFocused(false);
-    
+
     // Validate on blur if needed
     if (validateOnBlur) {
       const error = validateInput(parseValue(internalValue));
       setValidationError(error);
     }
-    
+
     onBlur?.(event);
   };
 
@@ -283,7 +282,7 @@ const TextField: React.FC<TextFieldPropsType> = ({
 
   // Get current error message
   const currentErrorMessage = errorMessage || validationError;
-  
+
   // Get current success message
   const currentSuccessMessage = successMessage;
 
@@ -291,7 +290,7 @@ const TextField: React.FC<TextFieldPropsType> = ({
   const currentGuidMessage = guidMessage;
 
   return (
-    <div 
+    <div
       className={`textField-container ${fullWidth ? "textField-fullWidth" : ""} textField-${size} textField-${variant} textField-${color}`}
     >
       {label && (
@@ -306,16 +305,12 @@ const TextField: React.FC<TextFieldPropsType> = ({
       >
         {/* Start Icon */}
         {(firstIconSrc || (startIcon && iconPosition === "start")) && (
-          <div 
+          <div
             className="textField-icon textField-startIcon"
             onClick={iconClick ? handleIconClick : undefined}
             style={{ cursor: iconClick ? "pointer" : "default" }}
           >
-            {firstIconSrc ? (
-              <img src={firstIconSrc} alt="start icon for input" />
-            ) : (
-              startIcon
-            )}
+            {firstIconSrc ? <img src={firstIconSrc} alt="start icon for input" /> : startIcon}
           </div>
         )}
 
@@ -348,46 +343,30 @@ const TextField: React.FC<TextFieldPropsType> = ({
           onKeyPress={handleKeyPress}
           onPaste={handlePaste}
         />
-        
+
         {/* End Icon */}
         {(lastIconSrc || (endIcon && iconPosition === "end")) && (
-          <div 
+          <div
             className="textField-icon textField-endIcon"
             onClick={iconClick ? handleIconClick : undefined}
             style={{ cursor: iconClick ? "pointer" : "default" }}
           >
-            {lastIconSrc ? (
-              <img src={lastIconSrc} alt="end icon for input" />
-            ) : (
-              endIcon
-            )}
+            {lastIconSrc ? <img src={lastIconSrc} alt="end icon for input" /> : endIcon}
           </div>
         )}
       </div>
-      
+
       {/* Messages */}
       {(currentGuidMessage || currentSuccessMessage || currentErrorMessage) && (
         <div className="textField-message">
           {currentGuidMessage ? (
-            <img
-              className="textField-guidIcon"
-              src={Info}
-              alt="guidMessage icon"
-            />
+            <img className="textField-guidIcon" src={Info} alt="guidMessage icon" />
           ) : currentSuccessMessage ? (
-            <img
-              className="textField-successIcon"
-              src={Success}
-              alt="successMessage icon"
-            />
+            <img className="textField-successIcon" src={Success} alt="successMessage icon" />
           ) : currentErrorMessage ? (
-            <img
-              className="textField-errorIcon"
-              src={Error}
-              alt="errorMessage icon"
-            />
+            <img className="textField-errorIcon" src={Error} alt="errorMessage icon" />
           ) : null}
-          
+
           {currentGuidMessage ? (
             <p className="textField-guidMessage">{currentGuidMessage}</p>
           ) : currentSuccessMessage ? (

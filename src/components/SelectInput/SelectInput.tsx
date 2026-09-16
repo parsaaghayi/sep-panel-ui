@@ -50,14 +50,14 @@ const SelectInput: React.FC<SelectInputPropsType> = ({
       }
     }
   }
-  
+
   function setSelectedOptionValue(option: optionType) {
     onChange(option);
     setIsOpen(false);
     setSelectedOption(option);
     setHighlightedIndex(-1);
   }
-  
+
   function setSelectedOptionValueToNull() {
     onChange(null);
     setIsOpen(false);
@@ -166,10 +166,7 @@ const SelectInput: React.FC<SelectInputPropsType> = ({
   // Close menu when clicking outside
   useEffect(() => {
     function handleClickOutside(event: MouseEvent) {
-      if (
-        containerRef.current &&
-        !containerRef.current.contains(event.target as Node)
-      ) {
+      if (containerRef.current && !containerRef.current.contains(event.target as Node)) {
         setIsOpen(false);
         setHighlightedIndex(-1);
       }
@@ -232,17 +229,10 @@ const SelectInput: React.FC<SelectInputPropsType> = ({
         <span className="selectInput-input-dropdownIcon"></span>
       </div>
       {isOpen ? (
-        <div
-          ref={menuRef}
-          className="selectInput-menu"
-          id="selectInput-menu"
-          role="listbox"
-        >
+        <div ref={menuRef} className="selectInput-menu" id="selectInput-menu" role="listbox">
           <div
-            ref={(el) => (menuItemRefs.current[0] = el)}
-            className={`selectInput-menu-menuItem ${
-              highlightedIndex === 0 ? "highlighted" : ""
-            }`}
+            ref={(el) => { menuItemRefs.current[0] = el; }}
+            className={`selectInput-menu-menuItem ${highlightedIndex === 0 ? "highlighted" : ""}`}
             key={0}
             onClick={() => setSelectedOptionValueToNull()}
             onMouseEnter={() => setHighlightedIndex(0)}
@@ -256,7 +246,7 @@ const SelectInput: React.FC<SelectInputPropsType> = ({
             const isSelected = selectedOption?.value === menuItem.value;
             return (
               <div
-                ref={(el) => (menuItemRefs.current[itemIndex] = el)}
+                ref={(el) => { menuItemRefs.current[itemIndex] = el; }}
                 className={`selectInput-menu-menuItem ${
                   highlightedIndex === itemIndex ? "highlighted" : ""
                 } ${isSelected ? "selected" : ""}`}

@@ -13,7 +13,7 @@ export const test: Story = {
   args: {
     currentPage: 177,
     totalPage: 270,
-    setPageNumber: (pageNumber: number) => console.log("hello"),
-    direction: "rtl"
+    setPageNumber: () => console.log("hello"),
+    direction: "rtl",
   },
 };

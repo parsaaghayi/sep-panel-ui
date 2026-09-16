@@ -8,9 +8,9 @@ describe("Pagination", () => {
       <Pagination
         currentPage={1}
         totalPage={27}
-        setPageNumber={(pageNumber: number) => console.log("hello")}
+        setPageNumber={() => console.log("hello")}
         direction="rtl"
-      />
+      />,
     );
   });
 });

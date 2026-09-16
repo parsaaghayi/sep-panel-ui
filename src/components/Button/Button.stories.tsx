@@ -27,8 +27,7 @@ export const primary: Story = {
     type: "button",
     colorType: "primary",
     loading: false,
-    lastIconSrc:
-      "https://www.safirstores.com/assets/images/footer/product-authenticity.svg",
+    lastIconSrc: "https://www.safirstores.com/assets/images/footer/product-authenticity.svg",
   },
 };
 export const secondary: Story = {
@@ -37,8 +36,7 @@ export const secondary: Story = {
     type: "button",
     colorType: "secondary",
     loading: false,
-    lastIconSrc:
-      "https://www.safirstores.com/assets/images/footer/product-authenticity.svg",
+    lastIconSrc: "https://www.safirstores.com/assets/images/footer/product-authenticity.svg",
   },
 };
 export const warning: Story = {

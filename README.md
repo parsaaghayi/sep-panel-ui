@@ -24,15 +24,15 @@ A React component library built on the [Atlassian Design System](https://atlassi
 
 ## Contents
 
-| Section | Description |
-|---|---|
-| [Installation](#installation) | npm / yarn |
-| [Calendar Pickers](#calendar-pickers) | DatePicker, RangePicker, DayPicker, MonthPicker, YearPicker |
-| [Shared Calendar Props](#shared-calendar-props) | calendar, locale, format, output, monthLabel, etc. |
-| [Styling Props](#styling-props) | size, variant, color, icons, messages, disabled |
-| [Other Components](#other-components) | Button, TextField, Modal, Toggle, etc. |
-| [Development](#development) | scripts, local setup |
-| [License](#license) |
+| Section                                         | Description                                                 |
+| ----------------------------------------------- | ----------------------------------------------------------- |
+| [Installation](#installation)                   | npm / yarn                                                  |
+| [Calendar Pickers](#calendar-pickers)           | DatePicker, RangePicker, DayPicker, MonthPicker, YearPicker |
+| [Shared Calendar Props](#shared-calendar-props) | calendar, locale, format, output, monthLabel, etc.          |
+| [Styling Props](#styling-props)                 | size, variant, color, icons, messages, disabled             |
+| [Other Components](#other-components)           | Button, TextField, Modal, Toggle, etc.                      |
+| [Development](#development)                     | scripts, local setup                                        |
+| [License](#license)                             |
 
 ---
 
@@ -111,7 +111,7 @@ import { RangePicker } from "@parsaaghayi/sep-panel-ui";
   separator="تا"
   value={range}
   onChange={setRange}
-/>
+/>;
 ```
 
 ---
@@ -123,7 +123,7 @@ An inline (always-visible) calendar without a trigger input. Ideal for embedded 
 ```tsx
 import { DayPicker } from "@parsaaghayi/sep-panel-ui";
 
-<DayPicker calendar="jalali" locale="fa" direction="rtl" />
+<DayPicker calendar="jalali" locale="fa" direction="rtl" />;
 ```
 
 ---
@@ -139,9 +139,9 @@ import { MonthPicker } from "@parsaaghayi/sep-panel-ui";
   calendar="jalali"
   locale="fa"
   direction="rtl"
-  monthLabel="name"   // "شهریور" | "ماه ۶"
+  monthLabel="name" // "شهریور" | "ماه ۶"
   format="YYYY/MM"
-/>
+/>;
 ```
 
 ---
@@ -153,7 +153,7 @@ Opens to the year-selection view directly.
 ```tsx
 import { YearPicker } from "@parsaaghayi/sep-panel-ui";
 
-<YearPicker calendar="jalali" locale="fa" direction="rtl" format="YYYY" />
+<YearPicker calendar="jalali" locale="fa" direction="rtl" format="YYYY" />;
 ```
 
 ---
@@ -162,32 +162,32 @@ import { YearPicker } from "@parsaaghayi/sep-panel-ui";
 
 Every picker accepts these props to control calendar behaviour:
 
-| Prop | Type | Default | Description |
-|------|------|---------|-------------|
-| `calendar` | `"jalali" \| "gregorian"` | `"jalali"` | Calendar shown in the popup |
-| `locale` | `"fa" \| "en"` | `"fa"` | Digit rendering and month/weekday names |
-| `direction` | `"rtl" \| "ltr"` | `"rtl"` | Text direction of the widget |
-| `monthLabel` | `"name" \| "number"` | `"name"` | Show month name or number |
-| `format` | `string` | — | Display format for the trigger input (e.g. `"YYYY/MM/DD"`) |
-| `parseFormat` | `string` | `"YYYY/MM/DD"` | Format used to parse a string `value` |
-| `parseCalendar` | `"jalali" \| "gregorian"` | `calendar` | Calendar used to parse the string value |
-| `output` | `"date" \| "string"` | `"date"` | Type emitted by `onChange` |
-| `outputFormat` | `string` | `"YYYY/MM/DD"` | Format for string output |
-| `outputCalendar` | `"jalali" \| "gregorian"` | `calendar` | Calendar used for string output |
-| `minDate` | `Date` | — | Earliest selectable date |
-| `maxDate` | `Date` | — | Latest selectable date |
+| Prop             | Type                      | Default        | Description                                                |
+| ---------------- | ------------------------- | -------------- | ---------------------------------------------------------- |
+| `calendar`       | `"jalali" \| "gregorian"` | `"jalali"`     | Calendar shown in the popup                                |
+| `locale`         | `"fa" \| "en"`            | `"fa"`         | Digit rendering and month/weekday names                    |
+| `direction`      | `"rtl" \| "ltr"`          | `"rtl"`        | Text direction of the widget                               |
+| `monthLabel`     | `"name" \| "number"`      | `"name"`       | Show month name or number                                  |
+| `format`         | `string`                  | —              | Display format for the trigger input (e.g. `"YYYY/MM/DD"`) |
+| `parseFormat`    | `string`                  | `"YYYY/MM/DD"` | Format used to parse a string `value`                      |
+| `parseCalendar`  | `"jalali" \| "gregorian"` | `calendar`     | Calendar used to parse the string value                    |
+| `output`         | `"date" \| "string"`      | `"date"`       | Type emitted by `onChange`                                 |
+| `outputFormat`   | `string`                  | `"YYYY/MM/DD"` | Format for string output                                   |
+| `outputCalendar` | `"jalali" \| "gregorian"` | `calendar`     | Calendar used for string output                            |
+| `minDate`        | `Date`                    | —              | Earliest selectable date                                   |
+| `maxDate`        | `Date`                    | —              | Latest selectable date                                     |
 
 ### Format tokens
 
-| Token | Example | Description |
-|-------|---------|-------------|
-| `YYYY` | `1404` / `2025` | 4-digit year |
-| `YY` | `04` / `25` | 2-digit year |
+| Token  | Example               | Description                 |
+| ------ | --------------------- | --------------------------- |
+| `YYYY` | `1404` / `2025`       | 4-digit year                |
+| `YY`   | `04` / `25`           | 2-digit year                |
 | `MMMM` | `فروردین` / `January` | Full month name (localized) |
-| `MM` | `01` – `12` | 2-digit month number |
-| `M` | `1` – `12` | Month number |
-| `DD` | `01` – `31` | 2-digit day |
-| `D` | `1` – `31` | Day number |
+| `MM`   | `01` – `12`           | 2-digit month number        |
+| `M`    | `1` – `12`            | Month number                |
+| `DD`   | `01` – `31`           | 2-digit day                 |
+| `D`    | `1` – `31`            | Day number                  |
 
 ---
 
@@ -195,15 +195,15 @@ Every picker accepts these props to control calendar behaviour:
 
 All input-based pickers (`DatePicker`, `RangePicker`, `MonthPicker`, `YearPicker`) share these design-system props:
 
-| Prop | Type | Values | Default |
-|------|------|--------|---------|
-| `size` | `string` | `"sm" \| "md" \| "lg"` | `"md"` |
-| `variant` | `string` | `"outlined" \| "filled" \| "standard"` | `"outlined"` |
-| `color` | `string` | `"primary" \| "secondary" \| "error" \| "warning" \| "success"` | `"primary"` |
-| `disabled` | `boolean` | — | `false` |
-| `readOnly` | `boolean` | — | `false` |
-| `required` | `boolean` | — | `false` |
-| `fullWidth` | `boolean` | — | `false` |
+| Prop        | Type      | Values                                                          | Default      |
+| ----------- | --------- | --------------------------------------------------------------- | ------------ |
+| `size`      | `string`  | `"sm" \| "md" \| "lg"`                                          | `"md"`       |
+| `variant`   | `string`  | `"outlined" \| "filled" \| "standard"`                          | `"outlined"` |
+| `color`     | `string`  | `"primary" \| "secondary" \| "error" \| "warning" \| "success"` | `"primary"`  |
+| `disabled`  | `boolean` | —                                                               | `false`      |
+| `readOnly`  | `boolean` | —                                                               | `false`      |
+| `required`  | `boolean` | —                                                               | `false`      |
+| `fullWidth` | `boolean` | —                                                               | `false`      |
 
 **Icons:**
 
@@ -236,23 +236,23 @@ Or provide image URLs:
 
 The library also ships the following UI components (non-calendar):
 
-| Component | Description |
-|-----------|-------------|
-| `Button` | Multi-purpose button with `colorType`, `hasMore`, icon support |
-| `TextField` | Input with validation, formatting, icons, and message support |
-| `Checkbox` | Controlled checkbox with label and required indicator |
-| `Toggle` | On/off switch with disabled state |
-| `SelectInput` | Dropdown select with search and async loading |
-| `Modal` | Overlay dialog with `warning`/`danger` variants |
-| `Tabs` | Tab navigation |
-| `Breadcrumb` | Path breadcrumb |
-| `Pagination` | Page navigation with RTL support |
-| `RadioGroup` | Radio button group |
-| `Progressbar` | Progress bar |
-| `ProgressTracker` | Step-based tracker |
-| `DropDownMenu` | Animated dropdown container |
-| `PageHeader` | Page header with breadcrumb and action buttons |
-| `Avatar` | User avatar with fallback image |
+| Component         | Description                                                    |
+| ----------------- | -------------------------------------------------------------- |
+| `Button`          | Multi-purpose button with `colorType`, `hasMore`, icon support |
+| `TextField`       | Input with validation, formatting, icons, and message support  |
+| `Checkbox`        | Controlled checkbox with label and required indicator          |
+| `Toggle`          | On/off switch with disabled state                              |
+| `SelectInput`     | Dropdown select with search and async loading                  |
+| `Modal`           | Overlay dialog with `warning`/`danger` variants                |
+| `Tabs`            | Tab navigation                                                 |
+| `Breadcrumb`      | Path breadcrumb                                                |
+| `Pagination`      | Page navigation with RTL support                               |
+| `RadioGroup`      | Radio button group                                             |
+| `Progressbar`     | Progress bar                                                   |
+| `ProgressTracker` | Step-based tracker                                             |
+| `DropDownMenu`    | Animated dropdown container                                    |
+| `PageHeader`      | Page header with breadcrumb and action buttons                 |
+| `Avatar`          | User avatar with fallback image                                |
 
 See the **Storybook** (`npm run storybook`) for interactive examples of every component.
 

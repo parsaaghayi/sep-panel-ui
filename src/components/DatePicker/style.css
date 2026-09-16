@@ -212,22 +212,22 @@
 .datePicker-container .datePicker-guidIcon {
   width: 16px;
   height: 16px;
-  filter: brightness(0) saturate(100%) invert(52%) sepia(8%) saturate(773%)
-    hue-rotate(177deg) brightness(99%) contrast(94%);
+  filter: brightness(0) saturate(100%) invert(52%) sepia(8%) saturate(773%) hue-rotate(177deg)
+    brightness(99%) contrast(94%);
 }
 
 .datePicker-container .datePicker-successIcon {
   width: 16px;
   height: 16px;
-  filter: brightness(0) saturate(100%) invert(37%) sepia(52%) saturate(887%)
-    hue-rotate(113deg) brightness(94%) contrast(100%);
+  filter: brightness(0) saturate(100%) invert(37%) sepia(52%) saturate(887%) hue-rotate(113deg)
+    brightness(94%) contrast(100%);
 }
 
 .datePicker-container .datePicker-errorIcon {
   width: 16px;
   height: 16px;
-  filter: brightness(0) saturate(100%) invert(21%) sepia(90%) saturate(3998%)
-    hue-rotate(9deg) brightness(96%) contrast(91%);
+  filter: brightness(0) saturate(100%) invert(21%) sepia(90%) saturate(3998%) hue-rotate(9deg)
+    brightness(96%) contrast(91%);
 }
 
 /* Hover and Focus states */
@@ -253,8 +253,8 @@
 }
 
 .datePicker-container .datePicker-input.disabled img {
-  filter: brightness(0) saturate(100%) invert(73%) sepia(12%) saturate(263%)
-    hue-rotate(176deg) brightness(92%) contrast(92%);
+  filter: brightness(0) saturate(100%) invert(73%) sepia(12%) saturate(263%) hue-rotate(176deg)
+    brightness(92%) contrast(92%);
 }
 
 .datePicker-container .datePicker-input.disabled .datePicker-icon {
@@ -572,4 +572,3 @@
   color: var(--Red-R400, #de350b);
   border-color: var(--Red-R400, #de350b);
 }
-

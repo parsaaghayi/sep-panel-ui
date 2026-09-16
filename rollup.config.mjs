@@ -16,12 +16,14 @@ export default [
     input: "src/index.ts",
     output: [
       {
-        file: packageJson.main,
+        dir: "dist",
+        entryFileNames: "cjs/[name].js",
         format: "cjs",
         sourcemap: true,
       },
       {
-        file: packageJson.module,
+        dir: "dist",
+        entryFileNames: "esm/[name].js",
         format: "esm",
         sourcemap: true,
       },
@@ -47,7 +49,7 @@ export default [
     ],
   },
   {
-    input: "dist/esm/types/index.d.ts",
+    input: "dist/types/index.d.ts",
     output: [{ file: "dist/index.d.ts", format: "esm" }],
     plugins: [dts()],
     external: [/\.css$/, "react", "react-dom"],

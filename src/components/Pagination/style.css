@@ -65,13 +65,13 @@
 }
 .paginationParent .prev img,
 .paginationParent .next img {
-  filter: brightness(0) saturate(100%) invert(30%) sepia(22%) saturate(662%)
-    hue-rotate(180deg) brightness(97%) contrast(96%);
+  filter: brightness(0) saturate(100%) invert(30%) sepia(22%) saturate(662%) hue-rotate(180deg)
+    brightness(97%) contrast(96%);
 }
 .paginationParent .prev.disable img,
 .paginationParent .next.disable img {
-  filter: brightness(0) saturate(100%) invert(69%) sepia(10%) saturate(292%)
-    hue-rotate(171deg) brightness(98%) contrast(93%);
+  filter: brightness(0) saturate(100%) invert(69%) sepia(10%) saturate(292%) hue-rotate(171deg)
+    brightness(98%) contrast(93%);
 }
 .paginationParent .prev.disable,
 .paginationParent .next.disable {

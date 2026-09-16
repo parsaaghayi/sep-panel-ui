@@ -1,17 +1,17 @@
-import type { Meta, StoryObj } from '@storybook/react';
-import React, { useState } from 'react';
-import DayPicker from './DayPicker';
+import type { Meta, StoryObj } from "@storybook/react";
+import React, { useState } from "react";
+import DayPicker from "./DayPicker";
 
 const meta: Meta<typeof DayPicker> = {
-  title: 'Components/DayPicker',
+  title: "Components/DayPicker",
   component: DayPicker,
-  parameters: { layout: 'centered' },
-  tags: ['autodocs'],
+  parameters: { layout: "centered" },
+  tags: ["autodocs"],
   argTypes: {
-    calendar:   { control: { type: 'select' }, options: ['jalali', 'gregorian'] },
-    locale:     { control: { type: 'select' }, options: ['fa', 'en'] },
-    direction:  { control: { type: 'select' }, options: ['rtl', 'ltr'] },
-    monthLabel: { control: { type: 'select' }, options: ['name', 'number'] },
+    calendar: { control: { type: "select" }, options: ["jalali", "gregorian"] },
+    locale: { control: { type: "select" }, options: ["fa", "en"] },
+    direction: { control: { type: "select" }, options: ["rtl", "ltr"] },
+    monthLabel: { control: { type: "select" }, options: ["name", "number"] },
   },
 };
 export default meta;
@@ -20,18 +20,18 @@ type Story = StoryObj<typeof meta>;
 /* ─── Jalali inline ──────────────────────────────────────────────────── */
 export const JalaliInline: Story = {
   args: {
-    id: 'jalali-day',
-    label: 'تاریخ شمسی',
-    calendar: 'jalali',
-    locale: 'fa',
-    direction: 'rtl',
+    id: "jalali-day",
+    label: "تاریخ شمسی",
+    calendar: "jalali",
+    locale: "fa",
+    direction: "rtl",
   },
   render: (args) => {
     const [value, setValue] = useState<Date | null>(null);
     return (
       <div>
         <DayPicker {...args} value={value} onChange={setValue} />
-        {value && <p style={{ marginTop: 8, fontSize: 13 }}>{value.toLocaleDateString('fa-IR')}</p>}
+        {value && <p style={{ marginTop: 8, fontSize: 13 }}>{value.toLocaleDateString("fa-IR")}</p>}
       </div>
     );
   },
@@ -40,18 +40,18 @@ export const JalaliInline: Story = {
 /* ─── Gregorian inline ──────────────────────────────────────────────── */
 export const GregorianInline: Story = {
   args: {
-    id: 'gregorian-day',
-    label: 'Pick a date',
-    calendar: 'gregorian',
-    locale: 'en',
-    direction: 'ltr',
+    id: "gregorian-day",
+    label: "Pick a date",
+    calendar: "gregorian",
+    locale: "en",
+    direction: "ltr",
   },
   render: (args) => {
     const [value, setValue] = useState<Date | null>(null);
     return (
       <div>
         <DayPicker {...args} value={value} onChange={setValue} />
-        {value && <p style={{ marginTop: 8, fontSize: 13 }}>{value.toLocaleDateString('en-US')}</p>}
+        {value && <p style={{ marginTop: 8, fontSize: 13 }}>{value.toLocaleDateString("en-US")}</p>}
       </div>
     );
   },
@@ -63,7 +63,7 @@ export const MonthLabelComparison: Story = {
     const [v1, setV1] = useState<Date | null>(null);
     const [v2, setV2] = useState<Date | null>(null);
     return (
-      <div style={{ display: 'flex', gap: 24 }}>
+      <div style={{ display: "flex", gap: 24 }}>
         <div>
           <p style={{ fontSize: 13, marginBottom: 4 }}>monthLabel = "name" (شهریور)</p>
           <DayPicker
@@ -112,7 +112,7 @@ export const ShamsiToMiladiOutput: Story = {
           value={value}
           onChange={(v) => setValue(v)}
         />
-        {value && <pre style={{ marginTop: 8, fontSize: 12, direction: 'ltr' }}>{value}</pre>}
+        {value && <pre style={{ marginTop: 8, fontSize: 12, direction: "ltr" }}>{value}</pre>}
       </div>
     );
   },

@@ -1,4 +1,4 @@
-import React, { useEffect, useState } from "react";
+import React, { useEffect } from "react";
 import "./style.css";
 import warning from "./../../images/warning.svg";
 import error from "./../../images/error.svg";
@@ -28,9 +28,7 @@ const Modal: React.FC<ModalPropsType> = ({
   children,
   submitButtonLabel,
   cancelButtonLabel,
-  onClickOutClose = cancelButtonLabel === undefined || cancelButtonLabel === ""
-    ? true
-    : false,
+  onClickOutClose = cancelButtonLabel === undefined || cancelButtonLabel === "" ? true : false,
   onSubmit,
 }) => {
   useEffect(() => {
@@ -90,11 +88,7 @@ const Modal: React.FC<ModalPropsType> = ({
                       <Button
                         label={submitButtonLabel}
                         colorType={
-                          type === "danger"
-                            ? "danger"
-                            : type === "warning"
-                              ? "warning"
-                              : "primary"
+                          type === "danger" ? "danger" : type === "warning" ? "warning" : "primary"
                         }
                         onClick={() => onSubmit()}
                       />

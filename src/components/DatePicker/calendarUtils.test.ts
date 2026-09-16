@@ -19,9 +19,7 @@ describe("calendarUtils — shamsi/miladi conversion", () => {
   test("2020-11-10 (Gregorian) is 1399/08/20 (Jalali)", () => {
     const j = toCalendarDate(new Date(2020, 10, 10), "jalali");
     expect(j).toEqual({ year: 1399, month: 8, day: 20 });
-    expect(fromCalendarDate(1399, 8, 20, "jalali")).toEqual(
-      new Date(2020, 10, 10)
-    );
+    expect(fromCalendarDate(1399, 8, 20, "jalali")).toEqual(new Date(2020, 10, 10));
   });
 
   test("Nowruz anchors (سال تحویل)", () => {
@@ -55,9 +53,7 @@ describe("calendarUtils — shamsi/miladi conversion", () => {
       for (let month = 0; month < 12; month += 1) {
         const d = new Date(year, month, 15);
         const j = toCalendarDate(d, "jalali");
-        expect(fromCalendarDate(j.year, j.month, j.day, "jalali")).toEqual(
-          startOfDay(d)
-        );
+        expect(fromCalendarDate(j.year, j.month, j.day, "jalali")).toEqual(startOfDay(d));
       }
     }
   });
@@ -68,9 +64,7 @@ describe("calendarUtils — shamsi/miladi conversion", () => {
       month: 2,
       day: 29,
     });
-    expect(fromCalendarDate(2024, 2, 29, "gregorian")).toEqual(
-      new Date(2024, 1, 29)
-    );
+    expect(fromCalendarDate(2024, 2, 29, "gregorian")).toEqual(new Date(2024, 1, 29));
     expect(getDaysInMonth(2024, 2, "gregorian")).toBe(29);
     expect(getDaysInMonth(2023, 2, "gregorian")).toBe(28);
   });
@@ -120,28 +114,22 @@ describe("calendarUtils — formatting", () => {
   const d = new Date(2026, 5, 15); // 2026-06-15
 
   test("gregorian + fa with Persian month name (ژوئن)", () => {
-    expect(formatDate(d, "gregorian", "fa", "YYYY/MMMM/DD")).toBe(
-      "۲۰۲۶/ژوئن/۱۵"
-    );
+    expect(formatDate(d, "gregorian", "fa", "YYYY/MMMM/DD")).toBe("۲۰۲۶/ژوئن/۱۵");
     expect(formatDate(d, "gregorian", "fa", "YYYY/MM/DD")).toBe("۲۰۲۶/۰۶/۱۵");
   });
 
   test("gregorian + en", () => {
-    expect(formatDate(d, "gregorian", "en", "YYYY/MMMM/DD")).toBe(
-      "2026/June/15"
-    );
+    expect(formatDate(d, "gregorian", "en", "YYYY/MMMM/DD")).toBe("2026/June/15");
   });
 
   test("jalali + fa", () => {
-    expect(formatDate(new Date(2024, 0, 15), "jalali", "fa")).toBe(
-      "۱۴۰۲/۱۰/۲۵"
-    );
+    expect(formatDate(new Date(2024, 0, 15), "jalali", "fa")).toBe("۱۴۰۲/۱۰/۲۵");
   });
 
   test("month number label in format", () => {
-    expect(
-      formatDate(new Date(2024, 4, 1), "jalali", "fa", "YYYY/MMMM", "number")
-    ).toBe("۱۴۰۳/ماه ۲");
+    expect(formatDate(new Date(2024, 4, 1), "jalali", "fa", "YYYY/MMMM", "number")).toBe(
+      "۱۴۰۳/ماه ۲",
+    );
   });
 
   test("null date formats to empty string", () => {
@@ -151,33 +139,33 @@ describe("calendarUtils — formatting", () => {
 
 describe("calendarUtils — parsing", () => {
   test("parses jalali string values", () => {
-    expect(
-      parseDateString("1402/10/25", "jalali", "fa", "YYYY/MM/DD")
-    ).toEqual(new Date(2024, 0, 15));
-    expect(
-      parseDateString("۱۴۰۲/۱۰/۲۵", "jalali", "fa", "YYYY/MM/DD")
-    ).toEqual(new Date(2024, 0, 15));
-    expect(
-      parseDateString("1399/8/20", "jalali", "en", "YYYY/M/D")
-    ).toEqual(new Date(2020, 10, 10));
+    expect(parseDateString("1402/10/25", "jalali", "fa", "YYYY/MM/DD")).toEqual(
+      new Date(2024, 0, 15),
+    );
+    expect(parseDateString("۱۴۰۲/۱۰/۲۵", "jalali", "fa", "YYYY/MM/DD")).toEqual(
+      new Date(2024, 0, 15),
+    );
+    expect(parseDateString("1399/8/20", "jalali", "en", "YYYY/M/D")).toEqual(
+      new Date(2020, 10, 10),
+    );
   });
 
   test("parses julian month names in strings", () => {
-    expect(
-      parseDateString("1402/دی/25", "jalali", "fa", "YYYY/MMMM/DD")
-    ).toEqual(new Date(2024, 0, 15));
-    expect(
-      parseDateString("1402/10/25", "jalali", "fa", "YYYY/MMMM/DD")
-    ).toEqual(new Date(2024, 0, 15));
+    expect(parseDateString("1402/دی/25", "jalali", "fa", "YYYY/MMMM/DD")).toEqual(
+      new Date(2024, 0, 15),
+    );
+    expect(parseDateString("1402/10/25", "jalali", "fa", "YYYY/MMMM/DD")).toEqual(
+      new Date(2024, 0, 15),
+    );
   });
 
   test("parses gregorian month names (ژوئن / June)", () => {
-    expect(
-      parseDateString("2026/ژوئن/15", "gregorian", "fa", "YYYY/MMMM/DD")
-    ).toEqual(new Date(2026, 5, 15));
-    expect(
-      parseDateString("2026/June/15", "gregorian", "en", "YYYY/MMMM/DD")
-    ).toEqual(new Date(2026, 5, 15));
+    expect(parseDateString("2026/ژوئن/15", "gregorian", "fa", "YYYY/MMMM/DD")).toEqual(
+      new Date(2026, 5, 15),
+    );
+    expect(parseDateString("2026/June/15", "gregorian", "en", "YYYY/MMMM/DD")).toEqual(
+      new Date(2026, 5, 15),
+    );
   });
 
   test("rejects invalid dates", () => {

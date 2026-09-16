@@ -40,11 +40,7 @@ const DropDownMenu: React.FC<DropDownMenuPropsType> = ({
         }}
       >
         <p className="DropDownMenu-label">{label}</p>
-        <img
-          className="DropDownMenu-arrow"
-          src={arrowBottom}
-          alt="arrow bottom"
-        />
+        <img className="DropDownMenu-arrow" src={arrowBottom} alt="arrow bottom" />
       </div>
       {isOpen ? (
         <div

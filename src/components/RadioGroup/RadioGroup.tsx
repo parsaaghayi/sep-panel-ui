@@ -61,9 +61,7 @@ const RadioGroup: React.FC<RadioGroupPropsType> = ({
               setSelectedOption(option.value);
             }}
           />
-          <span
-            className={`radioGroup-circle ${option.disabled ? "disabled" : ""}`}
-          ></span>
+          <span className={`radioGroup-circle ${option.disabled ? "disabled" : ""}`}></span>
           <label
             htmlFor={option.id}
             className={`radioGroup-label ${option.disabled ? "disabled" : ""}`}

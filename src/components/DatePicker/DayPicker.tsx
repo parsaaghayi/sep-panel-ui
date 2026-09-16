@@ -1,14 +1,10 @@
 import * as React from "react";
 import CalendarCore from "./CalendarCore";
 import { DayPickerProps, PickerOutputValue } from "./types";
-import {
-  makeOutput,
-  resolveConfig,
-  resolveValue,
-} from "./valueUtils";
+import { makeOutput, resolveConfig, resolveValue } from "./valueUtils";
 
 function DayPicker<O extends "date" | "string" = "date">(
-  props: DayPickerProps<O>
+  props: DayPickerProps<O>,
 ): React.ReactElement {
   const {
     id,
@@ -66,9 +62,7 @@ function DayPicker<O extends "date" | "string" = "date">(
         minDate={minDate}
         maxDate={maxDate}
         inline
-        onSelectDate={(date) =>
-          onChange?.(makeOutput(date, cfg) as PickerOutputValue<O>)
-        }
+        onSelectDate={(date) => onChange?.(makeOutput(date, cfg) as PickerOutputValue<O>)}
       />
     </div>
   );

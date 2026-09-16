@@ -10,11 +10,7 @@ type ToggleProps = {
   onChange: () => void;
 };
 
-const Toggle: React.FC<ToggleProps> = ({
-  status,
-  disabled = false,
-  onChange,
-}) => {
+const Toggle: React.FC<ToggleProps> = ({ status, disabled = false, onChange }) => {
   function handleClick() {
     if (!disabled) {
       onChange();
@@ -27,11 +23,7 @@ const Toggle: React.FC<ToggleProps> = ({
         className={`toggle-body ${status ? "active" : "not-active"} ${disabled ? "disable" : ""}`}
         onClick={handleClick}
       >
-        {status ? (
-          <img src={check} alt="check icon" />
-        ) : (
-          <img src={cross} alt="cross icon" />
-        )}
+        {status ? <img src={check} alt="check icon" /> : <img src={cross} alt="cross icon" />}
         <img src={dot} alt="dot icon" />
       </div>
     </div>

@@ -72,9 +72,7 @@ const Pagination: React.FC<PaginationPropsType> = ({
                   <div
                     key="page-2-of-2"
                     onClick={() => setPageNumberFunc(2)}
-                    className={`paginationNumber ${
-                      currentPage === 2 ? "currentPage" : ""
-                    }`}
+                    className={`paginationNumber ${currentPage === 2 ? "currentPage" : ""}`}
                   >
                     2
                   </div>
@@ -84,27 +82,21 @@ const Pagination: React.FC<PaginationPropsType> = ({
                   <div
                     key="page-1-of-3"
                     onClick={() => setPageNumberFunc(1)}
-                    className={`paginationNumber ${
-                      currentPage === 1 ? "currentPage" : ""
-                    }`}
+                    className={`paginationNumber ${currentPage === 1 ? "currentPage" : ""}`}
                   >
                     1
                   </div>
                   <div
                     key="page-2-of-3"
                     onClick={() => setPageNumberFunc(2)}
-                    className={`paginationNumber ${
-                      currentPage === 2 ? "currentPage" : ""
-                    }`}
+                    className={`paginationNumber ${currentPage === 2 ? "currentPage" : ""}`}
                   >
                     2
                   </div>
                   <div
                     key="page-3-of-3"
                     onClick={() => setPageNumberFunc(3)}
-                    className={`paginationNumber ${
-                      currentPage === 3 ? "currentPage" : ""
-                    }`}
+                    className={`paginationNumber ${currentPage === 3 ? "currentPage" : ""}`}
                   >
                     3
                   </div>
@@ -114,36 +106,28 @@ const Pagination: React.FC<PaginationPropsType> = ({
                   <div
                     key="page-1-of-4"
                     onClick={() => setPageNumberFunc(1)}
-                    className={`paginationNumber ${
-                      currentPage === 1 ? "currentPage" : ""
-                    }`}
+                    className={`paginationNumber ${currentPage === 1 ? "currentPage" : ""}`}
                   >
                     1
                   </div>
                   <div
                     key="page-2-of-4"
                     onClick={() => setPageNumberFunc(2)}
-                    className={`paginationNumber ${
-                      currentPage === 2 ? "currentPage" : ""
-                    }`}
+                    className={`paginationNumber ${currentPage === 2 ? "currentPage" : ""}`}
                   >
                     2
                   </div>
                   <div
                     key="page-3-of-4"
                     onClick={() => setPageNumberFunc(3)}
-                    className={`paginationNumber ${
-                      currentPage === 3 ? "currentPage" : ""
-                    }`}
+                    className={`paginationNumber ${currentPage === 3 ? "currentPage" : ""}`}
                   >
                     3
                   </div>
                   <div
                     key="page-4-of-4"
                     onClick={() => setPageNumberFunc(4)}
-                    className={`paginationNumber ${
-                      currentPage === 4 ? "currentPage" : ""
-                    }`}
+                    className={`paginationNumber ${currentPage === 4 ? "currentPage" : ""}`}
                   >
                     4
                   </div>
@@ -153,45 +137,35 @@ const Pagination: React.FC<PaginationPropsType> = ({
                   <div
                     key="page-1-of-5"
                     onClick={() => setPageNumberFunc(1)}
-                    className={`paginationNumber ${
-                      currentPage === 1 ? "currentPage" : ""
-                    }`}
+                    className={`paginationNumber ${currentPage === 1 ? "currentPage" : ""}`}
                   >
                     1
                   </div>
                   <div
                     key="page-2-of-5"
                     onClick={() => setPageNumberFunc(2)}
-                    className={`paginationNumber ${
-                      currentPage === 2 ? "currentPage" : ""
-                    }`}
+                    className={`paginationNumber ${currentPage === 2 ? "currentPage" : ""}`}
                   >
                     2
                   </div>
                   <div
                     key="page-3-of-5"
                     onClick={() => setPageNumberFunc(3)}
-                    className={`paginationNumber ${
-                      currentPage === 3 ? "currentPage" : ""
-                    }`}
+                    className={`paginationNumber ${currentPage === 3 ? "currentPage" : ""}`}
                   >
                     3
                   </div>
                   <div
                     key="page-4-of-5"
                     onClick={() => setPageNumberFunc(4)}
-                    className={`paginationNumber ${
-                      currentPage === 4 ? "currentPage" : ""
-                    }`}
+                    className={`paginationNumber ${currentPage === 4 ? "currentPage" : ""}`}
                   >
                     4
                   </div>
                   <div
                     key="page-5-of-5"
                     onClick={() => setPageNumberFunc(5)}
-                    className={`paginationNumber ${
-                      currentPage === 5 ? "currentPage" : ""
-                    }`}
+                    className={`paginationNumber ${currentPage === 5 ? "currentPage" : ""}`}
                   >
                     5
                   </div>
@@ -201,54 +175,42 @@ const Pagination: React.FC<PaginationPropsType> = ({
                   <div
                     key="page-1-of-6"
                     onClick={() => setPageNumberFunc(1)}
-                    className={`paginationNumber ${
-                      currentPage === 1 ? "currentPage" : ""
-                    }`}
+                    className={`paginationNumber ${currentPage === 1 ? "currentPage" : ""}`}
                   >
                     1
                   </div>
                   <div
                     key="page-2-of-6"
                     onClick={() => setPageNumberFunc(2)}
-                    className={`paginationNumber ${
-                      currentPage === 2 ? "currentPage" : ""
-                    }`}
+                    className={`paginationNumber ${currentPage === 2 ? "currentPage" : ""}`}
                   >
                     2
                   </div>
                   <div
                     key="page-3-of-6"
                     onClick={() => setPageNumberFunc(3)}
-                    className={`paginationNumber ${
-                      currentPage === 3 ? "currentPage" : ""
-                    }`}
+                    className={`paginationNumber ${currentPage === 3 ? "currentPage" : ""}`}
                   >
                     3
                   </div>
                   <div
                     key="page-4-of-6"
                     onClick={() => setPageNumberFunc(4)}
-                    className={`paginationNumber ${
-                      currentPage === 4 ? "currentPage" : ""
-                    }`}
+                    className={`paginationNumber ${currentPage === 4 ? "currentPage" : ""}`}
                   >
                     4
                   </div>
                   <div
                     key="page-5-of-6"
                     onClick={() => setPageNumberFunc(5)}
-                    className={`paginationNumber ${
-                      currentPage === 5 ? "currentPage" : ""
-                    }`}
+                    className={`paginationNumber ${currentPage === 5 ? "currentPage" : ""}`}
                   >
                     5
                   </div>
                   <div
                     key="page-6-of-6"
                     onClick={() => setPageNumberFunc(6)}
-                    className={`paginationNumber ${
-                      currentPage === 6 ? "currentPage" : ""
-                    }`}
+                    className={`paginationNumber ${currentPage === 6 ? "currentPage" : ""}`}
                   >
                     6
                   </div>
@@ -276,10 +238,7 @@ const Pagination: React.FC<PaginationPropsType> = ({
                   >
                     3
                   </div>
-                  <div
-                    key={`ellipsis-1-${totalPage}`}
-                    className={`paginationNumber betweenPages`}
-                  >
+                  <div key={`ellipsis-1-${totalPage}`} className={`paginationNumber betweenPages`}>
                     ...
                   </div>
                   <div
@@ -327,10 +286,7 @@ const Pagination: React.FC<PaginationPropsType> = ({
                   >
                     4
                   </div>
-                  <div
-                    key={`ellipsis-2-${totalPage}`}
-                    className="paginationNumber betweenPages"
-                  >
+                  <div key={`ellipsis-2-${totalPage}`} className="paginationNumber betweenPages">
                     ...
                   </div>
                   <div
@@ -378,10 +334,7 @@ const Pagination: React.FC<PaginationPropsType> = ({
                   >
                     4
                   </div>
-                  <div
-                    key={`ellipsis-3-${totalPage}`}
-                    className="paginationNumber betweenPages"
-                  >
+                  <div key={`ellipsis-3-${totalPage}`} className="paginationNumber betweenPages">
                     ...
                   </div>
                   <div
@@ -422,10 +375,7 @@ const Pagination: React.FC<PaginationPropsType> = ({
                   >
                     3
                   </div>
-                  <div
-                    key={`ellipsis-${totalPage}-2`}
-                    className="paginationNumber betweenPages"
-                  >
+                  <div key={`ellipsis-${totalPage}-2`} className="paginationNumber betweenPages">
                     ...
                   </div>
                   <div
@@ -480,10 +430,7 @@ const Pagination: React.FC<PaginationPropsType> = ({
                   >
                     3
                   </div>
-                  <div
-                    key={`ellipsis-${totalPage}-1`}
-                    className="paginationNumber betweenPages"
-                  >
+                  <div key={`ellipsis-${totalPage}-1`} className="paginationNumber betweenPages">
                     ...
                   </div>
                   <div
@@ -531,10 +478,7 @@ const Pagination: React.FC<PaginationPropsType> = ({
                   >
                     3
                   </div>
-                  <div
-                    key={`ellipsis-last-${totalPage}`}
-                    className="paginationNumber betweenPages"
-                  >
+                  <div key={`ellipsis-last-${totalPage}`} className="paginationNumber betweenPages">
                     ...
                   </div>
                   <div
@@ -660,8 +604,7 @@ const Pagination: React.FC<PaginationPropsType> = ({
               type="button"
               className="paginationGotoButton"
               onClick={(e) => {
-                const input = e.currentTarget
-                  .previousElementSibling as HTMLInputElement;
+                const input = e.currentTarget.previousElementSibling as HTMLInputElement;
                 const val = Number(input.value);
                 if (val > 0 && val <= totalPage) setPageNumberFunc(val);
               }}

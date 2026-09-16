@@ -1,9 +1,4 @@
-import {
-  CalendarSystem,
-  Locale,
-  MonthLabelStyle,
-  ComponentDate,
-} from "./types";
+import { CalendarSystem, Locale, MonthLabelStyle, ComponentDate } from "./types";
 
 /* ------------------------------------------------------------------ */
 /* Constants & month/weekday names                                     */
@@ -69,34 +64,15 @@ const GREGORIAN_MONTHS_EN = [
   "December",
 ];
 
-const WEEKDAYS_FA = [
-  "یکشنبه",
-  "دوشنبه",
-  "سه‌شنبه",
-  "چهارشنبه",
-  "پنج‌شنبه",
-  "جمعه",
-  "شنبه",
-];
+const WEEKDAYS_FA = ["یکشنبه", "دوشنبه", "سه‌شنبه", "چهارشنبه", "پنج‌شنبه", "جمعه", "شنبه"];
 
 const WEEKDAYS_SHORT_FA = ["ی", "د", "س", "چ", "پ", "ج", "ش"];
 
-const WEEKDAYS_EN = [
-  "Sunday",
-  "Monday",
-  "Tuesday",
-  "Wednesday",
-  "Thursday",
-  "Friday",
-  "Saturday",
-];
+const WEEKDAYS_EN = ["Sunday", "Monday", "Tuesday", "Wednesday", "Thursday", "Friday", "Saturday"];
 
 const WEEKDAYS_SHORT_EN = ["Sun", "Mon", "Tue", "Wed", "Thu", "Fri", "Sat"];
 
-export const MONTH_NAMES: Record<
-  CalendarSystem,
-  Record<Locale, string[]>
-> = {
+export const MONTH_NAMES: Record<CalendarSystem, Record<Locale, string[]>> = {
   jalali: { fa: JALALI_MONTHS_FA, en: JALALI_MONTHS_EN },
   gregorian: { fa: GREGORIAN_MONTHS_FA, en: GREGORIAN_MONTHS_EN },
 };
@@ -112,15 +88,10 @@ export function toFaDigits(value: string | number): string {
 }
 
 export function toEnDigits(value: string | number): string {
-  return String(value).replace(/[۰-۹]/g, (d) =>
-    String(PERSIAN_DIGITS.indexOf(d))
-  );
+  return String(value).replace(/[۰-۹]/g, (d) => String(PERSIAN_DIGITS.indexOf(d)));
 }
 
-export function localizeDigits(
-  value: string | number,
-  locale: Locale
-): string {
+export function localizeDigits(value: string | number, locale: Locale): string {
   return locale === "fa" ? toFaDigits(value) : toEnDigits(value);
 }
 
@@ -128,10 +99,7 @@ export function localizeDigits(
 /* Locale helpers                                                      */
 /* ------------------------------------------------------------------ */
 
-export function getMonthNames(
-  calendar: CalendarSystem,
-  locale: Locale
-): string[] {
+export function getMonthNames(calendar: CalendarSystem, locale: Locale): string[] {
   return MONTH_NAMES[calendar][locale];
 }
 
@@ -139,7 +107,7 @@ export function getMonthLabel(
   calendar: CalendarSystem,
   locale: Locale,
   month: number,
-  monthLabel: MonthLabelStyle = "name"
+  monthLabel: MonthLabelStyle = "name",
 ): string {
   if (monthLabel === "number") {
     const number = localizeDigits(month, locale);
@@ -179,8 +147,8 @@ function mod(a: number, b: number): number {
 }
 
 const BREAKS = [
-  -61, 9, 38, 199, 426, 686, 756, 818, 1111, 1181, 1210, 1635, 2060, 2097,
-  2192, 2262, 2324, 2394, 2456, 3178,
+  -61, 9, 38, 199, 426, 686, 756, 818, 1111, 1181, 1210, 1635, 2060, 2097, 2192, 2262, 2324, 2394,
+  2456, 3178,
 ];
 
 function jalCal(jy: number): { leap: number; gy: number; march: number } {
@@ -286,11 +254,7 @@ export function isLeapYear(year: number, calendar: CalendarSystem): boolean {
   return jalCal(year).leap === 0;
 }
 
-export function getDaysInMonth(
-  year: number,
-  month: number,
-  calendar: CalendarSystem
-): number {
+export function getDaysInMonth(year: number, month: number, calendar: CalendarSystem): number {
   if (calendar === "gregorian") {
     return new Date(year, month, 0).getDate();
   }
@@ -305,10 +269,7 @@ export function startOfDay(date: Date): Date {
 }
 
 /** A date in a given calendar system: { year, month, day } */
-export function toCalendarDate(
-  date: Date,
-  calendar: CalendarSystem
-): ComponentDate {
+export function toCalendarDate(date: Date, calendar: CalendarSystem): ComponentDate {
   const d = startOfDay(date);
   if (calendar === "gregorian") {
     return { year: d.getFullYear(), month: d.getMonth() + 1, day: d.getDate() };
@@ -322,7 +283,7 @@ export function fromCalendarDate(
   year: number,
   month: number,
   day: number,
-  calendar: CalendarSystem
+  calendar: CalendarSystem,
 ): Date {
   if (calendar === "gregorian") {
     return new Date(year, month - 1, day);
@@ -368,7 +329,7 @@ export function isValidDate(
   year: number,
   month: number,
   day: number,
-  calendar: CalendarSystem
+  calendar: CalendarSystem,
 ): boolean {
   if (month < 1 || month > 12 || day < 1 || year < 1) return false;
   return day <= getDaysInMonth(year, month, calendar);
@@ -379,7 +340,7 @@ export function formatComponentDate(
   calendar: CalendarSystem,
   locale: Locale,
   format = "YYYY/MM/DD",
-  monthLabel: MonthLabelStyle = "name"
+  monthLabel: MonthLabelStyle = "name",
 ): string {
   if (!date) return "";
   const d = date;
@@ -387,10 +348,7 @@ export function formatComponentDate(
   const pad = (n: number) => n.toString().padStart(2, "0");
 
   if (format.includes("MMMM")) {
-    format = format.replace(
-      "MMMM",
-      getMonthLabel(calendar, locale, d.month, monthLabel)
-    );
+    format = format.replace("MMMM", getMonthLabel(calendar, locale, d.month, monthLabel));
   }
 
   format = format
@@ -409,16 +367,10 @@ export function formatDate(
   calendar: CalendarSystem,
   locale: Locale,
   format = "YYYY/MM/DD",
-  monthLabel: MonthLabelStyle = "name"
+  monthLabel: MonthLabelStyle = "name",
 ): string {
   if (!date) return "";
-  return formatComponentDate(
-    toCalendarDate(date, calendar),
-    calendar,
-    locale,
-    format,
-    monthLabel
-  );
+  return formatComponentDate(toCalendarDate(date, calendar), calendar, locale, format, monthLabel);
 }
 
 /* ------------------------------------------------------------------ */
@@ -430,7 +382,7 @@ export function parseDateString(
   value: string,
   calendar: CalendarSystem,
   locale: Locale,
-  format = "YYYY/MM/DD"
+  format = "YYYY/MM/DD",
 ): Date | null {
   if (!value || typeof value !== "string") return null;
 
@@ -477,8 +429,12 @@ export function parseDateString(
   for (const part of parts) {
     if (
       part &&
-      (part === "YYYY" || part === "YY" || part === "MM" || part === "M" ||
-       part === "DD" || part === "D")
+      (part === "YYYY" ||
+        part === "YY" ||
+        part === "MM" ||
+        part === "M" ||
+        part === "DD" ||
+        part === "D")
     ) {
       tokens.push(part);
     }
@@ -520,12 +476,7 @@ export function parseDateString(
     if (sep) rest = rest.slice(1);
   }
 
-  if (
-    year === null ||
-    month === null ||
-    day === null ||
-    !isValidDate(year, month, day, calendar)
-  ) {
+  if (year === null || month === null || day === null || !isValidDate(year, month, day, calendar)) {
     return null;
   }
 

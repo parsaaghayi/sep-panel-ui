@@ -3,15 +3,10 @@ import { useState } from "react";
 import CalendarCore from "./CalendarCore";
 import PickerShell from "./PickerShell";
 import { RangePickerProps, PickerOutputValue } from "./types";
-import {
-  formatForDisplay,
-  makeRangeOutput,
-  resolveConfig,
-  resolveRange,
-} from "./valueUtils";
+import { formatForDisplay, makeRangeOutput, resolveConfig, resolveRange } from "./valueUtils";
 
 function RangePicker<O extends "date" | "string" = "date">(
-  props: RangePickerProps<O>
+  props: RangePickerProps<O>,
 ): React.ReactElement {
   const {
     value,
@@ -50,9 +45,7 @@ function RangePicker<O extends "date" | "string" = "date">(
   const startText = formatForDisplay(range.start, cfg);
   const endText = formatForDisplay(range.end, cfg);
   const displayValue =
-    startText && endText
-      ? `${startText}${separator}${endText}`
-      : startText || endText || "";
+    startText && endText ? `${startText}${separator}${endText}` : startText || endText || "";
 
   return (
     <PickerShell

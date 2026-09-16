@@ -7,11 +7,7 @@ type TabsPropsType = {
   setSelectedTab: (tabNumber: number) => void;
 };
 
-const Tabs: React.FC<TabsPropsType> = ({
-  tabTitles,
-  selectedTab,
-  setSelectedTab,
-}) => {
+const Tabs: React.FC<TabsPropsType> = ({ tabTitles, selectedTab, setSelectedTab }) => {
   return (
     <div className="tabs-container">
       <div className="tabs-body">

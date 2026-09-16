@@ -29,7 +29,7 @@ describe("SelectInput", () => {
         selectedOption={menuItems[0]}
         setSelectedOption={() => {}}
         onChange={(option) => console.log(option)}
-      />
+      />,
     );
   });
 });

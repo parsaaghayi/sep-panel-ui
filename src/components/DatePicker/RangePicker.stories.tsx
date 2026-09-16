@@ -1,20 +1,23 @@
-import type { Meta, StoryObj } from '@storybook/react';
-import React, { useState } from 'react';
-import RangePicker from './RangePicker';
+import type { Meta, StoryObj } from "@storybook/react";
+import React, { useState } from "react";
+import RangePicker from "./RangePicker";
 
 const meta: Meta<typeof RangePicker> = {
-  title: 'Components/RangePicker',
+  title: "Components/RangePicker",
   component: RangePicker,
-  parameters: { layout: 'centered' },
-  tags: ['autodocs'],
+  parameters: { layout: "centered" },
+  tags: ["autodocs"],
   argTypes: {
-    calendar:   { control: { type: 'select' }, options: ['jalali', 'gregorian'] },
-    locale:     { control: { type: 'select' }, options: ['fa', 'en'] },
-    direction:  { control: { type: 'select' }, options: ['rtl', 'ltr'] },
-    monthLabel: { control: { type: 'select' }, options: ['name', 'number'] },
-    size:       { control: { type: 'select' }, options: ['sm', 'md', 'lg'] },
-    variant:    { control: { type: 'select' }, options: ['outlined', 'filled', 'standard'] },
-    color:      { control: { type: 'select' }, options: ['primary', 'secondary', 'error', 'warning', 'success'] },
+    calendar: { control: { type: "select" }, options: ["jalali", "gregorian"] },
+    locale: { control: { type: "select" }, options: ["fa", "en"] },
+    direction: { control: { type: "select" }, options: ["rtl", "ltr"] },
+    monthLabel: { control: { type: "select" }, options: ["name", "number"] },
+    size: { control: { type: "select" }, options: ["sm", "md", "lg"] },
+    variant: { control: { type: "select" }, options: ["outlined", "filled", "standard"] },
+    color: {
+      control: { type: "select" },
+      options: ["primary", "secondary", "error", "warning", "success"],
+    },
   },
 };
 export default meta;
@@ -23,22 +26,26 @@ type Story = StoryObj<typeof meta>;
 /* ─── Jalali (شمسی) ────────────────────────────────────────────────── */
 export const ShamsiRange: Story = {
   args: {
-    id: 'jalali-range',
-    label: 'بازه تاریخ',
-    placeholder: 'تاریخ شروع – پایان',
-    calendar: 'jalali',
-    locale: 'fa',
-    direction: 'rtl',
-    size: 'md',
-    variant: 'outlined',
-    color: 'primary',
+    id: "jalali-range",
+    label: "بازه تاریخ",
+    placeholder: "تاریخ شروع – پایان",
+    calendar: "jalali",
+    locale: "fa",
+    direction: "rtl",
+    size: "md",
+    variant: "outlined",
+    color: "primary",
   },
   render: (args) => {
     const [value, setValue] = useState<{ start: Date | null; end: Date | null } | null>(null);
     return (
-      <div style={{ width: '360px' }}>
+      <div style={{ width: "360px" }}>
         <RangePicker {...args} value={value} onChange={setValue} />
-        {value && <pre style={{ marginTop: 8, fontSize: 12, direction: 'ltr' }}>{JSON.stringify(value, null, 2)}</pre>}
+        {value && (
+          <pre style={{ marginTop: 8, fontSize: 12, direction: "ltr" }}>
+            {JSON.stringify(value, null, 2)}
+          </pre>
+        )}
       </div>
     );
   },
@@ -47,22 +54,24 @@ export const ShamsiRange: Story = {
 /* ─── Gregorian (میلادی) ────────────────────────────────────────────── */
 export const MiladiRange: Story = {
   args: {
-    id: 'gregorian-range',
-    label: 'Date Range',
-    placeholder: 'Start – End',
-    calendar: 'gregorian',
-    locale: 'en',
-    direction: 'ltr',
-    size: 'md',
-    variant: 'outlined',
-    color: 'primary',
+    id: "gregorian-range",
+    label: "Date Range",
+    placeholder: "Start – End",
+    calendar: "gregorian",
+    locale: "en",
+    direction: "ltr",
+    size: "md",
+    variant: "outlined",
+    color: "primary",
   },
   render: (args) => {
     const [value, setValue] = useState<{ start: Date | null; end: Date | null } | null>(null);
     return (
-      <div style={{ width: '360px' }}>
+      <div style={{ width: "360px" }}>
         <RangePicker {...args} value={value} onChange={setValue} />
-        {value && <pre style={{ marginTop: 8, fontSize: 12 }}>{JSON.stringify(value, null, 2)}</pre>}
+        {value && (
+          <pre style={{ marginTop: 8, fontSize: 12 }}>{JSON.stringify(value, null, 2)}</pre>
+        )}
       </div>
     );
   },
@@ -74,8 +83,8 @@ export const MonthLabels: Story = {
     const [v1, setV1] = useState<{ start: Date | null; end: Date | null } | null>(null);
     const [v2, setV2] = useState<{ start: Date | null; end: Date | null } | null>(null);
     return (
-      <div style={{ display: 'flex', gap: 24 }}>
-        <div style={{ width: '340px' }}>
+      <div style={{ display: "flex", gap: 24 }}>
+        <div style={{ width: "340px" }}>
           <p style={{ fontSize: 13, marginBottom: 4 }}>monthLabel = "name" → شهریور</p>
           <RangePicker
             id="r-name"
@@ -88,7 +97,7 @@ export const MonthLabels: Story = {
             onChange={setV1}
           />
         </div>
-        <div style={{ width: '340px' }}>
+        <div style={{ width: "340px" }}>
           <p style={{ fontSize: 13, marginBottom: 4 }}>monthLabel = "number" → ماه ۶</p>
           <RangePicker
             id="r-num"
@@ -114,7 +123,7 @@ export const ShamsiToMiladiOutput: Story = {
       end: string | null;
     } | null>(null);
     return (
-      <div style={{ width: '360px' }}>
+      <div style={{ width: "360px" }}>
         <p style={{ fontSize: 13, marginBottom: 4 }}>نمایش شمسی — خروجی میلادی (string)</p>
         <RangePicker<"string">
           id="shamsi-miladi-out"
@@ -130,7 +139,7 @@ export const ShamsiToMiladiOutput: Story = {
           onChange={setValue}
         />
         {value && (
-          <pre style={{ marginTop: 8, fontSize: 12, direction: 'ltr' }}>
+          <pre style={{ marginTop: 8, fontSize: 12, direction: "ltr" }}>
             {value.start} → {value.end}
           </pre>
         )}
@@ -146,10 +155,37 @@ export const Sizes: Story = {
     const [v2, setV2] = useState<{ start: Date | null; end: Date | null } | null>(null);
     const [v3, setV3] = useState<{ start: Date | null; end: Date | null } | null>(null);
     return (
-      <div style={{ display: 'flex', flexDirection: 'column', gap: 16, width: '340px' }}>
-        <RangePicker id="r-sm" label="کوچک" size="sm" calendar="jalali" locale="fa" direction="rtl" value={v1} onChange={setV1} />
-        <RangePicker id="r-md" label="متوسط"  size="md" calendar="jalali" locale="fa" direction="rtl" value={v2} onChange={setV2} />
-        <RangePicker id="r-lg" label="بزرگ"  size="lg" calendar="jalali" locale="fa" direction="rtl" value={v3} onChange={setV3} />
+      <div style={{ display: "flex", flexDirection: "column", gap: 16, width: "340px" }}>
+        <RangePicker
+          id="r-sm"
+          label="کوچک"
+          size="sm"
+          calendar="jalali"
+          locale="fa"
+          direction="rtl"
+          value={v1}
+          onChange={setV1}
+        />
+        <RangePicker
+          id="r-md"
+          label="متوسط"
+          size="md"
+          calendar="jalali"
+          locale="fa"
+          direction="rtl"
+          value={v2}
+          onChange={setV2}
+        />
+        <RangePicker
+          id="r-lg"
+          label="بزرگ"
+          size="lg"
+          calendar="jalali"
+          locale="fa"
+          direction="rtl"
+          value={v3}
+          onChange={setV3}
+        />
       </div>
     );
   },
@@ -162,10 +198,37 @@ export const Variants: Story = {
     const [v2, setV2] = useState<{ start: Date | null; end: Date | null } | null>(null);
     const [v3, setV3] = useState<{ start: Date | null; end: Date | null } | null>(null);
     return (
-      <div style={{ display: 'flex', flexDirection: 'column', gap: 16, width: '340px' }}>
-        <RangePicker id="r-out" label="Outlined" variant="outlined" calendar="jalali" locale="fa" direction="rtl" value={v1} onChange={setV1} />
-        <RangePicker id="r-fill" label="Filled" variant="filled" calendar="jalali" locale="fa" direction="rtl" value={v2} onChange={setV2} />
-        <RangePicker id="r-std" label="Standard" variant="standard" calendar="jalali" locale="fa" direction="rtl" value={v3} onChange={setV3} />
+      <div style={{ display: "flex", flexDirection: "column", gap: 16, width: "340px" }}>
+        <RangePicker
+          id="r-out"
+          label="Outlined"
+          variant="outlined"
+          calendar="jalali"
+          locale="fa"
+          direction="rtl"
+          value={v1}
+          onChange={setV1}
+        />
+        <RangePicker
+          id="r-fill"
+          label="Filled"
+          variant="filled"
+          calendar="jalali"
+          locale="fa"
+          direction="rtl"
+          value={v2}
+          onChange={setV2}
+        />
+        <RangePicker
+          id="r-std"
+          label="Standard"
+          variant="standard"
+          calendar="jalali"
+          locale="fa"
+          direction="rtl"
+          value={v3}
+          onChange={setV3}
+        />
       </div>
     );
   },
@@ -175,15 +238,63 @@ export const Variants: Story = {
 export const Colors: Story = {
   render: () => {
     const mk = () => useState<{ start: Date | null; end: Date | null } | null>(null);
-    const [v1, s1] = mk(); const [v2, s2] = mk(); const [v3, s3] = mk();
-    const [v4, s4] = mk(); const [v5, s5] = mk();
+    const [v1, s1] = mk();
+    const [v2, s2] = mk();
+    const [v3, s3] = mk();
+    const [v4, s4] = mk();
+    const [v5, s5] = mk();
     return (
-      <div style={{ display: 'flex', flexDirection: 'column', gap: 16, width: '340px' }}>
-        <RangePicker id="r-pri" label="primary" color="primary" calendar="jalali" locale="fa" direction="rtl" value={v1} onChange={s1} />
-        <RangePicker id="r-sec" label="secondary" color="secondary" calendar="jalali" locale="fa" direction="rtl" value={v2} onChange={s2} />
-        <RangePicker id="r-err" label="error" color="error" calendar="jalali" locale="fa" direction="rtl" value={v3} onChange={s3} />
-        <RangePicker id="r-wrn" label="warning" color="warning" calendar="jalali" locale="fa" direction="rtl" value={v4} onChange={s4} />
-        <RangePicker id="r-suc" label="success" color="success" calendar="jalali" locale="fa" direction="rtl" value={v5} onChange={s5} />
+      <div style={{ display: "flex", flexDirection: "column", gap: 16, width: "340px" }}>
+        <RangePicker
+          id="r-pri"
+          label="primary"
+          color="primary"
+          calendar="jalali"
+          locale="fa"
+          direction="rtl"
+          value={v1}
+          onChange={s1}
+        />
+        <RangePicker
+          id="r-sec"
+          label="secondary"
+          color="secondary"
+          calendar="jalali"
+          locale="fa"
+          direction="rtl"
+          value={v2}
+          onChange={s2}
+        />
+        <RangePicker
+          id="r-err"
+          label="error"
+          color="error"
+          calendar="jalali"
+          locale="fa"
+          direction="rtl"
+          value={v3}
+          onChange={s3}
+        />
+        <RangePicker
+          id="r-wrn"
+          label="warning"
+          color="warning"
+          calendar="jalali"
+          locale="fa"
+          direction="rtl"
+          value={v4}
+          onChange={s4}
+        />
+        <RangePicker
+          id="r-suc"
+          label="success"
+          color="success"
+          calendar="jalali"
+          locale="fa"
+          direction="rtl"
+          value={v5}
+          onChange={s5}
+        />
       </div>
     );
   },
@@ -196,10 +307,37 @@ export const WithMessages: Story = {
     const [v2, s2] = useState<{ start: Date | null; end: Date | null } | null>(null);
     const [v3, s3] = useState<{ start: Date | null; end: Date | null } | null>(null);
     return (
-      <div style={{ display: 'flex', flexDirection: 'column', gap: 16, width: '340px' }}>
-        <RangePicker id="r-guid" label="با راهنما" guidMessage="بازه تاریخ را انتخاب کنید" calendar="jalali" locale="fa" direction="rtl" value={v1} onChange={s1} />
-        <RangePicker id="r-suc" label="موفق" successMessage="انتخاب شد" calendar="jalali" locale="fa" direction="rtl" value={v2} onChange={s2} />
-        <RangePicker id="r-err" label="خطا" errorMessage="بازه نامعتبر" calendar="jalali" locale="fa" direction="rtl" value={v3} onChange={s3} />
+      <div style={{ display: "flex", flexDirection: "column", gap: 16, width: "340px" }}>
+        <RangePicker
+          id="r-guid"
+          label="با راهنما"
+          guidMessage="بازه تاریخ را انتخاب کنید"
+          calendar="jalali"
+          locale="fa"
+          direction="rtl"
+          value={v1}
+          onChange={s1}
+        />
+        <RangePicker
+          id="r-suc"
+          label="موفق"
+          successMessage="انتخاب شد"
+          calendar="jalali"
+          locale="fa"
+          direction="rtl"
+          value={v2}
+          onChange={s2}
+        />
+        <RangePicker
+          id="r-err"
+          label="خطا"
+          errorMessage="بازه نامعتبر"
+          calendar="jalali"
+          locale="fa"
+          direction="rtl"
+          value={v3}
+          onChange={s3}
+        />
       </div>
     );
   },
@@ -208,15 +346,15 @@ export const WithMessages: Story = {
 /* ─── Disabled ───────────────────────────────────────────────────────── */
 export const Disabled: Story = {
   args: {
-    id: 'r-disabled',
-    label: 'غیرفعال',
+    id: "r-disabled",
+    label: "غیرفعال",
     disabled: true,
-    calendar: 'jalali',
-    locale: 'fa',
-    direction: 'rtl',
+    calendar: "jalali",
+    locale: "fa",
+    direction: "rtl",
   },
   render: (args) => (
-    <div style={{ width: '340px' }}>
+    <div style={{ width: "340px" }}>
       <RangePicker {...args} onChange={() => {}} />
     </div>
   ),
@@ -225,18 +363,18 @@ export const Disabled: Story = {
 /* ─── Icons ──────────────────────────────────────────────────────────── */
 export const WithIcons: Story = {
   args: {
-    id: 'r-icons',
-    label: 'بازه با آیکون',
-    firstIconSrc: '/src/images/search.svg',
-    lastIconSrc: '/src/images/arrow-bottom.svg',
-    calendar: 'jalali',
-    locale: 'fa',
-    direction: 'rtl',
+    id: "r-icons",
+    label: "بازه با آیکون",
+    firstIconSrc: "/src/images/search.svg",
+    lastIconSrc: "/src/images/arrow-bottom.svg",
+    calendar: "jalali",
+    locale: "fa",
+    direction: "rtl",
   },
   render: (args) => {
     const [value, setValue] = useState<{ start: Date | null; end: Date | null } | null>(null);
     return (
-      <div style={{ width: '340px' }}>
+      <div style={{ width: "340px" }}>
         <RangePicker {...args} value={value} onChange={setValue} />
       </div>
     );

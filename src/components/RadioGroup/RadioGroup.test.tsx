@@ -65,7 +65,7 @@ describe("RadioGroup", () => {
         required={true}
         flexDirection="column"
         onChange={(value) => console.log(value)}
-      />
+      />,
     );
   });
 });

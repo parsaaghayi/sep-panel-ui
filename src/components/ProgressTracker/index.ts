@@ -1,1 +1,1 @@
-export { default } from "./ProgressTracker"
+export { default } from "./ProgressTracker";

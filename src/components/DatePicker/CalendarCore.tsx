@@ -1,11 +1,6 @@
 import * as React from "react";
 import { useState } from "react";
-import {
-  CalendarCoreProps,
-  CalendarView,
-  ComponentDate,
-  DateRange,
-} from "./types";
+import { CalendarCoreProps, CalendarView, ComponentDate } from "./types";
 import {
   fromCalendarDate,
   getDaysInMonth,
@@ -32,7 +27,7 @@ function dayButtonClass(
     min: Date | null;
     max: Date | null;
     isToday: boolean;
-  }
+  },
 ): string {
   const classes = ["datePicker-calendar-day"];
 
@@ -42,16 +37,12 @@ function dayButtonClass(
 
   const { start, end } = opts.range;
   const inRange =
-    start &&
-    end &&
-    date.getTime() > start.getTime() &&
-    date.getTime() < end.getTime();
+    start && end && date.getTime() > start.getTime() && date.getTime() < end.getTime();
   if (start && isSameDay(date, start)) classes.push("datePicker-calendar-day-start");
   if (end && isSameDay(date, end)) classes.push("datePicker-calendar-day-end");
   if (inRange) classes.push("datePicker-calendar-day-inRange");
 
-  const preview =
-    start && !end && opts.hover && opts.hover.getTime() > start.getTime();
+  const preview = start && !end && opts.hover && opts.hover.getTime() > start.getTime();
   if (preview && date.getTime() > start.getTime() && date.getTime() < opts.hover!.getTime()) {
     classes.push("datePicker-calendar-day-inRange");
   }
@@ -96,10 +87,10 @@ const CalendarCore: React.FC<CalendarCoreProps> = ({
   const [viewYear, setViewYear] = useState<number>(first.year);
   const [viewMonth, setViewMonth] = useState<number>(first.month);
   const [rangeStart, setRangeStart] = useState<Date | null>(
-    mode === "range" && range ? range.start : null
+    mode === "range" && range ? range.start : null,
   );
   const [rangeEnd, setRangeEnd] = useState<Date | null>(
-    mode === "range" && range ? range.end : null
+    mode === "range" && range ? range.end : null,
   );
   const [hoverDate, setHoverDate] = useState<Date | null>(null);
 
@@ -109,8 +100,7 @@ const CalendarCore: React.FC<CalendarCoreProps> = ({
   const weekdayLabels = getWeekDayLabels(locale).short;
 
   const isToday = (date: Date) => isSameDay(date, new Date());
-  const isDisabled = (date: Date) =>
-    (minT && date < minT) || (maxT && date > maxT);
+  const isDisabled = (date: Date) => (minT && date < minT) || (maxT && date > maxT);
 
   const changeMonth = (increment: number) => {
     let m = viewMonth + increment;
@@ -184,7 +174,7 @@ const CalendarCore: React.FC<CalendarCoreProps> = ({
       viewYear,
       month,
       getDaysInMonth(viewYear, month, calendar),
-      calendar
+      calendar,
     );
     return (minT !== null && last < minT) || (maxT !== null && first > maxT);
   };
@@ -196,8 +186,7 @@ const CalendarCore: React.FC<CalendarCoreProps> = ({
   };
 
   const hasSelection =
-    (mode === "range" && !!(rangeStart || rangeEnd)) ||
-    (mode === "single" && !!value);
+    (mode === "range" && !!(rangeStart || rangeEnd)) || (mode === "single" && !!value);
 
   const monthLabelText = getMonthLabel(calendar, locale, viewMonth, monthLabel);
 
@@ -207,13 +196,11 @@ const CalendarCore: React.FC<CalendarCoreProps> = ({
     const firstOfMonth = fromCalendarDate(viewYear, viewMonth, 1, calendar);
     const offset = getWeekdayIndex(firstOfMonth, locale);
 
-    const prevYear =
-      viewMonth === 1 ? viewYear - 1 : viewYear;
-    const prevMonth =
-      viewMonth === 1 ? 12 : viewMonth - 1;
+    const prevYear = viewMonth === 1 ? viewYear - 1 : viewYear;
+    const prevMonth = viewMonth === 1 ? 12 : viewMonth - 1;
     const daysInPrev = getDaysInMonth(prevYear, prevMonth, calendar);
 
-    const cells: JSX.Element[] = [];
+    const cells: React.JSX.Element[] = [];
 
     for (let i = offset - 1; i >= 0; i -= 1) {
       const day = daysInPrev - i;
@@ -227,14 +214,14 @@ const CalendarCore: React.FC<CalendarCoreProps> = ({
           onClick={() => handleDayClick(date)}
         >
           {localizeDigits(day, locale)}
-        </div>
+        </div>,
       );
     }
 
     for (let day = 1; day <= daysInMonth; day += 1) {
       const date = fromCalendarDate(viewYear, viewMonth, day, calendar);
       const cls = dayButtonClass(date, {
-        value: mode === "single" ? value ?? null : null,
+        value: mode === "single" ? (value ?? null) : null,
         range: { start: rangeStart, end: rangeEnd },
         hover: hoverDate,
         min: minT,
@@ -251,15 +238,13 @@ const CalendarCore: React.FC<CalendarCoreProps> = ({
           }}
         >
           {localizeDigits(day, locale)}
-        </div>
+        </div>,
       );
     }
 
     const remaining = CELLS - cells.length;
-    const nextYear =
-      viewMonth === 12 ? viewYear + 1 : viewYear;
-    const nextMonth =
-      viewMonth === 12 ? 1 : viewMonth + 1;
+    const nextYear = viewMonth === 12 ? viewYear + 1 : viewYear;
+    const nextMonth = viewMonth === 12 ? 1 : viewMonth + 1;
 
     for (let day = 1; day <= remaining; day += 1) {
       const date = fromCalendarDate(nextYear, nextMonth, day, calendar);
@@ -272,7 +257,7 @@ const CalendarCore: React.FC<CalendarCoreProps> = ({
           onClick={() => handleDayClick(date)}
         >
           {localizeDigits(day, locale)}
-        </div>
+        </div>,
       );
     }
 
@@ -281,7 +266,7 @@ const CalendarCore: React.FC<CalendarCoreProps> = ({
 
   /* -------------------- months grid -------------------- */
   const renderMonths = () => {
-    const cells: JSX.Element[] = [];
+    const cells: React.JSX.Element[] = [];
     const selected = value ? toCalendarDate(value, calendar) : null;
 
     for (let m = 1; m <= 12; m += 1) {
@@ -298,7 +283,7 @@ const CalendarCore: React.FC<CalendarCoreProps> = ({
           onClick={() => !monthDisabled(m) && handleMonthClick(m)}
         >
           {getMonthLabel(calendar, locale, m, monthLabel)}
-        </div>
+        </div>,
       );
     }
     return cells;
@@ -306,7 +291,7 @@ const CalendarCore: React.FC<CalendarCoreProps> = ({
 
   /* -------------------- years grid -------------------- */
   const renderYears = () => {
-    const cells: JSX.Element[] = [];
+    const cells: React.JSX.Element[] = [];
     const batchStart = Math.floor(viewYear / 12) * 12;
     const selected = value ? toCalendarDate(value, calendar) : null;
 
@@ -324,7 +309,7 @@ const CalendarCore: React.FC<CalendarCoreProps> = ({
           onClick={() => !yearDisabled(y) && handleYearClick(y)}
         >
           {localizeDigits(y, locale)}
-        </div>
+        </div>,
       );
     }
     return cells;
@@ -334,11 +319,11 @@ const CalendarCore: React.FC<CalendarCoreProps> = ({
     view === "days"
       ? `${monthLabelText} ${localizeDigits(viewYear, locale)}`
       : view === "months"
-      ? localizeDigits(viewYear, locale)
-      : `${localizeDigits(Math.floor(viewYear / 12) * 12, locale)} – ${localizeDigits(
-          Math.floor(viewYear / 12) * 12 + 11,
-          locale
-        )}`;
+        ? localizeDigits(viewYear, locale)
+        : `${localizeDigits(Math.floor(viewYear / 12) * 12, locale)} – ${localizeDigits(
+            Math.floor(viewYear / 12) * 12 + 11,
+            locale,
+          )}`;
 
   const handleHeaderClick = () => {
     if (view === "days") setView("months");
@@ -348,12 +333,8 @@ const CalendarCore: React.FC<CalendarCoreProps> = ({
   return (
     <div
       className={`datePicker-calendar ${
-        actualDirection === "rtl"
-          ? "datePicker-calendar-rtl"
-          : "datePicker-calendar-ltr"
-      } ${inline ? "calendarPicker-inline" : ""} ${
-        className ? className : ""
-      }`}
+        actualDirection === "rtl" ? "datePicker-calendar-rtl" : "datePicker-calendar-ltr"
+      } ${inline ? "calendarPicker-inline" : ""} ${className ? className : ""}`}
       style={{ direction: actualDirection }}
     >
       <div className="datePicker-calendar-header">
@@ -364,7 +345,13 @@ const CalendarCore: React.FC<CalendarCoreProps> = ({
           onClick={() => (view === "days" ? changeMonth(-1) : changeYear(-1))}
         >
           <svg width="16" height="16" viewBox="0 0 16 16" fill="none">
-            <path d="M10 12L6 8L10 4" stroke="currentColor" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round"/>
+            <path
+              d="M10 12L6 8L10 4"
+              stroke="currentColor"
+              strokeWidth="2"
+              strokeLinecap="round"
+              strokeLinejoin="round"
+            />
           </svg>
         </button>
 
@@ -383,7 +370,13 @@ const CalendarCore: React.FC<CalendarCoreProps> = ({
           onClick={() => (view === "days" ? changeMonth(1) : changeYear(1))}
         >
           <svg width="16" height="16" viewBox="0 0 16 16" fill="none">
-            <path d="M6 12L10 8L6 4" stroke="currentColor" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round"/>
+            <path
+              d="M6 12L10 8L6 4"
+              stroke="currentColor"
+              strokeWidth="2"
+              strokeLinecap="round"
+              strokeLinejoin="round"
+            />
           </svg>
         </button>
       </div>
@@ -413,11 +406,7 @@ const CalendarCore: React.FC<CalendarCoreProps> = ({
       )}
 
       {clearable && hasSelection && onClear && (
-        <button
-          className="calendarPicker-clear"
-          type="button"
-          onClick={onClear}
-        >
+        <button className="calendarPicker-clear" type="button" onClick={onClear}>
           {locale === "fa" ? "پاک کردن" : "Clear"}
         </button>
       )}

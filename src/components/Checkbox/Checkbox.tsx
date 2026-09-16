@@ -37,10 +37,7 @@ const Checkbox: React.FC<CheckboxPropsType> = ({
         onChange={toggle}
       />
       <span className={`checkbox-square ${disabled ? "disabled" : ""}`}></span>
-      <label
-        htmlFor={id}
-        className={`checkbox-label ${disabled ? "disabled" : ""}`}
-      >
+      <label htmlFor={id} className={`checkbox-label ${disabled ? "disabled" : ""}`}>
         {label}
       </label>
       {required && <span className="checkbox-required">*</span>}
