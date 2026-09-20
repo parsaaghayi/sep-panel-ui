@@ -46,6 +46,10 @@ const meta: Meta<typeof DatePicker> = {
       control: { type: "select" },
       options: ["primary", "secondary", "error", "warning", "success"],
     },
+    dropdownPosition: {
+      control: { type: "select" },
+      options: ["auto", "bottom", "bottom-left", "bottom-right", "top", "top-left", "top-right"],
+    },
   },
 };
 
@@ -63,6 +67,7 @@ export const Persian: Story = {
     size: "md",
     variant: "outlined",
     color: "primary",
+    dropdownPosition: "top-right",
   },
   render: (args) => {
     const [value, setValue] = useState<Date | null>(null);
@@ -512,6 +517,55 @@ export const PersianDisplayLatinOutput: Story = {
         {value && (
           <pre style={{ marginTop: "8px", fontSize: "12px", direction: "ltr" }}>{value}</pre>
         )}
+      </div>
+    );
+  },
+};
+
+// Dropdown position variants
+export const DropdownPositions: Story = {
+  render: () => {
+    const [value, setValue] = useState<string | null>(null);
+    return (
+      <div
+        style={{
+          display: "flex",
+          flexDirection: "column",
+          gap: "180px",
+          width: "300px",
+          padding: "60px 0",
+        }}
+      >
+        <p style={{ fontSize: "13px", marginBottom: "4px" }}>
+          dropdownPosition="bottom-left" (پیش‌فرض)
+        </p>
+        <DatePicker<"string">
+          id="dp-bottom"
+          label="تاریخ"
+          calendar="jalali"
+          locale="fa"
+          direction="rtl"
+          format="YYYY/MM/DD"
+          output="string"
+          value={value}
+          onChange={setValue}
+          dropdownPosition="bottom-left"
+        />
+        <p style={{ fontSize: "13px", marginBottom: "4px" }}>
+          dropdownPosition="top-left" (بالای فیلد)
+        </p>
+        <DatePicker<"string">
+          id="dp-top"
+          label="تاریخ"
+          calendar="jalali"
+          locale="fa"
+          direction="rtl"
+          format="YYYY/MM/DD"
+          output="string"
+          value={value}
+          onChange={setValue}
+          dropdownPosition="top-left"
+        />
       </div>
     );
   },

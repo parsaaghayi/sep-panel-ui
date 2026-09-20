@@ -300,4 +300,23 @@ describe("DatePicker", () => {
 
     expect(mockOnChange).toHaveBeenCalledWith("۱۴۰۲/۱۰/۲۵");
   });
+
+  test("applies dropdownPosition variant class to container", () => {
+    render(
+      <DatePicker
+        id="test-datepicker"
+        label="تاریخ شروع"
+        value={null}
+        onChange={mockOnChange}
+        dropdownPosition="top-left"
+      />,
+    );
+
+    fireEvent.click(screen.getByRole("textbox"));
+    const container = screen.getByLabelText("تاریخ شروع").closest(".datePicker-container");
+    expect(container).toHaveClass("datePicker-dropdown-top-left");
+
+    const calendar = document.querySelector(".datePicker-calendar");
+    expect(calendar).not.toBeNull();
+  });
 });

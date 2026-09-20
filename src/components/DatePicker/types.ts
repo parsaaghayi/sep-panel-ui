@@ -8,6 +8,16 @@ export type PickerSize = "sm" | "md" | "lg";
 export type PickerVariant = "outlined" | "filled" | "standard";
 export type PickerColor = "primary" | "secondary" | "error" | "warning" | "success";
 
+/** Where the dropdown/calendar popover opens relative to the input */
+export type DropdownPositionType =
+  | "auto"
+  | "bottom"
+  | "bottom-left"
+  | "bottom-right"
+  | "top"
+  | "top-left"
+  | "top-right";
+
 /** A date expressed inside a specific calendar system */
 export interface ComponentDate {
   year: number;
@@ -90,6 +100,9 @@ export interface PickerInputProps {
   "aria-label"?: string;
   "aria-describedby"?: string;
   role?: string;
+  /** Where the calendar popover opens (default: "bottom"). "auto" picks
+   *  the side with more viewport space. */
+  dropdownPosition?: DropdownPositionType;
 }
 
 export interface DatePickerProps<O extends "date" | "string" = "date">

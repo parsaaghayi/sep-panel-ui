@@ -277,6 +277,36 @@
   max-width: 320px;
 }
 
+/* Dropdown position variants (default is "bottom" → below input) */
+.datePicker-dropdown-top .datePicker-calendar,
+.datePicker-dropdown-top-left .datePicker-calendar,
+.datePicker-dropdown-top-right .datePicker-calendar {
+  top: auto;
+  bottom: calc(100% + 4px);
+  margin-top: 0;
+  margin-bottom: 4px;
+}
+
+.datePicker-dropdown-bottom-left .datePicker-calendar {
+  left: 0;
+  right: auto;
+}
+
+.datePicker-dropdown-bottom-right .datePicker-calendar {
+  left: auto;
+  right: 0;
+}
+
+.datePicker-dropdown-top-left .datePicker-calendar {
+  left: 0;
+  right: auto;
+}
+
+.datePicker-dropdown-top-right .datePicker-calendar {
+  left: auto;
+  right: 0;
+}
+
 .datePicker-calendar-rtl {
   left: auto;
   right: 0;

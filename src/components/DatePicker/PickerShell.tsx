@@ -1,6 +1,6 @@
 import * as React from "react";
 import { useEffect, useRef, useState } from "react";
-import { PickerShellProps } from "./types";
+import { PickerShellProps, DropdownPositionType } from "./types";
 import "./style.css";
 
 const PickerShell: React.FC<PickerShellProps> = ({
@@ -31,10 +31,33 @@ const PickerShell: React.FC<PickerShellProps> = ({
   onOpenChange,
   displayValue,
   direction,
+  dropdownPosition,
   children,
 }) => {
   const containerRef = useRef<HTMLDivElement>(null);
+  const inputRef = useRef<HTMLInputElement>(null);
   const [isFocused, setIsFocused] = useState(false);
+  const [resolvedPosition, setResolvedPosition] = useState<
+    Exclude<DropdownPositionType, "auto">
+  >(dropdownPosition && dropdownPosition !== "auto" ? dropdownPosition : "bottom");
+
+  function resolvePosition() {
+    const requested = dropdownPosition ?? "bottom";
+    if (requested !== "auto") {
+      setResolvedPosition(requested);
+      return;
+    }
+    if (inputRef.current) {
+      const rect = inputRef.current.getBoundingClientRect();
+      const spaceBelow = window.innerHeight - rect.bottom;
+      const spaceAbove = rect.top;
+      setResolvedPosition(spaceBelow >= spaceAbove ? "bottom" : "top");
+    }
+  }
+
+  useEffect(() => {
+    if (open) resolvePosition();
+  }, [open]);
 
   useEffect(() => {
     if (!open) return;
@@ -76,7 +99,9 @@ const PickerShell: React.FC<PickerShellProps> = ({
   return (
     <div
       ref={containerRef}
-      className={`datePicker-container ${fullWidth ? "datePicker-fullWidth" : ""} datePicker-${size} datePicker-${variant} datePicker-${color}`}
+      className={`datePicker-container datePicker-dropdown-${resolvedPosition} ${
+        fullWidth ? "datePicker-fullWidth" : ""
+      } datePicker-${size} datePicker-${variant} datePicker-${color}`}
       style={{ direction }}
     >
       {label && (
@@ -100,6 +125,7 @@ const PickerShell: React.FC<PickerShellProps> = ({
         )}
 
         <input
+          ref={inputRef}
           type="text"
           className={`datePicker-inputElement ${className ? className : ""}`}
           id={id}
