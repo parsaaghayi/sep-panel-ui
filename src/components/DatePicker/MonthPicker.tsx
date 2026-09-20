@@ -23,6 +23,7 @@ function MonthPicker<O extends "date" | "string" = "date">(
     output,
     outputFormat,
     outputCalendar,
+    outputLocale,
     ...shellProps
   } = props;
 
@@ -37,6 +38,7 @@ function MonthPicker<O extends "date" | "string" = "date">(
     output,
     outputFormat,
     outputCalendar,
+    outputLocale,
   });
   const [open, setOpen] = useState(false);
 

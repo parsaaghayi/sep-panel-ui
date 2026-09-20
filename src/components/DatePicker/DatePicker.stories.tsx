@@ -30,6 +30,10 @@ const meta: Meta<typeof DatePicker> = {
       control: { type: "select" },
       options: ["date", "string"],
     },
+    outputLocale: {
+      control: { type: "select" },
+      options: ["fa", "en"],
+    },
     size: {
       control: { type: "select" },
       options: ["sm", "md", "lg"],
@@ -472,6 +476,36 @@ export const MiladiEnglishOutput: Story = {
           format="MM/DD/YYYY"
           output="string"
           outputFormat="YYYY-MM-DD"
+          value={value}
+          onChange={setValue}
+        />
+        {value && (
+          <pre style={{ marginTop: "8px", fontSize: "12px", direction: "ltr" }}>{value}</pre>
+        )}
+      </div>
+    );
+  },
+};
+
+// نمایش فارسی (رقم فارسی) اما خروجی لاتین — outputLocale="en"
+export const PersianDisplayLatinOutput: Story = {
+  render: () => {
+    const [value, setValue] = useState<string | null>(null);
+    return (
+      <div style={{ width: "300px" }}>
+        <p style={{ fontSize: "13px", marginBottom: "4px" }}>
+          نمایش فارسی «۱۴۰۵/۰۶/۱۵» — خروجی لاتین «1405-06-15»
+        </p>
+        <DatePicker<"string">
+          id="fa-display-latin-out"
+          label="تاریخ"
+          calendar="jalali"
+          locale="fa"
+          direction="rtl"
+          format="YYYY/MM/DD"
+          output="string"
+          outputFormat="YYYY-MM-DD"
+          outputLocale="en"
           value={value}
           onChange={setValue}
         />

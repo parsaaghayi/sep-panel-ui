@@ -241,4 +241,63 @@ describe("DatePicker", () => {
 
     expect(screen.getByPlaceholderText("تاریخ را انتخاب کنید")).toBeInTheDocument();
   });
+
+  test("does not fire onChange or auto-fill when value is null at mount", () => {
+    render(
+      <DatePicker id="test-datepicker" label="تاریخ شروع" value={null} onChange={mockOnChange} />,
+    );
+
+    const input = screen.getByRole("textbox") as HTMLInputElement;
+    expect(input.value).toBe("");
+    expect(mockOnChange).not.toHaveBeenCalled();
+  });
+
+  test("displays Persian digits but emits Latin-digit output when outputLocale is set", () => {
+    const testDate = new Date(2024, 0, 15); // ۱۴۰۲/۱۰/۲۵
+
+    render(
+      <DatePicker
+        id="test-datepicker"
+        label="تاریخ شروع"
+        locale="fa"
+        value={testDate}
+        output="string"
+        outputFormat="YYYY/MM/DD"
+        outputLocale="en"
+        onChange={mockOnChange}
+      />,
+    );
+
+    const input = screen.getByRole("textbox") as HTMLInputElement;
+    expect(input.value).toBe("۱۴۰۲/۱۰/۲۵");
+
+    fireEvent.click(input);
+    const selectedDay = document.querySelector(".datePicker-calendar-day-selected");
+    expect(selectedDay).not.toBeNull();
+    fireEvent.click(selectedDay as Element);
+
+    expect(mockOnChange).toHaveBeenCalledWith("1402/10/25");
+  });
+
+  test("emits Persian-digit output when outputLocale is not set", () => {
+    const testDate = new Date(2024, 0, 15);
+
+    render(
+      <DatePicker
+        id="test-datepicker"
+        label="تاریخ شروع"
+        locale="fa"
+        value={testDate}
+        output="string"
+        outputFormat="YYYY/MM/DD"
+        onChange={mockOnChange}
+      />,
+    );
+
+    fireEvent.click(screen.getByRole("textbox"));
+    const selectedDay = document.querySelector(".datePicker-calendar-day-selected");
+    fireEvent.click(selectedDay as Element);
+
+    expect(mockOnChange).toHaveBeenCalledWith("۱۴۰۲/۱۰/۲۵");
+  });
 });

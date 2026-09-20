@@ -35,6 +35,8 @@ export type PickerOutputValue<O extends "date" | "string"> = O extends "date"
  *      calendar="gregorian" locale="fa" format="YYYY/MMMM/DD"
  *  - Show months as numbers instead of names:
  *      calendar="jalali" monthLabel="number" format="YYYY/MMMM"
+ *  - Persian digits in the field but English digits as the value:
+ *      locale="fa" output="string" outputLocale="en" format="YYYY-MM-DD"
  */
 export interface CalendarConfigProps {
   /** Calendar shown (and by default used for parsing/output) */
@@ -57,6 +59,10 @@ export interface CalendarConfigProps {
   outputFormat?: string;
   /** Calendar used to render the string output (default: `calendar`) */
   outputCalendar?: CalendarSystem;
+  /** Locale used for digits (and month names) in the string output.
+   *  Lets you show Persian digits inside the field (`locale="fa"`) while
+   *  emitting Latin digits as the value (`outputLocale="en"`). Default: `locale`. */
+  outputLocale?: Locale;
 }
 
 /** Styling / accessibility props shared by the input-based pickers */

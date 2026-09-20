@@ -6,6 +6,15 @@ type optionType = {
   value: string | number;
 };
 
+type DropdownPositionType =
+  | "auto"
+  | "bottom"
+  | "bottom-left"
+  | "bottom-right"
+  | "top"
+  | "top-left"
+  | "top-right";
+
 type SelectInputPropsType = {
   label?: string;
   iconSrc?: string;
@@ -17,6 +26,7 @@ type SelectInputPropsType = {
   selectedOption: optionType | null;
   setSelectedOption: React.Dispatch<React.SetStateAction<optionType | null>>;
   onChange: (option: optionType | null) => void;
+  dropdownPosition?: DropdownPositionType;
 };
 
 const SelectInput: React.FC<SelectInputPropsType> = ({

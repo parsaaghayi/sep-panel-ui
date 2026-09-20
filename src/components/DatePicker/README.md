@@ -63,6 +63,10 @@ function MyComponent() {
 - `minDate`: حداقل تاریخ قابل انتخاب
 - `maxDate`: حداکثر تاریخ قابل انتخاب
 - `format`: فرمت نمایش تاریخ - پیش‌فرض: "YYYY/MM/DD"
+- `output`: نوع خروجی onChange ("date" | "string") - پیش‌فرض: "date"
+- `outputFormat`: فرمت رشته خروجی وقتی `output="string"` - پیش‌فرض: "YYYY/MM/DD"
+- `outputCalendar`: تقویم خروجی (پیش‌فرض: تقویم نمایش)
+- `outputLocale`: زبان ارقام خروجی ("fa" | "en") - برای «نمایش فارسی + خروجی لاتین» این را "en" بدهید (پیش‌فرض: `locale`)
 
 ### Styling Props
 
@@ -138,6 +142,28 @@ function MyComponent() {
   guidMessage="لطفاً تاریخ معتبر انتخاب کنید"
 />
 ```
+
+### نمایش فارسی اما خروجی لاتین
+
+برای اینکه در فیلد ارقام فارسی (۱۴۰۵/۰۶/۱۵) دیده شود اما مقدار خروجی با ارقام لاتین (1405-06-15) برگردد، به‌جای `locale` از `outputLocale` استفاده کنید:
+
+```tsx
+<DatePicker
+  id="fa-display-latin-out"
+  label="تاریخ"
+  calendar="jalali"
+  locale="fa"
+  direction="rtl"
+  format="YYYY/MM/DD"
+  output="string"
+  outputFormat="YYYY-MM-DD"
+  outputLocale="en"
+  value={value}
+  onChange={(v) => console.log(v)} // "1405-06-15"
+/>
+```
+
+نکته: وقتی `value` برابر null/undefined باشد، `onChange` هنگام mount فراخوانی نمی‌شود و فیلد خالی باقی می‌ماند (مقدار پیش‌فرض خودکار تنظیم نمی‌شود).
 
 ## نکات مهم
 

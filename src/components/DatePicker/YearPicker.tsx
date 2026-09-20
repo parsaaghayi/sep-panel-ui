@@ -23,6 +23,7 @@ function YearPicker<O extends "date" | "string" = "date">(
     output,
     outputFormat,
     outputCalendar,
+    outputLocale,
     ...shellProps
   } = props;
 
@@ -37,6 +38,7 @@ function YearPicker<O extends "date" | "string" = "date">(
     output,
     outputFormat: outputFormat ?? "YYYY",
     outputCalendar,
+    outputLocale,
   });
   const [open, setOpen] = useState(false);
 

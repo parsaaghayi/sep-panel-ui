@@ -24,6 +24,7 @@ function DayPicker<O extends "date" | "string" = "date">(
     output,
     outputFormat,
     outputCalendar,
+    outputLocale,
   } = props;
 
   const cfg = resolveConfig({
@@ -37,6 +38,7 @@ function DayPicker<O extends "date" | "string" = "date">(
     output,
     outputFormat,
     outputCalendar,
+    outputLocale,
   });
 
   const internalDate = resolveValue(value ?? null, cfg);

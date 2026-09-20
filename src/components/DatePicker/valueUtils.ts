@@ -21,6 +21,7 @@ export interface ResolvedConfig {
   output: "date" | "string";
   outputFormat: string;
   outputCalendar: CalendarSystem;
+  outputLocale: Locale;
 }
 
 export function resolveConfig(props: CalendarConfigProps): ResolvedConfig {
@@ -37,6 +38,7 @@ export function resolveConfig(props: CalendarConfigProps): ResolvedConfig {
     output: props.output ?? "date",
     outputFormat: props.outputFormat ?? "YYYY/MM/DD",
     outputCalendar: props.outputCalendar ?? calendar,
+    outputLocale: props.outputLocale ?? locale,
   };
 }
 
@@ -51,7 +53,7 @@ export function resolveValue(value: PickerValue, cfg: ResolvedConfig): Date | nu
 export function makeOutput(date: Date | null, cfg: ResolvedConfig): Date | string | null {
   if (!date) return null;
   if (cfg.output === "date") return date;
-  return formatDate(date, cfg.outputCalendar, cfg.locale, cfg.outputFormat, cfg.monthLabel);
+  return formatDate(date, cfg.outputCalendar, cfg.outputLocale, cfg.outputFormat, cfg.monthLabel);
 }
 
 export function formatForDisplay(
