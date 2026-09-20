@@ -33,3 +33,19 @@ export const withTitleRequired: Story = {
     onChange: (option: any) => console.log("hello", option),
   },
 };
+
+export const dropdownAboveEnd: Story = {
+  args: {
+    label: "selectInput (dropdown above)",
+    placeHolder: "choose an option",
+    menuItems: [
+      { label: "menu Item 1", value: 1 },
+      { label: "menu Item 2", value: 2 },
+      { label: "menu Item 3", value: 3 },
+    ],
+    selectedOption: null,
+    setSelectedOption: () => {},
+    onChange: (option: any) => console.log("hello", option),
+    dropdownPosition: "top-left",
+  },
+};

@@ -29,6 +29,9 @@ type SelectInputPropsType = {
   dropdownPosition?: DropdownPositionType;
 };
 
+const MENU_ESTIMATED_BOTTOM_OFFSET = 70;
+const MENU_ESTIMATED_TOP_OFFSET = 70;
+
 const SelectInput: React.FC<SelectInputPropsType> = ({
   label,
   iconSrc,
@@ -40,24 +43,43 @@ const SelectInput: React.FC<SelectInputPropsType> = ({
   selectedOption,
   setSelectedOption,
   onChange,
+  dropdownPosition,
 }) => {
   const [isOpen, setIsOpen] = useState<boolean>(false);
   const [highlightedIndex, setHighlightedIndex] = useState<number>(-1);
+  const [resolvedPosition, setResolvedPosition] = useState<
+    Exclude<DropdownPositionType, "auto">
+  >(dropdownPosition && dropdownPosition !== "auto" ? dropdownPosition : "bottom");
   const containerRef = useRef<HTMLDivElement>(null);
   const inputRef = useRef<HTMLDivElement>(null);
   const menuRef = useRef<HTMLDivElement>(null);
   const menuItemRefs = useRef<(HTMLDivElement | null)[]>([]);
 
+  function resolvePosition() {
+    const requested = dropdownPosition ?? "bottom";
+    if (requested !== "auto") {
+      setResolvedPosition(requested);
+      return;
+    }
+    if (inputRef.current) {
+      const rect = inputRef.current.getBoundingClientRect();
+      const spaceBelow = window.innerHeight - rect.bottom - MENU_ESTIMATED_BOTTOM_OFFSET;
+      const spaceAbove = rect.top - MENU_ESTIMATED_TOP_OFFSET;
+      setResolvedPosition(spaceBelow >= spaceAbove ? "bottom" : "top");
+    }
+  }
+
   function openMenu() {
     if (!disabled) {
-      setIsOpen(!isOpen);
       if (!isOpen) {
+        resolvePosition();
         // Set initial highlighted index when opening
         const currentIndex = selectedOption
           ? menuItems.findIndex((item) => item.value === selectedOption.value)
           : -1;
         setHighlightedIndex(currentIndex >= 0 ? currentIndex + 1 : 0);
       }
+      setIsOpen(!isOpen);
     }
   }
 
@@ -239,7 +261,12 @@ const SelectInput: React.FC<SelectInputPropsType> = ({
         <span className="selectInput-input-dropdownIcon"></span>
       </div>
       {isOpen ? (
-        <div ref={menuRef} className="selectInput-menu" id="selectInput-menu" role="listbox">
+        <div
+          ref={menuRef}
+          className={`selectInput-menu ${resolvedPosition}`}
+          id="selectInput-menu"
+          role="listbox"
+        >
           <div
             ref={(el) => { menuItemRefs.current[0] = el; }}
             className={`selectInput-menu-menuItem ${highlightedIndex === 0 ? "highlighted" : ""}`}

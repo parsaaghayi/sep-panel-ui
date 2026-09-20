@@ -1,5 +1,5 @@
 import React from "react";
-import { render } from "@testing-library/react";
+import { render, fireEvent, screen } from "@testing-library/react";
 import SelectInput from "./SelectInput";
 
 describe("SelectInput", () => {
@@ -31,5 +31,29 @@ describe("SelectInput", () => {
         onChange={(option) => console.log(option)}
       />,
     );
+  });
+
+  test("applies dropdownPosition class to menu", () => {
+    const menuItems = [
+      { label: "label 1", value: "label1" },
+      { label: "label 2", value: "label2" },
+    ];
+
+    render(
+      <SelectInput
+        label="position test"
+        placeHolder="choose"
+        menuItems={menuItems}
+        selectedOption={null}
+        setSelectedOption={() => {}}
+        onChange={() => {}}
+        dropdownPosition="top-left"
+      />,
+    );
+
+    fireEvent.click(screen.getByText("position test"));
+    const menu = screen.getByRole("listbox");
+    expect(menu.className).toContain("selectInput-menu");
+    expect(menu.className).toContain("top-left");
   });
 });
