@@ -115,9 +115,13 @@
     "declarationDir": "dist/types",
     "sourceMap": true,
     "outDir": "dist",
-    "moduleResolution": "Node",
+    "moduleResolution": "bundler",
     "ignoreDeprecations": "6.0",
     "allowSyntheticDefaultImports": true,
     "emitDeclarationOnly": true
-  }
+  },
+  "exclude": [
+    "**/*.stories.ts",
+    "**/*.stories.tsx"
+  ]
 }
