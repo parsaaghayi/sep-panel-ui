@@ -8,7 +8,7 @@ const DropDownMenuHost = () => {
     <DropDownMenu
       label="عنوان دکمه"
       isOpen={isOpen}
-      openningDirection="right"
+      openningDirection="end"
       setIsOpen={setIsOpen}
     >
       <ul>

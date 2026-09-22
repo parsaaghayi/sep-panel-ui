@@ -7,7 +7,7 @@ type DropDownMenuPropsType = {
   isOpen: boolean;
   setIsOpen: React.Dispatch<React.SetStateAction<boolean>>;
   disabled?: boolean;
-  openningDirection: "right" | "left";
+  openningDirection: "start" | "end";
   children: ReactElement;
 };
 
@@ -44,7 +44,7 @@ const DropDownMenu: React.FC<DropDownMenuPropsType> = ({
       </div>
       {isOpen ? (
         <div
-          className={`DropDownMenu-body ${animate ? "opened" : "closed"} ${openningDirection === "right" ? "right" : "left"}`}
+          className={`DropDownMenu-body ${animate ? "opened" : "closed"} ${openningDirection}`}
         >
           {children}
         </div>

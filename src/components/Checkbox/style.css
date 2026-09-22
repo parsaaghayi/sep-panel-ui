@@ -38,7 +38,7 @@
   display: block;
 }
 .checkbox-square:after {
-  right: 3px;
+  inset-inline-end: 3px;
   bottom: 1px;
   width: 8px;
   height: 14px;

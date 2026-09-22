@@ -47,13 +47,13 @@ describe("SelectInput", () => {
         selectedOption={null}
         setSelectedOption={() => {}}
         onChange={() => {}}
-        dropdownPosition="top-left"
+        dropdownPosition="top-start"
       />,
     );
 
     fireEvent.click(screen.getByText("position test"));
     const menu = screen.getByRole("listbox");
     expect(menu.className).toContain("selectInput-menu");
-    expect(menu.className).toContain("top-left");
+    expect(menu.className).toContain("top-start");
   });
 });

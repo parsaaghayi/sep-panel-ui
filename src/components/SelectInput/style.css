@@ -26,7 +26,7 @@
 }
 .selectInput-title-required {
   color: #bf2600;
-  text-align: right;
+  text-align: start;
   font-feature-settings:
     "liga" off,
     "clig" off;
@@ -83,7 +83,7 @@
   content: "";
   width: 10px;
   height: 10px;
-  border-right: 2px solid #333;
+  border-inline-end: 2px solid #333;
   border-bottom: 2px solid #333;
   transform: rotate(45deg);
   position: absolute;
@@ -109,7 +109,7 @@
   position: absolute;
   width: 100%;
   top: 70px;
-  left: 0;
+  inset-inline-start: 0;
   display: flex;
   flex-direction: column;
   padding: 4px 0px;
@@ -123,20 +123,20 @@
   z-index: 110;
 }
 .selectInput-menu.top,
-.selectInput-menu.top-left,
-.selectInput-menu.top-right {
+.selectInput-menu.top-start,
+.selectInput-menu.top-end {
   top: auto;
   bottom: 70px;
 }
-.selectInput-menu.bottom-left,
-.selectInput-menu.top-left {
-  left: 0;
-  right: auto;
+.selectInput-menu.bottom-start,
+.selectInput-menu.top-start {
+  inset-inline-start: 0;
+  inset-inline-end: auto;
 }
-.selectInput-menu.bottom-right,
-.selectInput-menu.top-right {
-  left: auto;
-  right: 0;
+.selectInput-menu.bottom-end,
+.selectInput-menu.top-end {
+  inset-inline-start: auto;
+  inset-inline-end: 0;
 }
 .selectInput-menu-menuItem {
   display: flex;
@@ -169,7 +169,7 @@
   cursor: default;
 }
 .selectInput-container.disabled .selectInput-input-dropdownIcon::after {
-  border-right: 2px solid #a5adba;
+  border-inline-end: 2px solid #a5adba;
   border-bottom: 2px solid #a5adba;
   cursor: default;
 }

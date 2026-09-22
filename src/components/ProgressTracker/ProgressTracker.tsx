@@ -13,7 +13,7 @@ const ProgressTracker: React.FC<ProgressTrackerPropsType> = ({
   activeStep = 1,
 }) => {
   return (
-    <div className="progressTracker-container">
+    <div className="progressTracker-container" style={{ direction }}>
       {stepTitles.map((stepTitle, index) => (
         <div
           className={`progressTracker-step ${activeStep === index ? "active" : ""}`}
@@ -29,8 +29,8 @@ const ProgressTracker: React.FC<ProgressTrackerPropsType> = ({
             <span
               className="progressTracker-track"
               style={{
-                left: `${activeStep === index && direction === "ltr" ? "0px" : activeStep !== index && direction === "ltr" ? "auto" : activeStep === index && direction === "rtl" ? "auto" : activeStep !== index && direction === "rtl" ? "0px" : "auto"}`,
-                right: `${activeStep === index && direction === "rtl" ? "0px" : activeStep !== index && direction === "rtl" ? "auto" : activeStep === index && direction === "ltr" ? "auto" : activeStep !== index && direction === "ltr" ? "0px" : "auto"}`,
+                insetInlineStart: `${activeStep === index ? "0px" : "auto"}`,
+                insetInlineEnd: `${activeStep === index ? "auto" : "0px"}`,
                 backgroundColor: `${activeStep >= index ? "#0065FF" : ""}`,
                 width: `${index === 0 && activeStep === index ? "0%" : index === 0 && activeStep !== index ? "50%" : activeStep === index ? "50%" : activeStep > index && index + 1 === stepTitles.length ? "50%" : "100%"}`,
               }}

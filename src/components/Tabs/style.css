@@ -16,7 +16,7 @@
   padding-bottom: 8px;
   border-bottom: 2px solid #ebecf0;
   color: var(--neutral-light-n-500, #42526e);
-  text-align: right;
+  text-align: start;
   font-size: 14px;
   font-style: normal;
   font-weight: 600;
@@ -40,7 +40,7 @@
 .tabs-container .tabs-border {
   width: 100%;
   position: absolute;
-  right: 0;
+  inset-inline-start: 0;
   top: 38px;
   z-index: 0;
   height: 2px;

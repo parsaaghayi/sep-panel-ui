@@ -265,8 +265,8 @@
 .datePicker-calendar {
   position: absolute;
   top: 100%;
-  left: 0;
-  right: 0;
+  inset-inline-start: 0;
+  inset-inline-end: auto;
   z-index: 1000;
   background: white;
   border: 1px solid var(--neutral-light-n-40, #dfe1e6);
@@ -279,42 +279,32 @@
 
 /* Dropdown position variants (default is "bottom" → below input) */
 .datePicker-dropdown-top .datePicker-calendar,
-.datePicker-dropdown-top-left .datePicker-calendar,
-.datePicker-dropdown-top-right .datePicker-calendar {
+.datePicker-dropdown-top-start .datePicker-calendar,
+.datePicker-dropdown-top-end .datePicker-calendar {
   top: auto;
   bottom: calc(100% + 4px);
   margin-top: 0;
   margin-bottom: 4px;
 }
 
-.datePicker-dropdown-bottom-left .datePicker-calendar {
-  left: 0;
-  right: auto;
+.datePicker-dropdown-bottom-start .datePicker-calendar {
+  inset-inline-start: 0;
+  inset-inline-end: auto;
 }
 
-.datePicker-dropdown-bottom-right .datePicker-calendar {
-  left: auto;
-  right: 0;
+.datePicker-dropdown-bottom-end .datePicker-calendar {
+  inset-inline-start: auto;
+  inset-inline-end: 0;
 }
 
-.datePicker-dropdown-top-left .datePicker-calendar {
-  left: 0;
-  right: auto;
+.datePicker-dropdown-top-start .datePicker-calendar {
+  inset-inline-start: 0;
+  inset-inline-end: auto;
 }
 
-.datePicker-dropdown-top-right .datePicker-calendar {
-  left: auto;
-  right: 0;
-}
-
-.datePicker-calendar-rtl {
-  left: auto;
-  right: 0;
-}
-
-.datePicker-calendar-ltr {
-  right: auto;
-  left: 0;
+.datePicker-dropdown-top-end .datePicker-calendar {
+  inset-inline-start: auto;
+  inset-inline-end: 0;
 }
 
 /* ------------------------------------------------------------------ */
@@ -343,21 +333,21 @@
 }
 
 .datePicker-dropdown-top .datePicker-dropdownRow,
-.datePicker-dropdown-top-left .datePicker-dropdownRow,
-.datePicker-dropdown-top-right .datePicker-dropdownRow {
+.datePicker-dropdown-top-start .datePicker-dropdownRow,
+.datePicker-dropdown-top-end .datePicker-dropdownRow {
   top: auto;
   bottom: calc(100% + 4px);
   margin-top: 0;
   margin-bottom: 4px;
 }
 
-.datePicker-dropdown-bottom-left .datePicker-dropdownRow,
-.datePicker-dropdown-top-left .datePicker-dropdownRow {
+.datePicker-dropdown-bottom-start .datePicker-dropdownRow,
+.datePicker-dropdown-top-start .datePicker-dropdownRow {
   inset-inline-end: auto;
 }
 
-.datePicker-dropdown-bottom-right .datePicker-dropdownRow,
-.datePicker-dropdown-top-right .datePicker-dropdownRow {
+.datePicker-dropdown-bottom-end .datePicker-dropdownRow,
+.datePicker-dropdown-top-end .datePicker-dropdownRow {
   inset-inline-start: auto;
   inset-inline-end: 0;
 }

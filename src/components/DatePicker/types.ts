@@ -8,15 +8,17 @@ export type PickerSize = "sm" | "md" | "lg";
 export type PickerVariant = "outlined" | "filled" | "standard";
 export type PickerColor = "primary" | "secondary" | "error" | "warning" | "success";
 
-/** Where the dropdown/calendar popover opens relative to the input */
+/** Where the dropdown/calendar popover opens relative to the input
+ *  ("start"/"end" are logical sides that follow the direction:
+ *  start = right when rtl, left when ltr). */
 export type DropdownPositionType =
   | "auto"
   | "bottom"
-  | "bottom-left"
-  | "bottom-right"
+  | "bottom-start"
+  | "bottom-end"
   | "top"
-  | "top-left"
-  | "top-right";
+  | "top-start"
+  | "top-end";
 
 /** A date expressed inside a specific calendar system */
 export interface ComponentDate {

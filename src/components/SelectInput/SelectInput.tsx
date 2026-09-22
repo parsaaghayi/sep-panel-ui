@@ -9,11 +9,11 @@ type optionType = {
 type DropdownPositionType =
   | "auto"
   | "bottom"
-  | "bottom-left"
-  | "bottom-right"
+  | "bottom-start"
+  | "bottom-end"
   | "top"
-  | "top-left"
-  | "top-right";
+  | "top-start"
+  | "top-end";
 
 type SelectInputPropsType = {
   label?: string;

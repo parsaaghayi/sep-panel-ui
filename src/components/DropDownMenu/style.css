@@ -88,11 +88,11 @@
   opacity: 0;
   overflow-y: auto;
 }
-.DropDownMenu-body.right {
-  left: 0;
+.DropDownMenu-body.end {
+  inset-inline-start: 0;
 }
-.DropDownMenu-body.left {
-  right: 0;
+.DropDownMenu-body.start {
+  inset-inline-end: 0;
 }
 .DropDownMenu-body.opened {
   opacity: 1;

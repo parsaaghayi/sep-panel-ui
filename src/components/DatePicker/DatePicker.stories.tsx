@@ -48,7 +48,7 @@ const meta: Meta<typeof DatePicker> = {
     },
     dropdownPosition: {
       control: { type: "select" },
-      options: ["auto", "bottom", "bottom-left", "bottom-right", "top", "top-left", "top-right"],
+      options: ["auto", "bottom", "bottom-start", "bottom-end", "top", "top-start", "top-end"],
     },
   },
 };
@@ -67,7 +67,7 @@ export const Persian: Story = {
     size: "md",
     variant: "outlined",
     color: "primary",
-    dropdownPosition: "top-right",
+    dropdownPosition: "top-end",
   },
   render: (args) => {
     const [value, setValue] = useState<Date | null>(null);
@@ -537,7 +537,7 @@ export const DropdownPositions: Story = {
         }}
       >
         <p style={{ fontSize: "13px", marginBottom: "4px" }}>
-          dropdownPosition="bottom-left" (پیش‌فرض)
+          dropdownPosition="bottom-start" (پیش‌فرض)
         </p>
         <DatePicker<"string">
           id="dp-bottom"
@@ -549,10 +549,10 @@ export const DropdownPositions: Story = {
           output="string"
           value={value}
           onChange={setValue}
-          dropdownPosition="bottom-left"
+          dropdownPosition="bottom-start"
         />
         <p style={{ fontSize: "13px", marginBottom: "4px" }}>
-          dropdownPosition="top-left" (بالای فیلد)
+          dropdownPosition="top-start" (بالای فیلد)
         </p>
         <DatePicker<"string">
           id="dp-top"
@@ -564,7 +564,7 @@ export const DropdownPositions: Story = {
           output="string"
           value={value}
           onChange={setValue}
-          dropdownPosition="top-left"
+          dropdownPosition="top-start"
         />
       </div>
     );

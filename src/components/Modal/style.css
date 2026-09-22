@@ -15,8 +15,8 @@
 
 .modal-container .modal-body {
   position: absolute;
-  right: auto;
-  left: auto;
+  inset-inline-end: auto;
+  inset-inline-start: auto;
   top: auto;
   bottom: auto;
   display: flex;

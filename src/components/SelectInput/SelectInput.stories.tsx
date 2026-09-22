@@ -46,6 +46,6 @@ export const dropdownAboveEnd: Story = {
     selectedOption: null,
     setSelectedOption: () => {},
     onChange: (option: any) => console.log("hello", option),
-    dropdownPosition: "top-left",
+    dropdownPosition: "top-start",
   },
 };

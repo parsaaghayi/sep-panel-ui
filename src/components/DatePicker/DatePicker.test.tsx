@@ -308,13 +308,13 @@ describe("DatePicker", () => {
         label="تاریخ شروع"
         value={null}
         onChange={mockOnChange}
-        dropdownPosition="top-left"
+        dropdownPosition="top-start"
       />,
     );
 
     fireEvent.click(screen.getByRole("textbox"));
     const container = screen.getByLabelText("تاریخ شروع").closest(".datePicker-container");
-    expect(container).toHaveClass("datePicker-dropdown-top-left");
+    expect(container).toHaveClass("datePicker-dropdown-top-start");
 
     const calendar = document.querySelector(".datePicker-calendar");
     expect(calendar).not.toBeNull();
