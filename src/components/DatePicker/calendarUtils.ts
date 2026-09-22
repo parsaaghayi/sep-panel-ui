@@ -296,6 +296,26 @@ export function todayIn(calendar: CalendarSystem): ComponentDate {
   return toCalendarDate(new Date(), calendar);
 }
 
+/** Adds days to a date, normalizing to local midnight */
+export function addDays(date: Date, days: number): Date {
+  return startOfDay(new Date(startOfDay(date).getTime() + days * 86400000));
+}
+
+/**
+ * Moves a date by calendar months in a given calendar system. Handles
+ * month-length differences automatically: if the target month is shorter
+ * than the source day, the day is clamped to the last day of that month
+ * (e.g. 1 month before 1404/12/30 → 1404/11/30).
+ */
+export function addMonths(date: Date, months: number, calendar: CalendarSystem): Date {
+  const src = toCalendarDate(date, calendar);
+  const total = (src.year - 1) * 12 + (src.month - 1) + months;
+  const year = Math.floor(total / 12) + 1;
+  const month = (total % 12) + 1;
+  const day = Math.min(src.day, getDaysInMonth(year, month, calendar));
+  return fromCalendarDate(year, month, day, calendar);
+}
+
 export function getWeekdayIndex(date: Date, locale: Locale): number {
   const first = getFirstDayOfWeek(locale);
   return (date.getDay() - first + 7) % 7;

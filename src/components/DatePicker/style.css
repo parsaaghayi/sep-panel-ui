@@ -317,6 +317,129 @@
   left: 0;
 }
 
+/* ------------------------------------------------------------------ */
+/* Presets row (RangePicker quick-select buttons beside the calendar)  */
+/* ------------------------------------------------------------------ */
+
+.datePicker-dropdownRow {
+  position: absolute;
+  top: 100%;
+  z-index: 1000;
+  display: flex;
+  align-items: flex-start;
+  gap: 4px;
+  margin-top: 4px;
+  width: max-content;
+  max-width: 100%;
+  inset-inline-start: 0;
+  box-sizing: border-box;
+}
+
+.datePicker-dropdownRow .datePicker-calendar {
+  position: static;
+  margin-top: 0;
+  flex: 0 0 auto;
+  box-sizing: border-box;
+}
+
+.datePicker-dropdown-top .datePicker-dropdownRow,
+.datePicker-dropdown-top-left .datePicker-dropdownRow,
+.datePicker-dropdown-top-right .datePicker-dropdownRow {
+  top: auto;
+  bottom: calc(100% + 4px);
+  margin-top: 0;
+  margin-bottom: 4px;
+}
+
+.datePicker-dropdown-bottom-left .datePicker-dropdownRow,
+.datePicker-dropdown-top-left .datePicker-dropdownRow {
+  inset-inline-end: auto;
+}
+
+.datePicker-dropdown-bottom-right .datePicker-dropdownRow,
+.datePicker-dropdown-top-right .datePicker-dropdownRow {
+  inset-inline-start: auto;
+  inset-inline-end: 0;
+}
+
+/* preset panel layout per presetsPosition — logical start/end only,
+   so it follows the widget direction (rtl/ltr) automatically */
+.datePicker-dropdownRow-start .datePicker-presets {
+  order: -1;
+}
+
+.datePicker-dropdownRow-start .datePicker-calendar,
+.datePicker-dropdownRow-end .datePicker-calendar {
+  order: 0;
+}
+
+.datePicker-dropdownRow-bottom {
+  flex-direction: column;
+  align-items: stretch;
+  width: 280px;
+}
+
+.datePicker-dropdownRow-bottom .datePicker-calendar {
+  width: 100%;
+  max-width: 280px;
+}
+
+.datePicker-dropdownRow-bottom .datePicker-presets {
+  flex-direction: row;
+  flex-wrap: wrap;
+  width: 100%;
+  min-width: 0;
+}
+
+.datePicker-dropdownRow-bottom .datePicker-preset {
+  flex: 1 1 auto;
+}
+
+.datePicker-presets {
+  display: flex;
+  flex-direction: column;
+  gap: 4px;
+  padding: 8px;
+  background: white;
+  border: 1px solid var(--neutral-light-n-40, #dfe1e6);
+  border-radius: 8px;
+  box-shadow: 0 4px 12px rgba(0, 0, 0, 0.15);
+  min-width: 92px;
+  align-self: flex-start;
+  box-sizing: border-box;
+}
+
+.datePicker-preset {
+  padding: 6px 10px;
+  border: none;
+  border-radius: 4px;
+  background: var(--neutral-light-n-20, #f4f5f7);
+  color: var(--neutral-light-n-200, #6b778c);
+  font-size: 12px;
+  font-weight: 500;
+  cursor: pointer;
+  text-align: start;
+  white-space: nowrap;
+  transition: all 0.2s ease;
+}
+
+.datePicker-preset:hover {
+  background: var(--Blue-B50, #deebff);
+  color: var(--Blue-B200, #3b82f6);
+}
+
+.datePicker-preset:disabled,
+.datePicker-preset-disabled {
+  color: var(--neutral-light-n-70, #a5adba);
+  cursor: not-allowed;
+  opacity: 0.5;
+}
+
+.datePicker-preset:disabled:hover,
+.datePicker-preset-disabled:hover {
+  background: var(--neutral-light-n-20, #f4f5f7);
+}
+
 /* Calendar Header */
 .datePicker-calendar-header {
   display: flex;

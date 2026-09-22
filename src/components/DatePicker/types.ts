@@ -124,6 +124,22 @@ export interface DateRange {
   end: Date | null;
 }
 
+/** Unit used by range presets to compute a start date relative to today */
+export type RangePresetUnit = "day" | "week" | "month" | "year";
+
+/** A quick-select button shown next to the calendar, e.g. { label: "ماه اخیر", amount: 1, unit: "month" } */
+export interface RangePreset {
+  /** Button text: "هفته اخیر", "دو هفته اخیر", "ماه اخیر", ... */
+  label: string;
+  /** How many units back the range starts. End is always today. */
+  amount: number;
+  /** "week" = amount×7 days; "month"/"year" use real calendar months (30/31/29-day aware) */
+  unit: RangePresetUnit;
+}
+
+/** Where the preset quick-select buttons are rendered relative to the calendar */
+export type RangePresetPosition = "bottom" | "start" | "end";
+
 export interface RangePickerProps<O extends "date" | "string" = "date">
   extends CalendarConfigProps, PickerInputProps {
   output?: O;
@@ -133,6 +149,14 @@ export interface RangePickerProps<O extends "date" | "string" = "date">
   maxDate?: Date;
   /** Separator shown between start and end (default: "–") */
   separator?: string;
+  /** Quick-select buttons rendered beside the calendar. Clicking one sets
+   *  the range from {today - amount·unit} to today (in the display calendar).
+   *  Only shown when provided; keep to 1–4 presets. */
+  rangePresets?: RangePreset[];
+  /** Where the preset buttons appear: "bottom" (row under the calendar),
+   *  "start" or "end" side column — logical sides that follow the direction
+   *  (start = right when rtl, end = left when rtl). Default: "end". */
+  presetsPosition?: RangePresetPosition;
 }
 
 export interface DayPickerProps<O extends "date" | "string" = "date"> extends CalendarConfigProps {

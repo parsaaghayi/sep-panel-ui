@@ -67,6 +67,8 @@ function MyComponent() {
 - `outputFormat`: فرمت رشته خروجی وقتی `output="string"` - پیش‌فرض: "YYYY/MM/DD"
 - `outputCalendar`: تقویم خروجی (پیش‌فرض: تقویم نمایش)
 - `outputLocale`: زبان ارقام خروجی ("fa" | "en") - برای «نمایش فارسی + خروجی لاتین» این را "en" بدهید (پیش‌فرض: `locale`)
+- `rangePresets`: دکمه‌های انتخاب سریع کنار تقویم (فقط RangePicker) - آرایه‌ای از `{ label, amount, unit }` که unit می‌تواند "day" | "week" | "month" | "year" باشد؛ کلیک روی هر دکمه بازه «از `amount` واحد قبل تا امروز» را انتخاب می‌کند
+- `presetsPosition`: محل نمایش دکمه‌های انتخاب سریع — "bottom" ردیف افقی زیر تقویم (با flex-wrap) | "start" ستون سمت شروع (در RTL: راست) | "end" ستون سمت پایان (در RTL: چپ) - پیش‌فرض: "end"
 
 ### Styling Props
 
@@ -164,6 +166,34 @@ function MyComponent() {
 ```
 
 نکته: وقتی `value` برابر null/undefined باشد، `onChange` هنگام mount فراخوانی نمی‌شود و فیلد خالی باقی می‌ماند (مقدار پیش‌فرض خودکار تنظیم نمی‌شود).
+
+### RangePicker با دکمه‌های انتخاب سریع
+
+با `rangePresets` می‌توانید کنار تقویم، دکمه‌های «۱ تا ۴ بازه از پیش‌تعیین‌شده» قرار دهید. کلیک روی هر دکمه، بازه «از `amount` واحد قبل تا امروز» را انتخاب می‌کند:
+
+```tsx
+<RangePicker
+  id="range-with-presets"
+  label="بازه تاریخ"
+  locale="fa"
+  direction="rtl"
+  calendar="jalali"
+  value={value}
+  onChange={setValue}
+  rangePresets={[
+    { label: "هفته اخیر", amount: 1, unit: "week" },
+    { label: "دو هفته اخیر", amount: 2, unit: "week" },
+    { label: "سه هفته اخیر", amount: 3, unit: "week" },
+    { label: "ماه اخیر", amount: 1, unit: "month" },
+  ]}
+/>
+```
+
+- `unit`: "day" | "week" | "month" | "year"
+  - `week` = `amount × 7` روز
+  - `month` و `year` بر اساس ماه تقویمی واقعی حساب می‌شوند (تابع مبدأ ۳۰/۳۱/۲۹ روزه بودن ماه را خودش تشخیص می‌دهد، مثلاً ۱ ماه قبل از اسفند = بهمن).
+- اگر `minDate` ست شود و شروع بازه از آن رد شود، دکمه غیرفعال می‌شود.
+- محل دکمه‌ها با `presetsPosition` قابل تنظیم است: `"end"` (پیش‌فرض، ستون سمت پایانِ جهت — در RTL سمت چپ)، `"start"` (ستون سمت شروعِ جهت — در RTL سمت راست)، `"bottom"` (ردیف افقی زیر تقویم که با `flex-wrap` اضافه‌ها به خط بعد می‌روند). همه حالت‌ها با شروع/پایان منطقی (start/end) پیاده شده‌اند تا در هر دو جهت rtl/ltr درست نمایش داده شوند.
 
 ## نکات مهم
 

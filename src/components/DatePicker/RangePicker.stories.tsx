@@ -18,6 +18,7 @@ const meta: Meta<typeof RangePicker> = {
       control: { type: "select" },
       options: ["primary", "secondary", "error", "warning", "success"],
     },
+    rangePresets: { control: false },
   },
 };
 export default meta;
@@ -143,6 +144,106 @@ export const ShamsiToMiladiOutput: Story = {
             {value.start} → {value.end}
           </pre>
         )}
+      </div>
+    );
+  },
+};
+
+/* ─── Quick range presets ────────────────────────────────────────────── */
+export const RangePresets: Story = {
+  args: {
+    id: "range-presets",
+    label: "بازه تاریخ",
+    placeholder: "تاریخ شروع – پایان",
+    calendar: "jalali",
+    locale: "fa",
+    direction: "rtl",
+    size: "md",
+    variant: "outlined",
+    color: "primary",
+    rangePresets: [
+      { label: "هفته اخیر", amount: 1, unit: "week" },
+      { label: "دو هفته اخیر", amount: 2, unit: "week" },
+      { label: "سه هفته اخیر", amount: 3, unit: "week" },
+      { label: "ماه اخیر", amount: 1, unit: "month" },
+    ],
+  },
+  argTypes: {
+    presetsPosition: {
+      control: { type: "select" },
+      options: ["bottom", "start", "end"],
+    },
+  },
+  render: (args) => {
+    const [value, setValue] = useState<{ start: Date | null; end: Date | null } | null>(null);
+    return (
+      <div style={{ width: "360px" }}>
+        <RangePicker {...args} value={value} onChange={setValue} />
+        {value && (
+          <pre style={{ marginTop: 8, fontSize: 12, direction: "ltr" }}>
+            {JSON.stringify(value, null, 2)}
+          </pre>
+        )}
+      </div>
+    );
+  },
+};
+
+/* ─── Presets in different positions ─────────────────────────────────── */
+export const PresetPositions: Story = {
+  render: () => {
+    const mk = () => useState<{ start: Date | null; end: Date | null } | null>(null);
+    const [v1, s1] = mk();
+    const [v2, s2] = mk();
+    const [v3, s3] = mk();
+    const presets = [
+      { label: "هفته اخیر", amount: 1, unit: "week" as const },
+      { label: "دو هفته اخیر", amount: 2, unit: "week" as const },
+      { label: "ماه اخیر", amount: 1, unit: "month" as const },
+    ];
+    return (
+      <div style={{ display: "flex", flexDirection: "column", gap: 24, width: "360px" }}>
+        <div>
+          <p style={{ fontSize: 13, marginBottom: 4 }}>presetsPosition = "end"</p>
+          <RangePicker
+            id="p-end"
+            label="بازه تاریخ"
+            calendar="jalali"
+            locale="fa"
+            direction="rtl"
+            value={v1}
+            onChange={s1}
+            rangePresets={presets}
+          />
+        </div>
+        <div>
+          <p style={{ fontSize: 13, marginBottom: 4 }}>presetsPosition = "start"</p>
+          <RangePicker
+            id="p-start"
+            label="بازه تاریخ"
+            calendar="jalali"
+            locale="fa"
+            direction="rtl"
+            value={v2}
+            onChange={s2}
+            rangePresets={presets}
+            presetsPosition="start"
+          />
+        </div>
+        <div>
+          <p style={{ fontSize: 13, marginBottom: 4 }}>presetsPosition = "bottom"</p>
+          <RangePicker
+            id="p-bottom"
+            label="بازه تاریخ"
+            calendar="jalali"
+            locale="fa"
+            direction="rtl"
+            value={v3}
+            onChange={s3}
+            rangePresets={presets}
+            presetsPosition="bottom"
+          />
+        </div>
       </div>
     );
   },
