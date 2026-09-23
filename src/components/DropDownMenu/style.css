@@ -70,7 +70,7 @@
 .DropDownMenu-body {
   display: flex;
   position: absolute;
-  top: 50px;
+  top: calc(100% + 8px);
   z-index: 10000;
   width: 100%;
   max-width: 360px;

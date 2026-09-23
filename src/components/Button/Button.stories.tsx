@@ -1,9 +1,24 @@
 import type { Meta, StoryObj } from "@storybook/react-webpack5";
 import Button from "./Button";
+import React from "react";
 
 const meta = {
-  title: "sep-panel-ui/Button",
+  title: "Components/Button",
   component: Button,
+  parameters: {
+    layout: "centered",
+  },
+  tags: ["autodocs"],
+  argTypes: {
+    colorType: {
+      control: { type: "select" },
+      options: ["base", "primary", "secondary", "warning", "danger", "link", "subtle", "subtleLink"],
+    },
+    type: {
+      control: { type: "select" },
+      options: ["submit", "reset", "button"],
+    },
+  },
 } satisfies Meta<typeof Button>;
 
 export default meta;
@@ -92,5 +107,12 @@ export const more: Story = {
     colorType: "base",
     fistIconSrc: "https://www.svgrepo.com/show/532036/cloud-rain-alt.svg",
     hasMore: true,
+  },
+};
+export const loading: Story = {
+  args: {
+    label: "loading button",
+    colorType: "primary",
+    loading: true,
   },
 };
