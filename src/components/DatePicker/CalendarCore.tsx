@@ -1,5 +1,5 @@
 import * as React from "react";
-import { useState } from "react";
+import { useEffect, useRef, useState } from "react";
 import { CalendarCoreProps, CalendarView, ComponentDate } from "./types";
 import {
   fromCalendarDate,
@@ -93,6 +93,22 @@ const CalendarCore: React.FC<CalendarCoreProps> = ({
     mode === "range" && range ? range.end : null,
   );
   const [hoverDate, setHoverDate] = useState<Date | null>(null);
+  const yearGridRef = useRef<HTMLDivElement>(null);
+
+  useEffect(() => {
+    const grid = yearGridRef.current;
+    if (!grid || view !== "years") {
+      return undefined;
+    }
+
+    const onWheel = (e: WheelEvent) => {
+      e.preventDefault();
+      changeYear(e.deltaY > 0 ? 12 : -12);
+    };
+
+    grid.addEventListener("wheel", onWheel, { passive: false });
+    return () => grid.removeEventListener("wheel", onWheel);
+  }, [view]);
 
   const actualDirection = direction || getDirection(locale);
   const minT = minDate ? startOfDay(minDate) : null;
@@ -342,7 +358,13 @@ const CalendarCore: React.FC<CalendarCoreProps> = ({
           className={`datePicker-calendar-navButton ${actualDirection === "rtl" ? "datePicker-calendar-navButton-rtl" : ""}`}
           type="button"
           aria-label="previous"
-          onClick={() => (view === "days" ? changeMonth(-1) : changeYear(-1))}
+          onClick={() =>
+            view === "days"
+              ? changeMonth(-1)
+              : view === "months"
+                ? changeYear(-1)
+                : changeYear(-12)
+          }
         >
           <svg width="16" height="16" viewBox="0 0 16 16" fill="none">
             <path
@@ -367,7 +389,13 @@ const CalendarCore: React.FC<CalendarCoreProps> = ({
           className={`datePicker-calendar-navButton ${actualDirection === "rtl" ? "datePicker-calendar-navButton-rtl" : ""}`}
           type="button"
           aria-label="next"
-          onClick={() => (view === "days" ? changeMonth(1) : changeYear(1))}
+          onClick={() =>
+            view === "days"
+              ? changeMonth(1)
+              : view === "months"
+                ? changeYear(1)
+                : changeYear(12)
+          }
         >
           <svg width="16" height="16" viewBox="0 0 16 16" fill="none">
             <path
@@ -402,7 +430,12 @@ const CalendarCore: React.FC<CalendarCoreProps> = ({
       )}
 
       {view === "years" && (
-        <div className="calendarPicker-grid calendarPicker-yearGrid">{renderYears()}</div>
+        <div
+              ref={yearGridRef}
+              className="calendarPicker-grid calendarPicker-yearGrid"
+            >
+              {renderYears()}
+            </div>
       )}
 
       {clearable && hasSelection && onClear && (
